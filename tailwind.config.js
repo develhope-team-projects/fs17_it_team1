@@ -9,6 +9,11 @@ export default {
     extend: {
       colors: {
         "our-black": "#212024",
+        "oro-chiaro": "#e9a42e",
+        "oro-scuro": "#be7f39",
+        "light-bg": "#fcf7eb",
+        "dark-bg": "#212024",
+        "dark-white": "#e4ddcd",
       },
     },
   },
