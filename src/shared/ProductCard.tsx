@@ -18,7 +18,7 @@ export function ProductCard(props: Post) {
       >
         <img src={props.img} alt="img product" className="w-full h-full" />
         {hover && (
-          <div className="absolute inset-0 flex items-center justify-center bg-amber-600/[0.4] ">
+          <div className="absolute inset-0 flex items-center justify-center bg-amber-700/[0.6] ">
             <div className="bg-gold p-4 rounded backdrop-filter backdrop-blur-lg">
               <button name="gino">Buy now</button>
             </div>
