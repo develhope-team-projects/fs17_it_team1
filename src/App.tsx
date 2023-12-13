@@ -1,6 +1,6 @@
 import RatingReview, { Review } from "./product/RatingReview";
 import FooterComponent from "./shared/Footer";
-
+import { SitePathComponent } from "./shared/SitePath";
 const test: Review = {
   img: "https://cdn-7.motorsport.com/images/amp/0ZRabeN0/s1000/carlos-sainz-ferrari-charles-l.jpg",
   name: "Eno Mario",
@@ -16,6 +16,7 @@ function App() {
     <div className="dark">
       <RatingReview {...test} />
       <FooterComponent />
+      <SitePathComponent/>
     </div>
 
   );
