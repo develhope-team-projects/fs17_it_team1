@@ -1,8 +1,7 @@
-"use client";
 
 import { useMediaQuery } from "@react-hook/media-query";
 import { Avatar, Dropdown, Navbar } from "flowbite-react";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 export default function Header() {
   const [toggle, setToggle] = useState(false);
@@ -10,11 +9,7 @@ export default function Header() {
 
   const handleToggle = () => {
     setToggle((prevToggle) => !prevToggle);
-    /* console.log("Toggle state:", toggle); */
   };
-  useEffect(() => {
-    console.log("Toggle state:", toggle);
-  }, [toggle]);
 
   const handleLinkClick = () => {
     // Chiudi il menu quando viene cliccato un link nel menu mobile
@@ -22,7 +17,7 @@ export default function Header() {
   };
 
   return (
-    <Navbar>
+    <Navbar fluid>
       {!isMobileOrTablet ? (
         <>
           <Navbar.Collapse>
@@ -33,7 +28,7 @@ export default function Header() {
             <Navbar.Link href="#">About </Navbar.Link>
             <Navbar.Link href="#">Contact</Navbar.Link>
           </Navbar.Collapse>
-          <div className="flex items-center mx-auto">
+          <div className="flex items-center ">
             <Navbar.Brand>
               {/* <img
                 src="/favicon.svg"
@@ -45,7 +40,17 @@ export default function Header() {
               </span>
             </Navbar.Brand>
           </div>
+
           <div className="flex md:order-2">
+            {/* bottone card */}
+            <button>
+              <img
+                src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAAACXBIWXMAAAsTAAALEwEAmpwYAAACrUlEQVR4nO2ZO4xMURjHf1YyjalorAqVkXg0VuFViA2xGla2oGIlXhGroluFR8Go6GzhHatCRWM7q/Co2MSuhFgVjV2yEhn55H/lkp2559wZe7+IX3KSyZzv/93/yb333O+cA/+pSwnoAW4Cr4AJNft9Q30W45qdwBhQy2ijwA4cMhuopow+BQ4DFWCOWkX/PUvFnZPWDVUZ+wrsAWY1iG0DehWbDMbN41QDvgBrInRrU4PZTsGUUu+E3YlY9kn7uugJoCf1TtgjE4tpniuH3dnCuCUTh5rIcUQ5rlMgIzKxpIkcS5XDvjOF8Vkmyk3kKCuH5SqM5HvgJc+/P5DJgHJjptpk3kHMc2C+9kebm2cgKwNmk5l6tEbUvyJP8m0SP2jCQChZeR6qvytP8oMSD9Tp35gyYL/zEpJnQP3mKZqzEvfX6R9NGbBaKS8heU6q/0yeC1yT2Eru6XiXMvA2zwUi8vSq3zxFMyRxZ53+LTJhF9+c5wIReTrlxTxF86YFdVSrqMiLLRmiy+upFtRRraIsL99ilwsLJPyIHz7JU3uMaLVEtujxwgt56sizDr+LH+7JU3eM6JhEF/HDJXnqixFdkOg4fjghT7b1FMwdiXbhh93yNBgjeiLROvywXp6GY0QfJFqIHxbJ03iowDbKvqt52jUvxfparJG/xx/j8mZ3J5MNCn6MP4blzd6X4NnhNv4YjJlNk/n6PP6oxnzfki/oUfzRF1Nx3Fewx6Oxbnmzuiu4ylyFPzpiqvKk7p+PP9pD10nJSmwq58HN36YtdOWarI1ti8YrYyF7CcluxSP8MiSPmxoF7VXQFfxyNeTwtV9Bp/DL6Ywd0N/2WPfjlwPyeJmAXe+t+KUr4JTg51mIBS3DL8vl8WWjoAkHp1K1wGZep8XjUVtW+3UU9wNY5IVjWCP9OAAAAABJRU5ErkJggg=="
+                alt="cart"
+                className="text-white w-7 h-7 mr-3"
+                style={{ filter: "invert(90%)" }}
+              />
+            </button>
             <Dropdown
               arrowIcon={false}
               inline
@@ -72,6 +77,7 @@ export default function Header() {
           </div>
         </>
       ) : (
+        /* ////MOBILE///// */
         <>
           <Navbar.Brand>
             {/* <img
@@ -83,50 +89,63 @@ export default function Header() {
               Flowbite React
             </span>
           </Navbar.Brand>
-          <button onClick={handleToggle}>
+
+          {/* bottone toggle */}
+          <button onClick={handleToggle} className="ml-auto pr-2">
             <Navbar.Toggle />
           </button>
+
+          {/* bottone card */}
+          <button>
+            <img
+              src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAAACXBIWXMAAAsTAAALEwEAmpwYAAACrUlEQVR4nO2ZO4xMURjHf1YyjalorAqVkXg0VuFViA2xGla2oGIlXhGroluFR8Go6GzhHatCRWM7q/Co2MSuhFgVjV2yEhn55H/lkp2559wZe7+IX3KSyZzv/93/yb333O+cA/+pSwnoAW4Cr4AJNft9Q30W45qdwBhQy2ijwA4cMhuopow+BQ4DFWCOWkX/PUvFnZPWDVUZ+wrsAWY1iG0DehWbDMbN41QDvgBrInRrU4PZTsGUUu+E3YlY9kn7uugJoCf1TtgjE4tpniuH3dnCuCUTh5rIcUQ5rlMgIzKxpIkcS5XDvjOF8Vkmyk3kKCuH5SqM5HvgJc+/P5DJgHJjptpk3kHMc2C+9kebm2cgKwNmk5l6tEbUvyJP8m0SP2jCQChZeR6qvytP8oMSD9Tp35gyYL/zEpJnQP3mKZqzEvfX6R9NGbBaKS8heU6q/0yeC1yT2Eru6XiXMvA2zwUi8vSq3zxFMyRxZ53+LTJhF9+c5wIReTrlxTxF86YFdVSrqMiLLRmiy+upFtRRraIsL99ilwsLJPyIHz7JU3uMaLVEtujxwgt56sizDr+LH+7JU3eM6JhEF/HDJXnqixFdkOg4fjghT7b1FMwdiXbhh93yNBgjeiLROvywXp6GY0QfJFqIHxbJ03iowDbKvqt52jUvxfparJG/xx/j8mZ3J5MNCn6MP4blzd6X4NnhNv4YjJlNk/n6PP6oxnzfki/oUfzRF1Nx3Fewx6Oxbnmzuiu4ylyFPzpiqvKk7p+PP9pD10nJSmwq58HN36YtdOWarI1ti8YrYyF7CcluxSP8MiSPmxoF7VXQFfxyNeTwtV9Bp/DL6Ywd0N/2WPfjlwPyeJmAXe+t+KUr4JTg51mIBS3DL8vl8WWjoAkHp1K1wGZep8XjUVtW+3UU9wNY5IVjWCP9OAAAAABJRU5ErkJggg=="
+              alt="cart"
+              className="text-white w-7 h-7 mr-3"
+              style={{ filter: "invert(90%)" }}
+            />
+          </button>
+
+          {/* profilo persona e uscita a comparsa menu*/}
           {toggle && (
             <>
-            <div className="flex md:order-2">
-            <Dropdown
-              arrowIcon={false}
-              inline
-              label={
-                <Avatar
-                  alt="User settings"
-                  img="https://flowbite.com/docs/images/people/profile-picture-5.jpg"
-                  rounded
-                />
-              }
-            >
-              <Dropdown.Header>
-                <span className="block text-sm">Bonnie Green</span>
-                <span className="block truncate text-sm font-medium">
-                  name@flowbite.com
-                </span>
-              </Dropdown.Header>
-              <Dropdown.Item>Dashboard</Dropdown.Item>
-              <Dropdown.Item>Settings</Dropdown.Item>
-              <Dropdown.Divider />
-              <Dropdown.Item>Sign out</Dropdown.Item>
-            </Dropdown>
-            
-          </div>
-            <Navbar.Collapse>
-              <Navbar.Link href="#" active onClick={handleLinkClick}>
-                Home
-              </Navbar.Link>
-              <Navbar.Link href="#" onClick={handleLinkClick}>
-                Shop
-              </Navbar.Link>
-              <Navbar.Link href="#" onClick={handleLinkClick}>
-                About
-              </Navbar.Link>
-              <Navbar.Link href="#" onClick={handleLinkClick}>
-                Contact
-              </Navbar.Link>
-            </Navbar.Collapse>
+              <div className="flex md:order-2 items-center">
+                <Dropdown
+                  arrowIcon={false}
+                  inline
+                  label={
+                    <Avatar
+                      alt="User settings"
+                      img="https://flowbite.com/docs/images/people/profile-picture-5.jpg"
+                      rounded
+                    />
+                  }
+                >
+                  <Dropdown.Header>
+                    <span className="block text-sm">Bonnie Green</span>
+                    <span className="block truncate text-sm font-medium">
+                      name@flowbite.com
+                    </span>
+                  </Dropdown.Header>
+                  <Dropdown.Item>Dashboard</Dropdown.Item>
+                  <Dropdown.Item>Settings</Dropdown.Item>
+                  <Dropdown.Divider />
+                  <Dropdown.Item>Sign out</Dropdown.Item>
+                </Dropdown>
+              </div>
+              <Navbar.Collapse>
+                <Navbar.Link href="#" active onClick={handleLinkClick}>
+                  Home
+                </Navbar.Link>
+                <Navbar.Link href="#" onClick={handleLinkClick}>
+                  Shop
+                </Navbar.Link>
+                <Navbar.Link href="#" onClick={handleLinkClick}>
+                  About
+                </Navbar.Link>
+                <Navbar.Link href="#" onClick={handleLinkClick}>
+                  Contact
+                </Navbar.Link>
+              </Navbar.Collapse>
             </>
           )}
         </>
