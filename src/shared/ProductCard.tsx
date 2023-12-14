@@ -1,5 +1,7 @@
 
+
 import { useState } from "react";
+import { SpecialButton } from "./SpecialButton";
 
 export type Post = {
   img: string;
@@ -16,15 +18,11 @@ export function ProductCard(props: Post) {
         onMouseEnter={() => setHover(true)}
         onMouseLeave={() => setHover(false)}
       >
-        <img
-          src={props.img}
-          alt="img product"
-          className="w-full h-full"
-        />
+        <img src={props.img} alt="img product" className="w-full h-full" />
         {hover && (
-          <div className="absolute inset-0 flex items-center justify-center bg-amber-700/[0.6] ">
-            <div className="bg-gold p-4 rounded backdrop-filter backdrop-blur-lg">
-              <button name="gino">Buy now</button>
+          <div className="absolute inset-0 flex items-center justify-center bg-amber-700/[0.6] z-1">
+            <div className="z-20">
+              <SpecialButton content="Shop now" />
             </div>
           </div>
         )}
