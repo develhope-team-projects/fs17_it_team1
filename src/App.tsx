@@ -1,15 +1,13 @@
 import RatingReview, { Review } from "./product/RatingReview";
 import Header from "./shared/Header";
 
-
-import FooterComponent, {FooterType} from "./shared/Footer";
+import FooterComponent, { FooterType } from "./shared/Footer";
 
 import { Post, ProductCard } from "./shared/ProductCard";
 
-
 import { ButtonElements, NormalButton } from "./shared/NormalButton";
 import { SpecialButton, SpecialButtonElements } from "./shared/SpecialButton";
-
+import { BannerContent, DefaultBanner } from "./product/DefaultBanner";
 
 const test: Review = {
   img: "https://cdn-7.motorsport.com/images/amp/0ZRabeN0/s1000/carlos-sainz-ferrari-charles-l.jpg",
@@ -29,13 +27,15 @@ const test2: Post = {
 
 const prova: SpecialButtonElements = {
   content: "Special",
-
-}
+};
 
 const prova2: ButtonElements = {
   content: "prova",
-}
-
+};
+const BannerContentTest: BannerContent = {
+  announcement: "Ciao",
+  link: "Non cliccare",
+};
 const footerTest: FooterType = {
   logo: "https://flowbite.com/docs/images/logo.svg",
   firstFooterTitle: "Prodotti",
@@ -54,13 +54,11 @@ const footerTest: FooterType = {
   thirdColumnElement3: "Indirizzi",
   thirdColumnElement4: "I miei avvisi",
   thirdColumnElement5: "Informazioni personali",
-}
+};
 
-function App(){
-
+function App() {
   return (
     <div className="dark">
-
       <Header />
 
       <ProductCard {...test2} />
@@ -69,12 +67,11 @@ function App(){
 
       <FooterComponent {...footerTest} />
 
-      <SpecialButton {...prova}/>
-      <NormalButton {...prova2}/>
-
+      <SpecialButton {...prova} />
+      <NormalButton {...prova2} />
+      <DefaultBanner {...BannerContentTest} />
     </div>
-
   );
-  }
+}
 
 export default App;
