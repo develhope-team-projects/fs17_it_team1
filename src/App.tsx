@@ -1,4 +1,5 @@
 import RatingReview, { Review } from "./product/RatingReview";
+import Header from "./shared/Header";
 
 
 import FooterComponent, {FooterType} from "./shared/Footer";
@@ -59,7 +60,11 @@ function App(){
 
   return (
     <div className="dark">
+
+      <Header />
+
       <ProductCard {...test2} />
+
       <RatingReview {...test} />
 
       <FooterComponent {...footerTest} />
