@@ -25,7 +25,7 @@ export type FooterType = {
 }
 function FooterComponent(props:FooterType) {
   return (
-    <Footer container>
+    <Footer container className='rounded-none'>
       <div className="w-full">
         <div className="grid w-full justify-between sm:flex sm:justify-between md:flex md:grid-cols-1">
           <div>
