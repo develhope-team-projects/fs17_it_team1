@@ -8,8 +8,6 @@ import FooterComponent, { FooterType } from "./shared/Footer";
 
 import { Post, ProductCard } from "./shared/ProductCard";
 
-import { ButtonElements, NormalButton } from "./shared/NormalButton";
-import { SpecialButton, SpecialButtonElements } from "./shared/SpecialButton";
 import ProductCardHome from "./shared/ProductCardHome";
 
 const test: Review = {
@@ -28,13 +26,6 @@ const test2: Post = {
     "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
 };
 
-const prova: SpecialButtonElements = {
-  content: "Special",
-};
-
-const prova2: ButtonElements = {
-  content: "prova",
-};
 
 const footerTest: FooterType = {
   logo: "https://flowbite.com/docs/images/logo.svg",
@@ -72,17 +63,12 @@ function App() {
 
       <ProductCard {...test2} />
 
-      <SpecialButton {...prova} />
-
       <RatingReview {...test} />
 
       <SitePathComponent {...SitePathTest}/>
-    </div>
-
-
+   
       <FooterComponent {...footerTest} />
 
-      <NormalButton {...prova2} />
     </div>
   );
 }
