@@ -7,6 +7,7 @@ import { Post, ProductCard } from "./shared/ProductCard";
 
 import { ButtonElements, NormalButton } from "./shared/NormalButton";
 import { SpecialButton, SpecialButtonElements } from "./shared/SpecialButton";
+import ProductCardHome from "./shared/ProductCardHome";
 
 const test: Review = {
   img: "https://cdn-7.motorsport.com/images/amp/0ZRabeN0/s1000/carlos-sainz-ferrari-charles-l.jpg",
@@ -55,7 +56,10 @@ const footerTest: FooterType = {
 function App() {
   return (
     <div className="dark">
-      <Header />
+      <div className="absolute top-0 w-full p-none">
+        <Header />
+      </div>
+      <ProductCardHome />
 
       <ProductCard {...test2} />
 

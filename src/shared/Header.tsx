@@ -25,7 +25,7 @@ export default function Header() {
 
 
   return (
-    <Navbar fluid className="dark:bg-gray-800">
+    <Navbar className=" bg-traspartent dark:bg-trasparent">
       {!isMobileOrTablet ? (
         <>
           <Navbar.Collapse>
@@ -43,7 +43,7 @@ export default function Header() {
                 className="mr-3 h-6 sm:h-9"
                 alt="Flowbite React Logo"
               /> */}
-              <span className="self-center whitespace-nowrap text-xl font-semibold dark:text-white mr-60">
+              <span className="self-center whitespace-nowrap text-xl font-semibold dark:text-white mr-6">
                 Flowbite React
               </span>
             </Navbar.Brand>
