@@ -1,4 +1,7 @@
 import RatingReview, { Review } from "./product/RatingReview";
+
+import { SitePathComponent, SitePathType } from "./shared/SitePath";
+
 import Header from "./shared/Header";
 
 import FooterComponent, { FooterType } from "./shared/Footer";
@@ -53,6 +56,12 @@ const footerTest: FooterType = {
   thirdColumnElement5: "Informazioni personali",
 };
 
+const SitePathTest: SitePathType = {
+  firstTitle: "Home",
+  secondTitle: "Info",
+  thirdTitle: "Flowbite React",
+}
+
 function App() {
   return (
     <div className="dark">
@@ -66,6 +75,10 @@ function App() {
       <SpecialButton {...prova} />
 
       <RatingReview {...test} />
+
+      <SitePathComponent {...SitePathTest}/>
+    </div>
+
 
       <FooterComponent {...footerTest} />
 
