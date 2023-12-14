@@ -3,46 +3,64 @@
 import { Footer } from 'flowbite-react';
 import { BsDribbble, BsFacebook, BsGithub, BsInstagram, BsTwitter } from 'react-icons/bs';
 
-function FooterComponent() {
+export type FooterType = {
+  logo: string,
+  firstFooterTitle: string,
+  secondFooterTitle: string,
+  thirdFooterTitle: string,
+  firstColumnElement1: string,
+  firstColumnElement2: string,
+  firstColumnElement3: string,
+  secondColumnElement1: string,
+  secondColumnElement2: string,
+  secondColumnElement3: string,
+  secondColumnElement4: string,
+  secondColumnElement5: string,
+  thirdColumnElement1: string,
+  thirdColumnElement2: string,
+  thirdColumnElement3: string,
+  thirdColumnElement4: string,
+  thirdColumnElement5: string,
+
+}
+function FooterComponent(props:FooterType) {
   return (
     <Footer container>
       <div className="w-full">
         <div className="grid w-full justify-between sm:flex sm:justify-between md:flex md:grid-cols-1">
           <div>
             <Footer.Brand
-              href="https://flowbite.com"
-              src="https://flowbite.com/docs/images/logo.svg"
-              alt="Flowbite Logo"
-              name="Team 1"
+              src= {props.logo}
+              alt=""
             />
           </div>
           <div className="grid grid-cols-2 gap-8 sm:mt-7 sm:grid-cols-3 sm:gap-6"> 
             <div>
-              <Footer.Title title="Prodotti" />
+              <Footer.Title title= {props.firstFooterTitle} />
               <Footer.LinkGroup col>
-                <Footer.Link href="#">Offerte</Footer.Link>
-                <Footer.Link href="#">Nuovi prodotti</Footer.Link>
-                <Footer.Link href="#">PIù venduti</Footer.Link>
+                <Footer.Link href="#">{props.firstColumnElement1}</Footer.Link>
+                <Footer.Link href="#">{props.firstColumnElement2}</Footer.Link>
+                <Footer.Link href="#">{props.firstColumnElement3}</Footer.Link>
               </Footer.LinkGroup>
             </div>
             <div>
-              <Footer.Title title="Il nostra team" />
+              <Footer.Title title= {props.secondFooterTitle} />
               <Footer.LinkGroup col>
-                <Footer.Link href="#">Chi siamo</Footer.Link>
-                <Footer.Link href="#">Dove ci troviamo</Footer.Link>
-                <Footer.Link href="#">Note legali</Footer.Link>
-                <Footer.Link href="#">Contattaci</Footer.Link>
-                <Footer.Link href="#">Negozi</Footer.Link>
+                <Footer.Link href="#">{props.secondColumnElement1}</Footer.Link>
+                <Footer.Link href="#">{props.secondColumnElement2}</Footer.Link>
+                <Footer.Link href="#">{props.secondColumnElement3}</Footer.Link>
+                <Footer.Link href="#">{props.secondColumnElement4}</Footer.Link>
+                <Footer.Link href="#">{props.secondColumnElement5}</Footer.Link>
               </Footer.LinkGroup>
             </div>
             <div>
-              <Footer.Title title="Il tuo account" />
+              <Footer.Title title= {props.thirdFooterTitle} />
               <Footer.LinkGroup col>
-                <Footer.Link href="#">Informazioni persoanali</Footer.Link>
-                <Footer.Link href="#">Ordini</Footer.Link>
-                <Footer.Link href="#">Noter di credito</Footer.Link>
-                <Footer.Link href="#">Indirizzi</Footer.Link>
-                <Footer.Link href="#">I miei avvisi</Footer.Link>
+                <Footer.Link href="#">{props.thirdColumnElement1}</Footer.Link>
+                <Footer.Link href="#">{props.thirdColumnElement2}</Footer.Link>
+                <Footer.Link href="#">{props.thirdColumnElement3}</Footer.Link>
+                <Footer.Link href="#">{props.thirdColumnElement4}</Footer.Link>
+                <Footer.Link href="#">{props.thirdColumnElement5}</Footer.Link>
               </Footer.LinkGroup>
             </div>
           </div>
