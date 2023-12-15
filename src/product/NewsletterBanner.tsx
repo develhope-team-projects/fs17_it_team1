@@ -1,6 +1,6 @@
 "use client";
 
-import { Banner, Button, Label, TextInput } from "flowbite-react";
+import { Banner, Label, TextInput } from "flowbite-react";
 import { HiX } from "react-icons/hi";
 import { NormalButton } from "../shared/NormalButton";
 
