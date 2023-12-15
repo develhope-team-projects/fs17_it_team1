@@ -12,7 +12,7 @@ export type NewsletterBannerContent = {
 export function NewsletterBanner(props: NewsletterBannerContent) {
   return (
     <Banner>
-      <div className="flex w-full items-center justify-between border-b border-gray-200 bg-gray-50 p-4 dark:border-gray-600 dark:bg-gray-700">
+      <div className="flex w-full items-center justify-between border-b border-gray-200 bg-gray-50 p-4 dark:border-gray-600 dark:bg-our-black">
         <div className="mx-auto flex w-full flex-shrink-0 items-center sm:w-auto">
           <form
             action="#"
