@@ -24,11 +24,16 @@ export function SpecialButton(props: SpecialButtonElements) {
 
 
     return (
-        <div className="flex no-wrap items-center">
-            <Button onClick={props.function} theme={customTheme} color="primary" className='specialbutton focus:ring-none'>
-                <p>{props.content}</p>
-                {props.svg && props.svg}
-            </Button>
-        </div>
+      <div className="flex no-wrap items-center">
+        <Button
+          onClick={props.function}
+          theme={customTheme}
+          color="primary"
+          className="specialbutton  text-white focus:ring-none"
+        >
+          <p>{props.content}</p>
+          {props.svg && props.svg}
+        </Button>
+      </div>
     );
 }

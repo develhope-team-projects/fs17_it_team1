@@ -25,16 +25,22 @@ export default function Header() {
 
 
   return (
-    <Navbar fluid className="dark:bg-gray-800">
+    <Navbar className=" bg-traspartent dark:bg-trasparent absolute w-full">
       {!isMobileOrTablet ? (
         <>
           <Navbar.Collapse>
             <Navbar.Link href="#" active>
               Home
             </Navbar.Link>
-            <Navbar.Link href="#">Shop</Navbar.Link>
-            <Navbar.Link href="#">About </Navbar.Link>
-            <Navbar.Link href="#">Contact</Navbar.Link>
+            <Navbar.Link href="#" className="dark:text-gray-300">
+              Shop
+            </Navbar.Link>
+            <Navbar.Link href="#" className="dark:text-gray-300">
+              About{" "}
+            </Navbar.Link>
+            <Navbar.Link href="#" className="dark:text-gray-300">
+              Contact
+            </Navbar.Link>
           </Navbar.Collapse>
           <div className="flex items-center ">
             <Navbar.Brand>
@@ -43,7 +49,7 @@ export default function Header() {
                 className="mr-3 h-6 sm:h-9"
                 alt="Flowbite React Logo"
               /> */}
-              <span className="self-center whitespace-nowrap text-xl font-semibold dark:text-white mr-60">
+              <span className="self-center whitespace-nowrap text-xl font-semibold dark:text-white mr-6">
                 Flowbite React
               </span>
             </Navbar.Brand>
@@ -56,7 +62,7 @@ export default function Header() {
                 src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAAACXBIWXMAAAsTAAALEwEAmpwYAAACrUlEQVR4nO2ZO4xMURjHf1YyjalorAqVkXg0VuFViA2xGla2oGIlXhGroluFR8Go6GzhHatCRWM7q/Co2MSuhFgVjV2yEhn55H/lkp2559wZe7+IX3KSyZzv/93/yb333O+cA/+pSwnoAW4Cr4AJNft9Q30W45qdwBhQy2ijwA4cMhuopow+BQ4DFWCOWkX/PUvFnZPWDVUZ+wrsAWY1iG0DehWbDMbN41QDvgBrInRrU4PZTsGUUu+E3YlY9kn7uugJoCf1TtgjE4tpniuH3dnCuCUTh5rIcUQ5rlMgIzKxpIkcS5XDvjOF8Vkmyk3kKCuH5SqM5HvgJc+/P5DJgHJjptpk3kHMc2C+9kebm2cgKwNmk5l6tEbUvyJP8m0SP2jCQChZeR6qvytP8oMSD9Tp35gyYL/zEpJnQP3mKZqzEvfX6R9NGbBaKS8heU6q/0yeC1yT2Eru6XiXMvA2zwUi8vSq3zxFMyRxZ53+LTJhF9+c5wIReTrlxTxF86YFdVSrqMiLLRmiy+upFtRRraIsL99ilwsLJPyIHz7JU3uMaLVEtujxwgt56sizDr+LH+7JU3eM6JhEF/HDJXnqixFdkOg4fjghT7b1FMwdiXbhh93yNBgjeiLROvywXp6GY0QfJFqIHxbJ03iowDbKvqt52jUvxfparJG/xx/j8mZ3J5MNCn6MP4blzd6X4NnhNv4YjJlNk/n6PP6oxnzfki/oUfzRF1Nx3Fewx6Oxbnmzuiu4ylyFPzpiqvKk7p+PP9pD10nJSmwq58HN36YtdOWarI1ti8YrYyF7CcluxSP8MiSPmxoF7VXQFfxyNeTwtV9Bp/DL6Ywd0N/2WPfjlwPyeJmAXe+t+KUr4JTg51mIBS3DL8vl8WWjoAkHp1K1wGZep8XjUVtW+3UU9wNY5IVjWCP9OAAAAABJRU5ErkJggg=="
                 alt="cart"
                 className="text-white w-7 h-7 mr-3"
-                style={{ filter: "invert(95%)" }}
+                style={{ filter: "invert(100%)" }}
               />
             </button>
             <Dropdown
@@ -108,7 +114,7 @@ export default function Header() {
               src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAAACXBIWXMAAAsTAAALEwEAmpwYAAACrUlEQVR4nO2ZO4xMURjHf1YyjalorAqVkXg0VuFViA2xGla2oGIlXhGroluFR8Go6GzhHatCRWM7q/Co2MSuhFgVjV2yEhn55H/lkp2559wZe7+IX3KSyZzv/93/yb333O+cA/+pSwnoAW4Cr4AJNft9Q30W45qdwBhQy2ijwA4cMhuopow+BQ4DFWCOWkX/PUvFnZPWDVUZ+wrsAWY1iG0DehWbDMbN41QDvgBrInRrU4PZTsGUUu+E3YlY9kn7uugJoCf1TtgjE4tpniuH3dnCuCUTh5rIcUQ5rlMgIzKxpIkcS5XDvjOF8Vkmyk3kKCuH5SqM5HvgJc+/P5DJgHJjptpk3kHMc2C+9kebm2cgKwNmk5l6tEbUvyJP8m0SP2jCQChZeR6qvytP8oMSD9Tp35gyYL/zEpJnQP3mKZqzEvfX6R9NGbBaKS8heU6q/0yeC1yT2Eru6XiXMvA2zwUi8vSq3zxFMyRxZ53+LTJhF9+c5wIReTrlxTxF86YFdVSrqMiLLRmiy+upFtRRraIsL99ilwsLJPyIHz7JU3uMaLVEtujxwgt56sizDr+LH+7JU3eM6JhEF/HDJXnqixFdkOg4fjghT7b1FMwdiXbhh93yNBgjeiLROvywXp6GY0QfJFqIHxbJ03iowDbKvqt52jUvxfparJG/xx/j8mZ3J5MNCn6MP4blzd6X4NnhNv4YjJlNk/n6PP6oxnzfki/oUfzRF1Nx3Fewx6Oxbnmzuiu4ylyFPzpiqvKk7p+PP9pD10nJSmwq58HN36YtdOWarI1ti8YrYyF7CcluxSP8MiSPmxoF7VXQFfxyNeTwtV9Bp/DL6Ywd0N/2WPfjlwPyeJmAXe+t+KUr4JTg51mIBS3DL8vl8WWjoAkHp1K1wGZep8XjUVtW+3UU9wNY5IVjWCP9OAAAAABJRU5ErkJggg=="
               alt="cart"
               className="text-white w-7 h-7 mr-2"
-              style={{ filter: "invert(90%)" }}
+              style={{ filter: "invert(100%)" }}
             />
           </button>
 
@@ -139,18 +145,34 @@ export default function Header() {
                   <Dropdown.Item>Sign out</Dropdown.Item>
                 </Dropdown>
               </div>
-              <div className="list-none w-full md:block md:w-auto mt-4 flex flex-col md:mt-0 md:flex-row md:space-x-8 md:text-sm md:font-medium">
+              <div className="bg-gray-800/[0.4] list-none w-full  mt-2 md:block md:w-auto flex flex-col text-center md:mt-0 md:flex-row md:space-x-8 md:text-sm md:font-medium">
                 <div className="flex flex-col">
-                  <Navbar.Link href="#" onClick={handleLinkClick}>
+                  <Navbar.Link
+                    href="#"
+                    onClick={handleLinkClick}
+                    className="dark:border-gray-400 dark:text-gray-200 dark:hover:bg-gray-900"
+                  >
                     Home
                   </Navbar.Link>
-                  <Navbar.Link href="#" onClick={handleLinkClick}>
+                  <Navbar.Link
+                    href="#"
+                    onClick={handleLinkClick}
+                    className="dark:border-gray-400 dark:text-gray-200 dark:hover:bg-gray-900"
+                  >
                     Shop
                   </Navbar.Link>
-                  <Navbar.Link href="#" onClick={handleLinkClick}>
+                  <Navbar.Link
+                    href="#"
+                    onClick={handleLinkClick}
+                    className="dark:border-gray-400 dark:text-gray-200 dark:hover:bg-gray-900"
+                  >
                     About
                   </Navbar.Link>
-                  <Navbar.Link href="#" onClick={handleLinkClick}>
+                  <Navbar.Link
+                    href="#"
+                    onClick={handleLinkClick}
+                    className="dark:border-gray-400 dark:text-gray-200 dark:hover:bg-gray-900"
+                  >
                     Contact
                   </Navbar.Link>
                 </div>
