@@ -1,9 +1,15 @@
 import RatingReview, { Review } from "./product/RatingReview";
+
 import Header from "./shared/Header";
 
 import FooterComponent, { FooterType } from "./shared/Footer";
 
-import { Post, ProductCard } from "./shared/ProductCard";
+
+import { SitePathComponent, SitePathType } from "./shared/SitePath";
+
+
+import Header from "./shared/Header";
+
 
 import { ButtonElements, NormalButton } from "./shared/NormalButton";
 import { SpecialButton, SpecialButtonElements } from "./shared/SpecialButton";
@@ -11,6 +17,13 @@ import {
   CarouselContent,
   AutomaticCarousel,
 } from "./product/AutomaticCarousel";
+
+import FooterComponent, { FooterType } from "./shared/Footer";
+
+import { Post, ProductCard } from "./shared/ProductCard";
+
+import ProductCardHome from "./shared/ProductCardHome";
+
 
 const test: Review = {
   img: "https://cdn-7.motorsport.com/images/amp/0ZRabeN0/s1000/carlos-sainz-ferrari-charles-l.jpg",
@@ -22,11 +35,12 @@ const test: Review = {
   comment: "Buon Prodotto",
 };
 const test2: Post = {
-  img: "https://cdn-7.motorsport.com/images/amp/0ZRabeN0/s1000/carlos-sainz-ferrari-charles-l.jpg",
+  img: "https://media.istockphoto.com/id/502458158/it/foto/whiskey-sulle-rocks.jpg?s=1024x1024&w=is&k=20&c=nMxRxgcXsYG3Bt51P9WSO7hIvkD1168z_sssgGXI4qM=",
   title: "E Finibus Bonorum et Malorum",
   description:
     "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
 };
+
 
 const prova: SpecialButtonElements = {
   content: "Special",
@@ -35,6 +49,8 @@ const prova: SpecialButtonElements = {
 const prova2: ButtonElements = {
   content: "prova",
 };
+
+
 
 const footerTest: FooterType = {
   logo: "https://flowbite.com/docs/images/logo.svg",
@@ -55,6 +71,7 @@ const footerTest: FooterType = {
   thirdColumnElement4: "I miei avvisi",
   thirdColumnElement5: "Informazioni personali",
 };
+
 const linkForTest: CarouselContent = {
   Image1:
     "https://cdn-7.motorsport.com/images/amp/0ZRabeN0/s1000/carlos-sainz-ferrari-charles-l.jpg",
@@ -68,20 +85,40 @@ const linkForTest: CarouselContent = {
     "https://cdn-7.motorsport.com/images/amp/0ZRabeN0/s1000/carlos-sainz-ferrari-charles-l.jpg",
 };
 
+
+const SitePathTest: SitePathType = {
+  firstTitle: "Home",
+  secondTitle: "Info",
+  thirdTitle: "Flowbite React",
+}
+
+
 function App() {
   return (
     <div className="dark">
+
       <Header />
+
+      <div className="absolute top-0 w-full p-none">
+        <Header />
+      </div>
+      <ProductCardHome />
+
 
       <ProductCard {...test2} />
 
       <RatingReview {...test} />
 
+      <SitePathComponent {...SitePathTest}/>
+   
       <FooterComponent {...footerTest} />
+
 
       <SpecialButton {...prova} />
       <NormalButton {...prova2} />
       <AutomaticCarousel {...linkForTest} />
+
+
     </div>
   );
 }
