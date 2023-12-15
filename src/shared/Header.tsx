@@ -42,7 +42,7 @@ export default function Header() {
               Contact
             </Navbar.Link>
           </Navbar.Collapse>
-          <div className="flex items-center " >
+          <div className="flex items-center ">
             <Navbar.Brand>
               {/* <img
                 src="/favicon.svg"
@@ -150,28 +150,28 @@ export default function Header() {
                   <Navbar.Link
                     href="#"
                     onClick={handleLinkClick}
-                    className="dark:border-gray-400 dark:text-white dark:hover:bg-gray-900"
+                    className="dark:border-gray-400 dark:text-gray-200 dark:hover:bg-gray-900"
                   >
                     Home
                   </Navbar.Link>
                   <Navbar.Link
                     href="#"
                     onClick={handleLinkClick}
-                    className="dark:border-gray-400 dark:text-white dark:hover:bg-gray-900"
+                    className="dark:border-gray-400 dark:text-gray-200 dark:hover:bg-gray-900"
                   >
                     Shop
                   </Navbar.Link>
                   <Navbar.Link
                     href="#"
                     onClick={handleLinkClick}
-                    className="dark:border-gray-400 dark:text-white dark:hover:bg-gray-900"
+                    className="dark:border-gray-400 dark:text-gray-200 dark:hover:bg-gray-900"
                   >
                     About
                   </Navbar.Link>
                   <Navbar.Link
                     href="#"
                     onClick={handleLinkClick}
-                    className="dark:border-gray-400 dark:text-white dark:hover:bg-gray-900"
+                    className="dark:border-gray-400 dark:text-gray-200 dark:hover:bg-gray-900"
                   >
                     Contact
                   </Navbar.Link>
