@@ -7,8 +7,6 @@ import FooterComponent, { FooterType } from "./shared/Footer";
 import { SitePathComponent, SitePathType } from "./shared/SitePath";
 
 
-import Header from "./shared/Header";
-
 import { ButtonElements, NormalButton } from "./shared/NormalButton";
 import { SpecialButton, SpecialButtonElements } from "./shared/SpecialButton";
 import {
@@ -17,15 +15,10 @@ import {
   NewsletterBannerContent,
 } from "./product/NewsletterBanner";
 
-  CarouselContent,
-  AutomaticCarousel,
-} from "./product/AutomaticCarousel";
-
-import FooterComponent, { FooterType } from "./shared/Footer";
-
 import { Post, ProductCard } from "./shared/ProductCard";
 
 import ProductCardHome from "./shared/ProductCardHome";
+import { AutomaticCarousel, CarouselContent } from "./product/AutomaticCarousel";
 
 
 
