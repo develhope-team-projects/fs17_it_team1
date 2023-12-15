@@ -25,7 +25,7 @@ export default function Header() {
 
 
   return (
-    <Navbar className=" bg-traspartent dark:bg-trasparent">
+    <Navbar className=" bg-traspartent dark:bg-trasparent absolute w-full">
       {!isMobileOrTablet ? (
         <>
           <Navbar.Collapse>
