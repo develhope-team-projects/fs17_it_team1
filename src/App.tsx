@@ -4,16 +4,19 @@ import Header from "./shared/Header";
 
 import FooterComponent, { FooterType } from "./shared/Footer";
 
-
 import { SitePathComponent, SitePathType } from "./shared/SitePath";
 
 
 import Header from "./shared/Header";
 
-
 import { ButtonElements, NormalButton } from "./shared/NormalButton";
 import { SpecialButton, SpecialButtonElements } from "./shared/SpecialButton";
 import {
+
+  NewsletterBanner,
+  NewsletterBannerContent,
+} from "./product/NewsletterBanner";
+
   CarouselContent,
   AutomaticCarousel,
 } from "./product/AutomaticCarousel";
@@ -23,6 +26,7 @@ import FooterComponent, { FooterType } from "./shared/Footer";
 import { Post, ProductCard } from "./shared/ProductCard";
 
 import ProductCardHome from "./shared/ProductCardHome";
+
 
 
 const test: Review = {
@@ -50,8 +54,6 @@ const prova2: ButtonElements = {
   content: "prova",
 };
 
-
-
 const footerTest: FooterType = {
   logo: "https://flowbite.com/docs/images/logo.svg",
   firstFooterTitle: "Prodotti",
@@ -71,6 +73,12 @@ const footerTest: FooterType = {
   thirdColumnElement4: "I miei avvisi",
   thirdColumnElement5: "Informazioni personali",
 };
+
+const NewsBannerContent: NewsletterBannerContent = {
+  announcement: "Ciao, enter your email",
+  link: "Sium",
+};
+
 
 const linkForTest: CarouselContent = {
   Image1:
@@ -93,10 +101,10 @@ const SitePathTest: SitePathType = {
 }
 
 
+
 function App() {
   return (
     <div className="dark">
-
       <Header />
 
       <div className="absolute top-0 w-full p-none">
@@ -112,6 +120,10 @@ function App() {
       <SitePathComponent {...SitePathTest}/>
    
       <FooterComponent {...footerTest} />
+
+      <SpecialButton {...prova} />
+      <NormalButton {...prova2} />
+      <NewsletterBanner {...NewsBannerContent} />
 
 
       <SpecialButton {...prova} />
