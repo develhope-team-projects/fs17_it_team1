@@ -4,27 +4,23 @@ import Header from "./shared/Header";
 
 import FooterComponent, { FooterType } from "./shared/Footer";
 
-
 import { Post, ProductCard } from "./shared/ProductCard";
 
 import { ButtonElements, NormalButton } from "./shared/NormalButton";
 import { SpecialButton, SpecialButtonElements } from "./shared/SpecialButton";
 import { BannerContent, DefaultBanner } from "./product/DefaultBanner";
 
-
 import {
   NewsletterBanner,
   NewsletterBannerContent,
 } from "./product/NewsletterBanner";
-
-import { Post, ProductCard } from "./shared/ProductCard";
 
 import ProductCardHome from "./shared/ProductCardHome";
 import {
   AutomaticCarousel,
   CarouselContent,
 } from "./product/AutomaticCarousel";
-
+import CardStd, { Card } from "./product/CardStd";
 
 const test: Review = {
   img: "https://cdn-7.motorsport.com/images/amp/0ZRabeN0/s1000/carlos-sainz-ferrari-charles-l.jpg",
@@ -41,7 +37,6 @@ const test2: Post = {
   description:
     "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
 };
-
 
 const prova: SpecialButtonElements = {
   content: "Special",
@@ -75,7 +70,6 @@ const footerTest: FooterType = {
   thirdColumnElement5: "Informazioni personali",
 };
 
-
 const NewsBannerContent: NewsletterBannerContent = {
   announcement: "Ciao, enter your email",
   link: "Sium",
@@ -101,7 +95,6 @@ const test3: Card = {
   price: 75.99,
 };
 
-
 function App() {
   return (
     <div className="dark">
@@ -118,11 +111,9 @@ function App() {
       <NewsletterBanner {...NewsBannerContent} />
       <FooterComponent {...footerTest} />
 
-
       <SpecialButton {...prova} />
       <NormalButton {...prova2} />
       <DefaultBanner {...BannerContentTest} />
-
     </div>
   );
 }
