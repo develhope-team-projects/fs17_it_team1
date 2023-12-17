@@ -3,10 +3,17 @@
 import { Banner, Label, TextInput } from "flowbite-react";
 import { HiX } from "react-icons/hi";
 import { NormalButton } from "../shared/NormalButton";
+import InputField, { input } from "../shared/InputField";
 
 export type NewsletterBannerContent = {
   announcement: string;
   link: string;
+};
+
+const test: input = {
+  type: "email",
+  id: "email",
+  label: "email",
 };
 
 export function NewsletterBanner(props: NewsletterBannerContent) {
@@ -24,7 +31,7 @@ export function NewsletterBanner(props: NewsletterBannerContent) {
             >
               {props.announcement}
             </Label>
-            <TextInput id="email" placeholder="" required type="email" />
+            <InputField {...test} />
             <NormalButton content="Subscribe" />
           </form>
         </div>

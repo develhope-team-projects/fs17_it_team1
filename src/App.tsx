@@ -21,6 +21,7 @@ import {
   CarouselContent,
 } from "./product/AutomaticCarousel";
 import CardStd, { Card } from "./product/CardStd";
+import InputField from "./shared/InputField";
 
 const test: Review = {
   img: "https://cdn-7.motorsport.com/images/amp/0ZRabeN0/s1000/carlos-sainz-ferrari-charles-l.jpg",
