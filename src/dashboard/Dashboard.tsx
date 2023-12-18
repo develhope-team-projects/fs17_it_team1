@@ -8,10 +8,18 @@ import {
   HiTable,
   HiUser,
 } from "react-icons/hi";
+import InboxTable, { MsgPrv } from "./InboxTable";
+
+const test: MsgPrv = {
+  username: "Eno-Mario",
+  title: "Aiuto!",
+  content: "chiedo supporto immediato",
+  date: "01-Gen-2023",
+};
 
 export default function Dashboard() {
   return (
-    <div>
+    <div className="flex">
       <Sidebar
         aria-label="Sidebar with multi-level dropdown example"
         className="h-screen rounded-none dark:bg-gray-800"
@@ -56,7 +64,9 @@ export default function Dashboard() {
           </Sidebar.ItemGroup>
         </Sidebar.Items>
       </Sidebar>
-      <Routes>{/* <Route path="/test" element={<Header />} /> */}</Routes>
+      <Routes>
+        <Route path="/test" element={<InboxTable {...test} />} />
+      </Routes>
     </div>
   );
 }
