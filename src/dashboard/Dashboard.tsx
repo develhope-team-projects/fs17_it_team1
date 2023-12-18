@@ -9,7 +9,9 @@ import {
   HiUser,
 } from "react-icons/hi";
 
-import Inbox from "./Inbox";
+import Inbox from "./Inbox/Inbox";
+import UsersTableDash from "./UsersDashboard/UsersTableDash";
+import UsersDashboard from "./UsersDashboard/UsersDashboard";
 
 export default function Dashboard() {
   return (
@@ -32,9 +34,7 @@ export default function Dashboard() {
             </Sidebar.Item>
 
             <Link to="/dashboard/test">
-              <Sidebar.Item href="#" icon={HiChartPie}>
-                Test
-              </Sidebar.Item>
+              <Sidebar.Item icon={HiChartPie}>Test</Sidebar.Item>
             </Link>
 
             <Sidebar.Collapse icon={HiShoppingBag} label="E-commerce">
@@ -45,14 +45,13 @@ export default function Dashboard() {
             </Sidebar.Collapse>
 
             <Link to="/dashboard/inbox">
-              <Sidebar.Item href="#" icon={HiInbox}>
-                Inbox
-              </Sidebar.Item>
+              <Sidebar.Item icon={HiInbox}>Inbox</Sidebar.Item>
             </Link>
 
-            <Sidebar.Item href="#" icon={HiUser}>
-              Users
-            </Sidebar.Item>
+            <Link to="/dashboard/users">
+              <Sidebar.Item icon={HiUser}>Users</Sidebar.Item>
+            </Link>
+
             <Sidebar.Item href="#" icon={HiShoppingBag}>
               Products
             </Sidebar.Item>
@@ -67,6 +66,7 @@ export default function Dashboard() {
       </Sidebar>
       <Routes>
         <Route path="/inbox" element={<Inbox />} />
+        <Route path="/users" element={<UsersDashboard />} />
       </Routes>
     </div>
   );

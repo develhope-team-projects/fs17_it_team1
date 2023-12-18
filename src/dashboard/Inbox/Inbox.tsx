@@ -1,4 +1,4 @@
-import { NormalButton } from "../shared/NormalButton";
+import { NormalButton } from "../../shared/NormalButton";
 import InboxTable, { MsgPrv } from "./InboxTable";
 import { HiOutlineRefresh, HiPlus } from "react-icons/hi";
 import { Pagination } from "flowbite-react";
