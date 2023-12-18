@@ -21,7 +21,9 @@ import {
   CarouselContent,
 } from "./product/AutomaticCarousel";
 import CardStd, { Card } from "./product/CardStd";
-import InputField from "./shared/InputField";
+import InputField, { input } from "./shared/InputField";
+import Login from "./loginESubscription/Login";
+import Subscription from "./loginESubscription/Subscrioption";
 
 const test: Review = {
   img: "https://cdn-7.motorsport.com/images/amp/0ZRabeN0/s1000/carlos-sainz-ferrari-charles-l.jpg",
@@ -96,6 +98,8 @@ const test3: Card = {
   price: 75.99,
 };
 
+
+
 function App() {
   return (
     <div className="dark">
@@ -115,6 +119,8 @@ function App() {
       <SpecialButton {...prova} />
       <NormalButton {...prova2} />
       <DefaultBanner {...BannerContentTest} />
+      <Login/>
+      <Subscription/>
     </div>
   );
 }
