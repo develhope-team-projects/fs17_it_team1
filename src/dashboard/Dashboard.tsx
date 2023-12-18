@@ -8,14 +8,8 @@ import {
   HiTable,
   HiUser,
 } from "react-icons/hi";
-import InboxTable, { MsgPrv } from "./InboxTable";
 
-const test: MsgPrv = {
-  username: "Eno-Mario",
-  title: "Aiuto!",
-  content: "chiedo supporto immediato",
-  date: "01-Gen-2023",
-};
+import Inbox from "./Inbox";
 
 export default function Dashboard() {
   return (
@@ -36,9 +30,12 @@ export default function Dashboard() {
             <Sidebar.Item href="#" icon={HiChartPie}>
               <Link to="/dashboard">dashboard</Link>
             </Sidebar.Item>
-            <Sidebar.Item href="#" icon={HiChartPie}>
-              <Link to="/dashboard/test">Test</Link>
-            </Sidebar.Item>
+
+            <Link to="/dashboard/test">
+              <Sidebar.Item href="#" icon={HiChartPie}>
+                Test
+              </Sidebar.Item>
+            </Link>
 
             <Sidebar.Collapse icon={HiShoppingBag} label="E-commerce">
               <Sidebar.Item href="#">Products</Sidebar.Item>
@@ -46,9 +43,13 @@ export default function Dashboard() {
               <Sidebar.Item href="#">Refunds</Sidebar.Item>
               <Sidebar.Item href="#">Shipping</Sidebar.Item>
             </Sidebar.Collapse>
-            <Sidebar.Item href="#" icon={HiInbox}>
-              Inbox
-            </Sidebar.Item>
+
+            <Link to="/dashboard/inbox">
+              <Sidebar.Item href="#" icon={HiInbox}>
+                Inbox
+              </Sidebar.Item>
+            </Link>
+
             <Sidebar.Item href="#" icon={HiUser}>
               Users
             </Sidebar.Item>
@@ -65,7 +66,7 @@ export default function Dashboard() {
         </Sidebar.Items>
       </Sidebar>
       <Routes>
-        <Route path="/test" element={<InboxTable {...test} />} />
+        <Route path="/inbox" element={<Inbox />} />
       </Routes>
     </div>
   );
