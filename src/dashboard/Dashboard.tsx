@@ -10,8 +10,8 @@ import {
 } from "react-icons/hi";
 
 import Inbox from "./Inbox/Inbox";
-import UsersTableDash from "./UsersDashboard/UsersTableDash";
 import UsersDashboard from "./UsersDashboard/UsersDashboard";
+import { EcommerceDashboard } from "./EcommerceDashboards/EcommerceDashboard";
 
 export default function Dashboard() {
   return (
@@ -38,10 +38,18 @@ export default function Dashboard() {
             </Link>
 
             <Sidebar.Collapse icon={HiShoppingBag} label="E-commerce">
-              <Sidebar.Item href="#">Products</Sidebar.Item>
-              <Sidebar.Item href="#">Sales</Sidebar.Item>
-              <Sidebar.Item href="#">Refunds</Sidebar.Item>
-              <Sidebar.Item href="#">Shipping</Sidebar.Item>
+              <Link to={"/dashboard/products"}>
+                <Sidebar.Item href="#">Products</Sidebar.Item>
+              </Link>
+              <Link to={"/dashboard/sales"}>
+                <Sidebar.Item href="#">Sales</Sidebar.Item>
+              </Link>
+              <Link to={"/dashboard/refunds"}>
+                <Sidebar.Item href="#">Refunds</Sidebar.Item>
+              </Link>
+              <Link to={"/dashboard/shipping"}>
+                <Sidebar.Item href="#">Shipping</Sidebar.Item>
+              </Link>
             </Sidebar.Collapse>
 
             <Link to="/dashboard/inbox">
@@ -65,6 +73,22 @@ export default function Dashboard() {
         </Sidebar.Items>
       </Sidebar>
       <Routes>
+        <Route
+          path="/products"
+          element={<EcommerceDashboard pageName="Products" />}
+        />
+        <Route
+          path="/sales"
+          element={<EcommerceDashboard pageName="Sales" />}
+        />
+        <Route
+          path="/refunds"
+          element={<EcommerceDashboard pageName="Refunds" />}
+        />
+        <Route
+          path="/shipping"
+          element={<EcommerceDashboard pageName="Shipping" />}
+        />
         <Route path="/inbox" element={<Inbox />} />
         <Route path="/users" element={<UsersDashboard />} />
       </Routes>
