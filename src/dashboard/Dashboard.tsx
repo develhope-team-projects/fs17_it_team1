@@ -33,22 +33,12 @@ export default function Dashboard() {
               <Link to="/dashboard">dashboard</Link>
             </Sidebar.Item>
 
-            <Link to="/dashboard/test">
-              <Sidebar.Item icon={HiChartPie}>Test</Sidebar.Item>
-            </Link>
-
             <Sidebar.Collapse icon={HiShoppingBag} label="E-commerce">
-              <Link to={"/dashboard/products"}>
-                <Sidebar.Item href="#">Products</Sidebar.Item>
-              </Link>
               <Link to={"/dashboard/sales"}>
                 <Sidebar.Item href="#">Sales</Sidebar.Item>
               </Link>
               <Link to={"/dashboard/refunds"}>
                 <Sidebar.Item href="#">Refunds</Sidebar.Item>
-              </Link>
-              <Link to={"/dashboard/shipping"}>
-                <Sidebar.Item href="#">Shipping</Sidebar.Item>
               </Link>
             </Sidebar.Collapse>
 
@@ -59,16 +49,9 @@ export default function Dashboard() {
             <Link to="/dashboard/users">
               <Sidebar.Item icon={HiUser}>Users</Sidebar.Item>
             </Link>
-
-            <Sidebar.Item href="#" icon={HiShoppingBag}>
-              Products
-            </Sidebar.Item>
-            <Sidebar.Item href="#" icon={HiArrowSmRight}>
-              Sign In
-            </Sidebar.Item>
-            <Sidebar.Item href="#" icon={HiTable}>
-              Sign Up
-            </Sidebar.Item>
+            <Link to={"/dashboard/products"}>
+              <Sidebar.Item icon={HiShoppingBag}>Products</Sidebar.Item>
+            </Link>
           </Sidebar.ItemGroup>
         </Sidebar.Items>
       </Sidebar>
@@ -84,10 +67,6 @@ export default function Dashboard() {
         <Route
           path="/refunds"
           element={<EcommerceDashboard pageName="Refunds" />}
-        />
-        <Route
-          path="/shipping"
-          element={<EcommerceDashboard pageName="Shipping" />}
         />
         <Route path="/inbox" element={<Inbox />} />
         <Route path="/users" element={<UsersDashboard />} />
