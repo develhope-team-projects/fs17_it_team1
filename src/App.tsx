@@ -23,7 +23,8 @@ import {
 import CardStd, { Card } from "./product/CardStd";
 import InputField, { input } from "./shared/InputField";
 import Login from "./loginESubscription/Login";
-import Subscription from "./loginESubscription/Subscrioption";
+import Subscription from "./loginESubscription/Subscription";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 
 const test: Review = {
   img: "https://cdn-7.motorsport.com/images/amp/0ZRabeN0/s1000/carlos-sainz-ferrari-charles-l.jpg",
@@ -119,8 +120,13 @@ function App() {
       <SpecialButton {...prova} />
       <NormalButton {...prova2} />
       <DefaultBanner {...BannerContentTest} />
-      <Login/>
-      <Subscription/>
+      <BrowserRouter>
+      <Routes>
+          <Route path="/" element={<Login />} />
+          <Route path="/sub" element={<Subscription />} />
+      
+      </Routes>
+    </BrowserRouter>
     </div>
   );
 }
