@@ -5,7 +5,7 @@ import Header from "./shared/Header";
 import FooterComponent, { FooterType } from "./shared/Footer";
 
 import { Post, ProductCard } from "./shared/ProductCard";
-
+import { Product} from "./product/Product";
 import { ButtonElements, NormalButton } from "./shared/NormalButton";
 import { SpecialButton, SpecialButtonElements } from "./shared/SpecialButton";
 import { BannerContent, DefaultBanner } from "./product/DefaultBanner";
@@ -21,7 +21,7 @@ import {
   CarouselContent,
 } from "./product/AutomaticCarousel";
 import CardStd, { Card } from "./product/CardStd";
-import InputField from "./shared/InputField";
+
 
 const test: Review = {
   img: "https://cdn-7.motorsport.com/images/amp/0ZRabeN0/s1000/carlos-sainz-ferrari-charles-l.jpg",
@@ -76,18 +76,10 @@ const NewsBannerContent: NewsletterBannerContent = {
   link: "Sium",
 };
 
-const linkForTest: CarouselContent = {
-  Image1:
+const linkForTest: CarouselContent[] = [{
+  image:
     "https://cdn-7.motorsport.com/images/amp/0ZRabeN0/s1000/carlos-sainz-ferrari-charles-l.jpg",
-  Image2:
-    "https://cdn-7.motorsport.com/images/amp/0ZRabeN0/s1000/carlos-sainz-ferrari-charles-l.jpg",
-  Image3:
-    "https://cdn-7.motorsport.com/images/amp/0ZRabeN0/s1000/carlos-sainz-ferrari-charles-l.jpg",
-  Image4:
-    "https://cdn-7.motorsport.com/images/amp/0ZRabeN0/s1000/carlos-sainz-ferrari-charles-l.jpg",
-  Image5:
-    "https://cdn-7.motorsport.com/images/amp/0ZRabeN0/s1000/carlos-sainz-ferrari-charles-l.jpg",
-};
+},{image:"https://cdn-7.motorsport.com/images/amp/0ZRabeN0/s1000/carlos-sainz-ferrari-charles-l.jpg"}];
 
 const test3: Card = {
   title: "Buon Prodotto",
@@ -95,7 +87,14 @@ const test3: Card = {
   img: "https://cdn-7.motorsport.com/images/amp/0ZRabeN0/s1000/carlos-sainz-ferrari-charles-l.jpg",
   price: 75.99,
 };
-
+const products={
+  title:'gino',
+  price:300,
+  immagini:[{
+  img1:'https://cdn-7.motorsport.com/images/amp/0ZRabeN0/s1000/carlos-sainz-ferrari-charles-l.jpg',
+},{
+  img1:'https://media.istockphoto.com/id/502458158/it/foto/whiskey-sulle-rocks.jpg?s=1024x1024&w=is&k=20&c=nMxRxgcXsYG3Bt51P9WSO7hIvkD1168z_sssgGXI4qM=',
+}]}
 function App() {
   return (
     <div className="dark">
@@ -106,15 +105,15 @@ function App() {
       </div>
       <ProductCardHome />
       <ProductCard {...test2} />
-      <AutomaticCarousel {...linkForTest} />
+      <AutomaticCarousel images={linkForTest}/>
       <CardStd {...test3} />
       <RatingReview {...test} />
       <NewsletterBanner {...NewsBannerContent} />
       <FooterComponent {...footerTest} />
-
       <SpecialButton {...prova} />
       <NormalButton {...prova2} />
       <DefaultBanner {...BannerContentTest} />
+      <Product {...products} />
     </div>
   );
 }
