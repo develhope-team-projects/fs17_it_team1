@@ -1,4 +1,5 @@
 'use client';
+/* -------------------FARE LO STILE,E AL CLICK DI UNA FOTO DEL CAROSELLO VERTICALE SI VEDA L'IMMAGINE NEL CAROSELLO GRANDE--------------------------- */
 
 import { Carousel, Footer } from 'flowbite-react';
 import { SitePathComponent } from '../shared/SitePath';
