@@ -1,4 +1,4 @@
-import {Store} from "./store/Store";
+import Store from "./store/Store";
 import { Route, Routes, BrowserRouter } from "react-router-dom";
 
 
