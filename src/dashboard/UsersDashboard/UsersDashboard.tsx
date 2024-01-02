@@ -3,12 +3,27 @@ import { NormalButton } from "../../shared/NormalButton";
 import { HiOutlineRefresh, HiPlus } from "react-icons/hi";
 import { Pagination } from "flowbite-react";
 import { useState } from "react";
-import UsersTableDash, { UserDash } from "./UsersTableDash";
+import UsersTableDash from "./UsersTableDash";
 
-const test: UserDash = {
-  username: "Eno-Mario",
-  email: "pisellienomario@gmail.com",
-  date: "01-Gen-2023",
+const testuData = {
+  name: "Product 6",
+  description: "Test Product",
+  price: 20.0,
+  discount: null,
+};
+
+//function to create User
+const fetchPost = async (uData: any) => {
+  console.log(uData);
+  const response = await fetch("http://localhost:3001/products", {
+    method: "POST", // *GET, POST, PUT, DELETE, etc.
+    headers: {
+      "Content-Type": "application/json",
+      // 'Content-Type': 'application/x-www-form-urlencoded',
+    },
+    body: JSON.stringify(uData), // body data type must match "Content-Type" header
+  });
+  return response.json(); // parses JSON response into native JavaScript objects
 };
 
 export default function UsersDashboard() {
@@ -27,7 +42,7 @@ export default function UsersDashboard() {
             <NormalButton svg={<HiOutlineRefresh />} />
             <NormalButton content="New" svg={<HiPlus />} />
           </div>
-          <UsersTableDash {...test} />
+          <UsersTableDash />
         </div>
         <div className="flex overflow-x-auto sm:justify-center ">
           <Pagination

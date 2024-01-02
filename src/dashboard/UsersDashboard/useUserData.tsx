@@ -41,6 +41,7 @@ export default function useUserData() {
 
   return {
     userData,
+    setUserData,
     loading,
     error,
     onFetchData: fetchData,
