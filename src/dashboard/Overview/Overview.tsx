@@ -1,5 +1,5 @@
-import PiechartProva from "./PiechartProva";
-import AreachartProva from "./AreachartProva";
+import PiechartGender from "./PiechartGender";
+import AreachartSales from "./AreachartSales";
 import BarchartProva from "./BarchartProva";
 
 export default function Overview() {
@@ -9,9 +9,9 @@ export default function Overview() {
         Overview
       </h2>
       <div className="flex flex-col	justify-around w-full h-[88%]">
-        <AreachartProva />
+        <AreachartSales />
         <div className="flex w-full h-3/6">
-          <PiechartProva />
+          <PiechartGender />
           <BarchartProva />
         </div>
       </div>

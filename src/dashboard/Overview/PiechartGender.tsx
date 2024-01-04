@@ -41,7 +41,7 @@ const renderCustomizedLabel = ({
   );
 };
 
-export default function PiechartProva() {
+export default function PiechartGender() {
   const { userData, setUserData, loading, error } = useUserData();
 
   const male =
@@ -62,23 +62,31 @@ export default function PiechartProva() {
   ];
 
   return (
-    <ResponsiveContainer width="50%" height="100%">
-      <PieChart width={500} height={500}>
-        <Pie
-          data={data}
-          cx="50%"
-          cy="50%"
-          labelLine={false}
-          label={renderCustomizedLabel}
-          outerRadius={100}
-          fill="#8884d8"
-          dataKey="value"
-        >
-          {data.map((entry, index) => (
-            <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
-          ))}
-        </Pie>
-      </PieChart>
-    </ResponsiveContainer>
+    <div className="w-3/6">
+      <h2 className="flex items-center text-3xl font-bold dark:text-white">
+        Users Genders
+      </h2>
+      <ResponsiveContainer width="100%" height="85%">
+        <PieChart width={500} height={500}>
+          <Pie
+            data={data}
+            cx="50%"
+            cy="50%"
+            labelLine={false}
+            label={renderCustomizedLabel}
+            outerRadius={100}
+            fill="#8884d8"
+            dataKey="value"
+          >
+            {data.map((entry, index) => (
+              <Cell
+                key={`cell-${index}`}
+                fill={COLORS[index % COLORS.length]}
+              />
+            ))}
+          </Pie>
+        </PieChart>
+      </ResponsiveContainer>
+    </div>
   );
 }
