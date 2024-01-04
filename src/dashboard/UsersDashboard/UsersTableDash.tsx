@@ -1,13 +1,10 @@
 import { Checkbox, Table } from "flowbite-react";
 import { HiOutlineTrash } from "react-icons/hi";
-import useUserData, { UserDash } from "./useUserData";
+import { UserDash } from "./useUserData";
 
-export default function UsersTableDash() {
-  const { userData, setUserData, loading, error } = useUserData();
-
+export default function UsersTableDash(props: any) {
   const deleteUser = async (id: number) => {
     const userToDelete = { id: id };
-    console.log(userToDelete);
     const response = await fetch("http://localhost:3001/users", {
       method: "DELETE", // *GET, POST, PUT, DELETE, etc.
       headers: {
@@ -17,7 +14,7 @@ export default function UsersTableDash() {
       body: JSON.stringify(userToDelete), // body data type must match "Content-Type" header
     });
 
-    setUserData((d) => d.filter((del) => del.id !== id));
+    props.setUserData((d: any) => d.filter((del: any) => del.id !== id));
 
     return response.json(); // parses JSON response into native JavaScript objects
   };
@@ -58,11 +55,13 @@ export default function UsersTableDash() {
           </Table.HeadCell>
         </Table.Head>
         <Table.Body className="divide-y">
-          {loading && <h1>Loading</h1>}
-          {error && <h1>We have some problems</h1>}
-          {!loading &&
-            !error &&
-            userData.map((el, index) => <TableRow {...el} key={index} />)}
+          {props.loading && <h1>Loading</h1>}
+          {props.error && <h1>We have some problems</h1>}
+          {!props.loading &&
+            !props.error &&
+            props.userData.map((el: any, index: any) => (
+              <TableRow {...el} key={index} />
+            ))}
         </Table.Body>
       </Table>
     </div>
