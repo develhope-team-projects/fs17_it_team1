@@ -1,5 +1,12 @@
-import React, { PureComponent } from "react";
-import { PieChart, Pie, Sector, Cell, ResponsiveContainer } from "recharts";
+import React, { PureComponent, useState } from "react";
+import {
+  PieChart,
+  Pie,
+  Sector,
+  Cell,
+  ResponsiveContainer,
+  Legend,
+} from "recharts";
 import useUserData from "../UsersDashboard/useUserData";
 
 type dataChart = {
@@ -63,11 +70,13 @@ export default function PiechartGender() {
 
   return (
     <div className="w-3/6">
-      <h2 className="flex items-center text-3xl font-bold dark:text-white mb-2">
+      <h2 className="flex items-center text-3xl font-bold dark:text-white mb-2 justify-center mt-4">
         Users Genders
       </h2>
       <ResponsiveContainer width="100%" height="85%">
         <PieChart width={500} height={500}>
+          <Legend />
+
           <Pie
             data={data}
             cx="50%"

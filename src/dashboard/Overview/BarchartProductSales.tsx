@@ -34,7 +34,7 @@ export default function BarchartProva() {
 
   return (
     <div className="w-3/6">
-      <h2 className="flex items-center text-3xl font-bold dark:text-white mb-2">
+      <h2 className="flex items-center text-3xl font-bold dark:text-white mb-2 justify-center mt-4">
         Sales per product
       </h2>
       <ResponsiveContainer width="100%" height="85%">
