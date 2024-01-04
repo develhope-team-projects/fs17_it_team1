@@ -1,5 +1,6 @@
 import React, { PureComponent } from "react";
 import { PieChart, Pie, Sector, Cell, ResponsiveContainer } from "recharts";
+import useUserData from "../UsersDashboard/useUserData";
 
 type dataChart = {
   cx: any;
@@ -11,14 +12,7 @@ type dataChart = {
   index: any;
 };
 
-const data = [
-  { name: "Group A", value: 400 },
-  { name: "Group B", value: 300 },
-  { name: "Group C", value: 300 },
-  { name: "Group D", value: 200 },
-];
-
-const COLORS = ["#0088FE", "#00C49F", "#FFBB28", "#FF8042"];
+const COLORS = ["#0088FE", "#FF8042"];
 
 const RADIAN = Math.PI / 180;
 const renderCustomizedLabel = ({
@@ -47,33 +41,44 @@ const renderCustomizedLabel = ({
   );
 };
 
-export default class PiechartProva extends PureComponent {
-  static demoUrl =
-    "https://codesandbox.io/s/pie-chart-with-customized-label-dlhhj";
+export default function PiechartProva() {
+  const { userData, setUserData, loading, error } = useUserData();
 
-  render() {
-    return (
-      <ResponsiveContainer width="50%" height="100%">
-        <PieChart width={500} height={500}>
-          <Pie
-            data={data}
-            cx="50%"
-            cy="50%"
-            labelLine={false}
-            label={renderCustomizedLabel}
-            outerRadius={100}
-            fill="#8884d8"
-            dataKey="value"
-          >
-            {data.map((entry, index) => (
-              <Cell
-                key={`cell-${index}`}
-                fill={COLORS[index % COLORS.length]}
-              />
-            ))}
-          </Pie>
-        </PieChart>
-      </ResponsiveContainer>
-    );
-  }
+  const male =
+    !loading && !error
+      ? userData.filter((el) => el.gender === "male" || el.gender === "Male")
+      : [];
+
+  const female =
+    !loading && !error
+      ? userData.filter(
+          (el) => el.gender === "female" || el.gender === "Female"
+        )
+      : [];
+
+  const data = [
+    { name: "Male", value: male.length },
+    { name: "Female", value: female.length },
+  ];
+
+  return (
+    <ResponsiveContainer width="50%" height="100%">
+      <PieChart width={500} height={500}>
+        <Pie
+          data={data}
+          cx="50%"
+          cy="50%"
+          labelLine={false}
+          label={renderCustomizedLabel}
+          outerRadius={100}
+          fill="#8884d8"
+          dataKey="value"
+        >
+          {data.map((entry, index) => (
+            <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
+          ))}
+        </Pie>
+      </PieChart>
+    </ResponsiveContainer>
+  );
 }
