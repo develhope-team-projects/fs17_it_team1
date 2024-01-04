@@ -63,7 +63,7 @@ export default function PiechartGender() {
 
   return (
     <div className="w-3/6">
-      <h2 className="flex items-center text-3xl font-bold dark:text-white">
+      <h2 className="flex items-center text-3xl font-bold dark:text-white mb-2">
         Users Genders
       </h2>
       <ResponsiveContainer width="100%" height="85%">

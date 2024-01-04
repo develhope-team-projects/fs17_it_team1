@@ -5,7 +5,7 @@ import BarchartProva from "./BarchartProva";
 export default function Overview() {
   return (
     <div className="w-screen bg-our-black">
-      <h2 className="flex items-center text-5xl font-bold dark:text-white mb-8">
+      <h2 className="flex items-center text-5xl font-bold dark:text-white mb-6">
         Overview
       </h2>
       <div className="flex flex-col	justify-around w-full h-[88%]">

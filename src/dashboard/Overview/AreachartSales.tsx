@@ -43,7 +43,7 @@ export default function AreachartSales() {
 
   return (
     <div className="h-3/6">
-      <h2 className="flex items-center text-3xl font-bold dark:text-white">
+      <h2 className="flex items-center text-3xl font-bold dark:text-white mb-2">
         Sales
       </h2>
       <ResponsiveContainer width="100%" height="85%">
