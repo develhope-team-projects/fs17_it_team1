@@ -4,6 +4,8 @@ import { HiOutlineRefresh, HiPlus } from "react-icons/hi";
 import { Pagination } from "flowbite-react";
 import { useState } from "react";
 import UsersTableDash from "./UsersTableDash";
+import useUserData from "./useUserData";
+import { func } from "prop-types";
 
 const testuData = {
   name: "Product 6",
@@ -27,6 +29,10 @@ const fetchPost = async (uData: any) => {
 };
 
 export default function UsersDashboard() {
+  const { userData, setUserData, loading, error, onFetchData } = useUserData();
+
+  const props = { userData, setUserData, loading, error, onFetchData };
+
   const [currentPage, setCurrentPage] = useState(1);
 
   const onPageChange = (page: number) => setCurrentPage(page);
@@ -39,10 +45,10 @@ export default function UsersDashboard() {
       <div className="flex flex-col	justify-between h-[90%] ">
         <div>
           <div className="flex justify-between px-1 py-1">
-            <NormalButton svg={<HiOutlineRefresh />} />
+            <NormalButton svg={<HiOutlineRefresh />} function={onFetchData} />
             <NormalButton content="New" svg={<HiPlus />} />
           </div>
-          <UsersTableDash />
+          <UsersTableDash {...props} />
         </div>
         <div className="flex overflow-x-auto sm:justify-center ">
           <Pagination
