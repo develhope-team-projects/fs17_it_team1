@@ -12,6 +12,7 @@ import {
 import Inbox from "./Inbox/Inbox";
 import UsersDashboard from "./UsersDashboard/UsersDashboard";
 import { EcommerceDashboard } from "./EcommerceDashboards/EcommerceDashboard";
+import Overview from "./Overview/Overview";
 
 export default function Dashboard() {
   return (
@@ -30,7 +31,7 @@ export default function Dashboard() {
         <Sidebar.Items>
           <Sidebar.ItemGroup>
             <Sidebar.Item href="#" icon={HiChartPie}>
-              <Link to="/dashboard">dashboard</Link>
+              <Link to="/dashboard/overview">dashboard</Link>
             </Sidebar.Item>
 
             <Sidebar.Collapse icon={HiShoppingBag} label="E-commerce">
@@ -56,6 +57,7 @@ export default function Dashboard() {
         </Sidebar.Items>
       </Sidebar>
       <Routes>
+        <Route path="/overview" element={<Overview />} />
         <Route
           path="/products"
           element={<EcommerceDashboard pageName="Products" />}
