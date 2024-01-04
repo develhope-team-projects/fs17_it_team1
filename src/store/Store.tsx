@@ -1,5 +1,6 @@
 import CardStd from "../product/CardStd";
 import Header from "../shared/Header";
+import FooterComponent from "../shared/Footer";
 import { useState } from "react";
 
 const text = {
@@ -105,7 +106,8 @@ const Store = () => {
 
       <div className="container
        mx-4
-       max-w-lg">
+       max-w-7xl"
+       >
 
       <button
         onClick={toggleFilter}
@@ -196,7 +198,6 @@ const Store = () => {
 
 
     <div className="cards
-         mx-auto
          grid grid-cols-1
          sm:grid-cols-2
          md:grid-cols-3
@@ -204,7 +205,10 @@ const Store = () => {
          gap-3
          ml-4
          mr-4
-         mt-11">
+         mt-11
+         max-w-screen-xl
+         mb-3
+         ">
 
     <CardStd {...text}/>
     <CardStd {...text2}/>
@@ -218,6 +222,27 @@ const Store = () => {
     <CardStd {...text10}/>
     <CardStd {...text11}/>
     <CardStd {...text12}/>
+    </div>
+
+    <div className="footer">
+      <FooterComponent
+      logo={""}
+      firstFooterTitle={""}
+      secondFooterTitle={""}
+      thirdFooterTitle={""}
+      firstColumnElement1={""}
+      firstColumnElement2={""}
+      firstColumnElement3={""}
+      secondColumnElement1={""}
+      secondColumnElement2={""}
+      secondColumnElement3={""}
+      secondColumnElement4={""}
+      secondColumnElement5={""}
+      thirdColumnElement1={""}
+      thirdColumnElement2={""}
+      thirdColumnElement3={""}
+      thirdColumnElement4={""}
+      thirdColumnElement5={""}/>
     </div>
   </div>
 
