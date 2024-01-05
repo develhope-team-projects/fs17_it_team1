@@ -13,7 +13,10 @@ const testuData = {
   price: 20.0,
   discount: null,
 };
-
+// Function to Open the form
+function formHandler() {
+  console.log("Funzia");
+}
 //function to create User
 const fetchPost = async (uData: any) => {
   console.log(uData);
@@ -46,7 +49,11 @@ export default function UsersDashboard() {
         <div>
           <div className="flex justify-between px-1 py-1">
             <NormalButton svg={<HiOutlineRefresh />} function={onFetchData} />
-            <NormalButton content="New" svg={<HiPlus />} />
+            <NormalButton
+              content="New"
+              svg={<HiPlus />}
+              function={() => formHandler()}
+            />
           </div>
           <UsersTableDash {...props} />
         </div>
