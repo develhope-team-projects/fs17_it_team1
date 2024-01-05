@@ -6,17 +6,14 @@ import { useState } from "react";
 import UsersTableDash from "./UsersTableDash";
 import useUserData from "./useUserData";
 import { func } from "prop-types";
-
+import { Form } from "../Form/Form";
 const testuData = {
   name: "Product 6",
   description: "Test Product",
   price: 20.0,
   discount: null,
 };
-// Function to Open the form
-function formHandler() {
-  console.log("Funzia");
-}
+
 //function to create User
 const fetchPost = async (uData: any) => {
   console.log(uData);
@@ -32,6 +29,8 @@ const fetchPost = async (uData: any) => {
 };
 
 export default function UsersDashboard() {
+  const [formVisibility, setFormVisibility] = useState(false);
+
   const { userData, setUserData, loading, error, onFetchData } = useUserData();
 
   const props = { userData, setUserData, loading, error, onFetchData };
@@ -39,6 +38,12 @@ export default function UsersDashboard() {
   const [currentPage, setCurrentPage] = useState(1);
 
   const onPageChange = (page: number) => setCurrentPage(page);
+  // Function to Open the form
+  function formHandler() {
+    setFormVisibility(!formVisibility);
+    console.log("Funzia");
+    console.log(`Form visibility: ${formVisibility}`);
+  }
 
   return (
     <div className="w-full bg-our-black">
@@ -55,6 +60,7 @@ export default function UsersDashboard() {
               function={() => formHandler()}
             />
           </div>
+          {formVisibility && <Form />}
           <UsersTableDash {...props} />
         </div>
         <div className="flex overflow-x-auto sm:justify-center ">
