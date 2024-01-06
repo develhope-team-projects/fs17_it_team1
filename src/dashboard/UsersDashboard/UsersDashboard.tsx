@@ -41,7 +41,6 @@ export default function UsersDashboard() {
   // Function to Open the form
   function formHandler() {
     setFormVisibility(!formVisibility);
-    console.log("Funzia");
     console.log(`Form visibility: ${formVisibility}`);
   }
 
