@@ -103,7 +103,7 @@ export function Form() {
         <TextInput
           id="birth_day"
           type="text"
-          placeholder="dd-mm-yyyy"
+          placeholder="yyyy-mm-dd"
           required
           onChange={(e) =>
             setUserData({ ...userData, birth_day: e.target.value })
