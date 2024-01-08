@@ -18,11 +18,11 @@ type ProductProps = {
 };
 
 export function Product(props: ProductProps) {
-    const [img, setImg] = useState<string | undefined>(undefined);
+   /*  const [img, setImg] = useState<string | undefined>(undefined);
 
     const handleClick = (image: string) => {
         setImg(image);
-    };
+    }; */
 
     return (
       <div>
@@ -35,7 +35,7 @@ export function Product(props: ProductProps) {
         <div>
           <div>
             {/* Carosello vertifcali delli immagini */}
-            <div>
+            {/* <div>
               {props.immagini.map((product, index)=> (
                 <button onClick={() => handleClick(product.img1)} >
                   <img
@@ -45,7 +45,8 @@ export function Product(props: ProductProps) {
                   />
                 </button>
               ))}
-            </div>
+            </div> */}
+
             {/* carsello grande */}
             <div className="h-56 sm:h-64 xl:h-80 2xl:h-96">
               <Carousel slide={false}>
