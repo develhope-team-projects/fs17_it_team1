@@ -10,20 +10,11 @@ const customTheme: CustomFlowbiteTheme["button"] = {
 };
 
 export type ButtonElements = {
-<<<<<<< HEAD
-    content: string;
-    svg?: any;
-    type?: string;
-    function?: () => void; // scrivere la logica della funzione per il bottone a seconda del componente in cui viene inserito
-
-}
-
-=======
-  content?: string;
+  content: string;
   svg?: any;
+  type?: "button" | "submit" | "reset";
   function?: () => void; // scrivere la logica della funzione per il bottone a seconda del componente in cui viene inserito
 };
->>>>>>> 64b1b32260681975a2b6d9de5a81b9f152db1313
 
 export function NormalButton(props: ButtonElements) {
   return (
@@ -33,6 +24,7 @@ export function NormalButton(props: ButtonElements) {
         theme={customTheme}
         color="primary"
         className=" hover:text-oro-chiaro focus:ring-oro-chiaro focus:bg-our-black focus:text-oro-chiaro"
+        type={props.type}
       >
         <p>{props.content}</p>
         {props.svg && props.svg}

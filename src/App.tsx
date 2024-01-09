@@ -1,4 +1,3 @@
-
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Dashboard from "./dashboard/Dashboard";
 
@@ -28,7 +27,6 @@ import CardStd, { Card } from "./product/CardStd";
 import InputField, { input } from "./shared/InputField";
 import Login from "./loginESubscription/Login";
 import Subscription from "./loginESubscription/Subscription";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
 
 const test: Review = {
   img: "https://cdn-7.motorsport.com/images/amp/0ZRabeN0/s1000/carlos-sainz-ferrari-charles-l.jpg",
@@ -103,13 +101,9 @@ const test3: Card = {
   price: 75.99,
 };
 
-
-
-
 function App() {
   return (
     <div className="dark">
-
       <BrowserRouter>
         <Routes>
           <Route path="/dashboard/*" element={<Dashboard />} />
