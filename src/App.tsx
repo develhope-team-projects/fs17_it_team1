@@ -1,5 +1,7 @@
-import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Dashboard from "./dashboard/Dashboard";
+import Store from "./store/Store";
+import { Route, Routes, BrowserRouter } from "react-router-dom";
+
 
 function App() {
   return (
@@ -7,6 +9,7 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route path="/dashboard/*" element={<Dashboard />} />
+          <Route path="/store" element ={<Store/>} />
         </Routes>
       </BrowserRouter>
     </div>
