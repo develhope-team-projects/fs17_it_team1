@@ -4,6 +4,10 @@ export type input = {
   id: string;
   name?: string;
   label?: string;
+  value?: string | number;
+  title?: string;
+  onChange?:any;
+  pattern?: string;
 };
 
 export default function InputField(props: input) {

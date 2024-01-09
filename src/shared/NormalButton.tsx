@@ -13,6 +13,7 @@ const customTheme: CustomFlowbiteTheme['button'] = {
 export type ButtonElements = {
     content: string;
     svg?: any;
+    type?: string;
     function?: () => void; // scrivere la logica della funzione per il bottone a seconda del componente in cui viene inserito
 
 }
