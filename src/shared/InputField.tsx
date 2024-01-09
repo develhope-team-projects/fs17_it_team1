@@ -1,7 +1,9 @@
 export type input = {
+  className?: string;
   type: string;
   id: string;
-  label: string;
+  name?: string;
+  label?: string;
 };
 
 export default function InputField(props: input) {
