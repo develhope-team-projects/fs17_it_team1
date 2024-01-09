@@ -3,7 +3,7 @@
 
 import { Footer } from "flowbite-react";
 import { SitePathComponent } from "../shared/SitePath";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import Header from "../shared/Header";
 import { Rating } from "flowbite-react";
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -14,16 +14,9 @@ import "swiper/css/navigation";
 
 // import required modules
 import { Navigation } from "swiper/modules";
-import { Accordion } from "flowbite-react";
 import { NormalButton } from "../shared/NormalButton";
+import CartContext from "../context/Cartcontext";
 
-/* type ProductProps = {
-  title: string;
-  immagini: { img1: string }[];
-  price: number;
-  discountPrice?:number;
-};
- */
 interface Product {
   id: number;
   title: string;
@@ -33,14 +26,9 @@ interface Product {
   immagini: { img: string }[];
 }
 export function Product({ match }: any) {
-  /*  const [img, setImg] = useState<string | undefined>(undefined);
-
-    const handleClick = (image: string) => {
-        setImg(image);
-    }; */
-
   const productId = match.params.id;
   const [product, setProduct] = useState<Product | null>(null);
+  const { addToCart } = useContext(CartContext);
 
   useEffect(() => {
     // Chiamata API per ottenere i dettagli del prodotto dal server
@@ -113,7 +101,11 @@ export function Product({ match }: any) {
               </p>
             </div>
 
-            <NormalButton content="Add to cart" customstyle="w-full h-11" />
+            <NormalButton
+              content="Add to cart"
+              customstyle="w-full h-11"
+              function={() => addToCart(product)}
+            />
           </div>
         </div>
       ) : (

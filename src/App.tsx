@@ -21,6 +21,7 @@ import {
   CarouselContent,
 } from "./product/AutomaticCarousel";
 import CardStd, { Card } from "./product/CardStd";
+import CartProvider from "./context/Cartprovider";
 
 
 const test: Review = {
@@ -103,22 +104,23 @@ const products = {
 function App() {
   return (
     <div className="dark">
-      <Header />
-
-      <div className="absolute top-0 w-full p-none">
+      <CartProvider>
         <Header />
-      </div>
-      <ProductCardHome />
-      <ProductCard {...test2} />
-      <AutomaticCarousel images={linkForTest}/>
-      <CardStd {...test3} />
-      <RatingReview {...test} />
-      <NewsletterBanner {...NewsBannerContent} />
-      <FooterComponent {...footerTest} />
-      <SpecialButton {...prova} />
-      <NormalButton {...prova2} />
-      <DefaultBanner {...BannerContentTest} />
-      <Product {...products} />
+        <div className="absolute top-0 w-full p-none">
+          <Header />
+        </div>
+        <ProductCardHome />
+        <ProductCard {...test2} />
+        <AutomaticCarousel images={linkForTest} />
+        <CardStd {...test3} />
+        <RatingReview {...test} />
+        <NewsletterBanner {...NewsBannerContent} />
+        <FooterComponent {...footerTest} />
+        <SpecialButton {...prova} />
+        <NormalButton {...prova2} />
+        <DefaultBanner {...BannerContentTest} />
+        <Product {...products} />
+      </CartProvider>
     </div>
   );
 }
