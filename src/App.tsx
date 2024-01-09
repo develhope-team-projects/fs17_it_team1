@@ -1,3 +1,7 @@
+
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import Dashboard from "./dashboard/Dashboard";
+
 import RatingReview, { Review } from "./product/RatingReview";
 
 import Header from "./shared/Header";
@@ -101,32 +105,17 @@ const test3: Card = {
 
 
 
+
 function App() {
   return (
     <div className="dark">
-      <Header />
 
-      <div className="absolute top-0 w-full p-none">
-        <Header />
-      </div>
-      <ProductCardHome />
-      <ProductCard {...test2} />
-      <AutomaticCarousel {...linkForTest} />
-      <CardStd {...test3} />
-      <RatingReview {...test} />
-      <NewsletterBanner {...NewsBannerContent} />
-      <FooterComponent {...footerTest} />
-
-      <SpecialButton {...prova} />
-      <NormalButton {...prova2} />
-      <DefaultBanner {...BannerContentTest} />
       <BrowserRouter>
-      <Routes>
-          <Route path="/" element={<Login />} />
-          <Route path="/sub" element={<Subscription />} />
-      
-      </Routes>
-    </BrowserRouter>
+        <Routes>
+          <Route path="/dashboard/*" element={<Dashboard />} />
+          <Route path="/log-in" element={<Subscription />} />
+        </Routes>
+      </BrowserRouter>
     </div>
   );
 }
