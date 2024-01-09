@@ -1,6 +1,6 @@
 "use client";
 
-import { Button, Checkbox, Label, TextInput } from "flowbite-react";
+import { Button, Checkbox, Datepicker, Label, TextInput } from "flowbite-react";
 import { useState } from "react";
 /* Interfaccia da definire */
 interface UserData {
@@ -21,31 +21,46 @@ export function Form() {
     gender: "",
   };
   const [userData, setUserData] = useState(initialUserData);
-  function handleFormSubmit(event: React.FormEvent<HTMLFormElement>) {
+  async function handleFormSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
-    console.log(userData);
-    fetch("http://localhost:3001/users", {
+
+    function formatDateToYYYYMMDD(dateString: any) {
+      // Create a new Date object using the input date string
+      const date = new Date(dateString);
+
+      // Extract year, month, and day components from the Date object
+      const year = date.getFullYear();
+      const month = String(date.getMonth() + 1).padStart(2, "0"); // Adding 1 to month since it's zero-based
+      const day = String(date.getDate()).padStart(2, "0");
+
+      // Construct the date in 'YYYY-MM-DD' format
+      const formattedDate = `${year}-${month}-${day}`;
+
+      return formattedDate;
+    }
+
+    const birthday = formatDateToYYYYMMDD(event.target[3].value);
+
+    const newUserData: UserData = {
+      email: event.target[0].value,
+      first_name: event.target[1].value,
+      last_name: event.target[2].value,
+      birth_day: birthday,
+      location: event.target[4].value,
+      gender: event.target[5].value,
+    };
+
+    console.log(newUserData);
+
+    const response = await fetch("http://localhost:3001/users", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify(userData),
-    })
-      .then((response) => {
-        if (!response.ok) {
-          throw new Error("Network response was not ok");
-        }
-        return response.json(); // You may or may not need this depending on your use case
-      })
-      .then((data) => {
-        console.log("Success:", data);
-        setUserData(initialUserData);
-      })
-      .catch((error) => {
-        console.error("Error:", error);
-        // Handle error if needed
-      });
+      body: JSON.stringify(newUserData),
+    });
     setUserData(initialUserData);
+    return response.json();
   }
   return (
     <form onSubmit={handleFormSubmit} className="flex max-w-md flex-col gap-4">
@@ -100,15 +115,14 @@ export function Form() {
         <div className="mb-2 block">
           <Label htmlFor="email1" value="Account birth day" />
         </div>
-        <TextInput
-          id="birth_day"
-          type="text"
-          placeholder="yyyy-mm-dd"
+        <Datepicker
+          title="Birthday"
           required
           onChange={(e) =>
-            setUserData({ ...userData, birth_day: e.target.value })
+            /* setUserData({ ...userData, birth_day: e.target.value }) */
+            console.log(e)
           }
-          value={userData.birth_day}
+          /* value={userData.birth_day} */
         />
       </div>
       {/* Location */}

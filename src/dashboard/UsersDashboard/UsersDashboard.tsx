@@ -60,9 +60,9 @@ export default function UsersDashboard() {
             />
           </div>
           {formVisibility && <Form />}
-          <UsersTableDash {...props} />
+          {!formVisibility && <UsersTableDash {...props} />}
         </div>
-        <div className="flex overflow-x-auto sm:justify-center ">
+        {/*         <div className="flex overflow-x-auto sm:justify-center ">
           <Pagination
             layout="navigation"
             currentPage={currentPage}
@@ -70,7 +70,7 @@ export default function UsersDashboard() {
             onPageChange={onPageChange}
             showIcons
           />
-        </div>
+        </div> */}
       </div>
     </div>
   );
