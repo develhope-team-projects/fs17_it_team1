@@ -1,6 +1,8 @@
-
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Dashboard from "./dashboard/Dashboard";
+import Store from "./store/Store";
+import { Route, Routes, BrowserRouter } from "react-router-dom";
+
 
 import RatingReview, { Review } from "./product/RatingReview";
 
@@ -117,6 +119,7 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route path="/dashboard/*" element={<Dashboard />} />
+          <Route path="/store" element ={<Store/>} />
           <Route path="/log-in" element={<Subscription />} />
           <Route path="/product" element={<Product />} />
         </Routes>

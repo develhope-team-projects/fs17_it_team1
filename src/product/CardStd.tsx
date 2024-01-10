@@ -4,7 +4,7 @@ import { Card, Rating } from "flowbite-react";
 import { SpecialButton } from "../shared/SpecialButton";
 
 export type Card = {
-  title: string;
+  name: string;
   rating: number;
   img: string;
   price: number;
@@ -19,7 +19,7 @@ export default function CardStd(props: Card) {
     >
       <a href="#">
         <h5 className="text-xl font-semibold tracking-tight text-gray-900 dark:text-white">
-          {props.title}
+          {props.name}
         </h5>
       </a>
       <div className="mb-5 mt-2.5 flex items-center">
