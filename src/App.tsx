@@ -1,3 +1,7 @@
+
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import Dashboard from "./dashboard/Dashboard";
+
 import RatingReview, { Review } from "./product/RatingReview";
 
 import Header from "./shared/Header";
@@ -21,7 +25,10 @@ import {
   CarouselContent,
 } from "./product/AutomaticCarousel";
 import CardStd, { Card } from "./product/CardStd";
-import CartProvider from "./context/Cartprovider";
+import InputField, { input } from "./shared/InputField";
+import Login from "./loginESubscription/Login";
+import Subscription from "./loginESubscription/Subscription";
+
 
 
 const test: Review = {
@@ -88,6 +95,7 @@ const test3: Card = {
   img: "https://cdn-7.motorsport.com/images/amp/0ZRabeN0/s1000/carlos-sainz-ferrari-charles-l.jpg",
   price: 75.99,
 };
+  
 const products = {
   title: "gino",
   price: 300,
@@ -101,26 +109,18 @@ const products = {
     },
   ],
 };
+
 function App() {
   return (
     <div className="dark">
-      <CartProvider>
-        <Header />
-        <div className="absolute top-0 w-full p-none">
-          <Header />
-        </div>
-        <ProductCardHome />
-        <ProductCard {...test2} />
-        <AutomaticCarousel images={linkForTest} />
-        <CardStd {...test3} />
-        <RatingReview {...test} />
-        <NewsletterBanner {...NewsBannerContent} />
-        <FooterComponent {...footerTest} />
-        <SpecialButton {...prova} />
-        <NormalButton {...prova2} />
-        <DefaultBanner {...BannerContentTest} />
-        <Product />
-      </CartProvider>
+
+      <BrowserRouter>
+        <Routes>
+          <Route path="/dashboard/*" element={<Dashboard />} />
+          <Route path="/log-in" element={<Subscription />} />
+          <Route path="/product" element={<Product />} />
+        </Routes>
+      </BrowserRouter>
     </div>
   );
 }

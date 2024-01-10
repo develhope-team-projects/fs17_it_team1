@@ -1,33 +1,35 @@
-
-'use client';
-import type { CustomFlowbiteTheme } from 'flowbite-react';
-import { Button } from 'flowbite-react';
+"use client";
+import type { CustomFlowbiteTheme } from "flowbite-react";
+import { Button } from "flowbite-react";
 /* import { HiOutlineArrowRight } from 'react-icons/hi'; */
 
-const customTheme: CustomFlowbiteTheme['button'] = {
-    color: {
-        primary: 'bg-oro-chiaro hover:bg-light-bg',
-    },
+const customTheme: CustomFlowbiteTheme["button"] = {
+  color: {
+    primary: "bg-oro-chiaro hover:bg-light-bg",
+  },
 };
 
 export type ButtonElements = {
-    content: string;
-    svg?: any;
-    function?: () => void; // scrivere la logica della funzione per il bottone a seconda del componente in cui viene inserito
+  content?: string;
+  svg?: any;
+  function?: () => void; // scrivere la logica della funzione per il bottone a seconda del componente in cui viene inserito
+};
 
-}
 interface ButtonProps extends ButtonElements {
   customstyle?: string; // Aggiunto il parametro per il custom style
 }
 
-export function NormalButton(props: ButtonProps) {
+
+export function NormalButton(props: ButtonElements) {
   return (
-    <div className={`flex no-wrap items-center`}>
+    <div className="flex no-wrap items-center">
+
       <Button
         onClick={props.function}
         theme={customTheme}
         color="primary"
         className={`hover:text-oro-chiaro focus:ring-oro-chiaro focus:bg-our-black focus:text-oro-chiaro ${props.customstyle}`}
+
       >
         <p>{props.content}</p>
         {props.svg && props.svg}
