@@ -3,7 +3,7 @@
 
 import { Footer } from "flowbite-react";
 import { SitePathComponent } from "../shared/SitePath";
-import { useContext, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import Header from "../shared/Header";
 import { Rating } from "flowbite-react";
 import { Swiper, SwiperSlide } from "swiper/react";

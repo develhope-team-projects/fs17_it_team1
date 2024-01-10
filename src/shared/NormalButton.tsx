@@ -13,11 +13,9 @@ export type ButtonElements = {
   content?: string;
   svg?: any;
   function?: () => void; // scrivere la logica della funzione per il bottone a seconda del componente in cui viene inserito
+  customstyle?: string;
 };
 
-interface ButtonProps extends ButtonElements {
-  customstyle?: string; // Aggiunto il parametro per il custom style
-}
 
 
 export function NormalButton(props: ButtonElements) {
