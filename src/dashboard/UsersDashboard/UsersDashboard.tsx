@@ -6,7 +6,7 @@ import { useState } from "react";
 import UsersTableDash from "./UsersTableDash";
 import useUserData from "./useUserData";
 import { func } from "prop-types";
-
+import { Form } from "../Form/Form";
 const testuData = {
   name: "Product 6",
   description: "Test Product",
@@ -29,6 +29,8 @@ const fetchPost = async (uData: any) => {
 };
 
 export default function UsersDashboard() {
+  const [formVisibility, setFormVisibility] = useState(false);
+
   const { userData, setUserData, loading, error, onFetchData } = useUserData();
 
   const props = { userData, setUserData, loading, error, onFetchData };
@@ -36,6 +38,11 @@ export default function UsersDashboard() {
   const [currentPage, setCurrentPage] = useState(1);
 
   const onPageChange = (page: number) => setCurrentPage(page);
+  // Function to Open the form
+  function formHandler() {
+    setFormVisibility(!formVisibility);
+    console.log(`Form visibility: ${formVisibility}`);
+  }
 
   return (
     <div className="w-full bg-our-black">
@@ -46,11 +53,16 @@ export default function UsersDashboard() {
         <div>
           <div className="flex justify-between px-1 py-1">
             <NormalButton svg={<HiOutlineRefresh />} function={onFetchData} />
-            <NormalButton content="New" svg={<HiPlus />} />
+            <NormalButton
+              content="New"
+              svg={<HiPlus />}
+              function={() => formHandler()}
+            />
           </div>
-          <UsersTableDash {...props} />
+          {formVisibility && <Form />}
+          {!formVisibility && <UsersTableDash {...props} />}
         </div>
-        <div className="flex overflow-x-auto sm:justify-center ">
+        {/*         <div className="flex overflow-x-auto sm:justify-center ">
           <Pagination
             layout="navigation"
             currentPage={currentPage}
@@ -58,7 +70,7 @@ export default function UsersDashboard() {
             onPageChange={onPageChange}
             showIcons
           />
-        </div>
+        </div> */}
       </div>
     </div>
   );
