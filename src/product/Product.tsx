@@ -27,9 +27,13 @@ interface Product {
   immagini: { img: string }[];
 }
 export function Product() {
-  const id = '1'
-  const { productData, setProductData, loading, error, onFetchData} = useProductDatabyId(id);
-  console.log(productData)
+  const id = "99";
+  const { productData, setProductData, loading, error, onFetchData } =
+    useProductDatabyId(id);
+  console.log(loading);
+  console.log(error);
+  console.log(productData);
+
   return (
     <div>
       <Header />
@@ -40,7 +44,10 @@ export function Product() {
           thirdTitle="product"
         />
       </div>
-      {productData ? (
+      {loading && <h1>Loading</h1>}
+      {error && <p>...DIO CANE NON VA</p>}
+
+      {productData[0] && (
         <div className="flex items-center my-10">
           <div className="w-8/12">
             {/* Carosello vertifcali delli immagini */}
@@ -56,7 +63,7 @@ export function Product() {
               ))}
             </div> */}
 
-           {/*  <Swiper
+            {/*  <Swiper
               rewind={true}
               navigation={true}
               modules={[Navigation]}
@@ -76,7 +83,9 @@ export function Product() {
           </div>
           {/* dettagli prodotto */}
           <div className="w-full h-full mr-32">
-            <h1 className="text-5xl pb-3 font-semibold">{productData[0].name}</h1>
+            <h1 className="text-5xl pb-3 font-semibold">
+              {productData[0].name}
+            </h1>
             <Rating>
               <Rating.Star />
               <Rating.Star />
@@ -85,21 +94,33 @@ export function Product() {
               <Rating.Star filled={false} />
             </Rating>
             <div className="flex items-center pt-5 pb-8">
-              <p className="text-3xl pr-3">{productData[0].price}$</p>
-              <p className="text-xl line-through font-thin text-gray-700">
-                {productData[0].discount}$
-              </p>
+              {productData[0].discount === null ? (
+                <p className="text-3xl pr-3">
+                  {productData[0].price -
+                    productData[0].price * productData[0].discount}
+                  $
+                </p>
+              ) : (
+                <>
+                  <p className="text-3xl pr-3">
+                    {productData[0].price -
+                      productData[0].price * productData[0].discount}
+                    $
+                  </p>
+                  <p className="text-xl line-through font-thin text-gray-700">
+                    {productData[0].price}$
+                  </p>
+                </>
+              )}
             </div>
 
             <NormalButton
               content="Add to cart"
               customstyle="w-full h-11"
-            /*   function={() => addToCart(product)} */
+              /*   function={() => addToCart(product)} */
             />
           </div>
         </div>
-      ) : (
-        <p>...DIO CANE NON VA</p>
       )}
 
       <Footer />
