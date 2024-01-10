@@ -9,7 +9,7 @@ import Header from "./shared/Header";
 import FooterComponent, { FooterType } from "./shared/Footer";
 
 import { Post, ProductCard } from "./shared/ProductCard";
-
+import { Product} from "./product/Product";
 import { ButtonElements, NormalButton } from "./shared/NormalButton";
 import { SpecialButton, SpecialButtonElements } from "./shared/SpecialButton";
 import { BannerContent, DefaultBanner } from "./product/DefaultBanner";
@@ -28,7 +28,8 @@ import CardStd, { Card } from "./product/CardStd";
 import InputField, { input } from "./shared/InputField";
 import Login from "./loginESubscription/Login";
 import Subscription from "./loginESubscription/Subscription";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+
+
 
 const test: Review = {
   img: "https://cdn-7.motorsport.com/images/amp/0ZRabeN0/s1000/carlos-sainz-ferrari-charles-l.jpg",
@@ -83,18 +84,10 @@ const NewsBannerContent: NewsletterBannerContent = {
   link: "Sium",
 };
 
-const linkForTest: CarouselContent = {
-  Image1:
+const linkForTest: CarouselContent[] = [{
+  image:
     "https://cdn-7.motorsport.com/images/amp/0ZRabeN0/s1000/carlos-sainz-ferrari-charles-l.jpg",
-  Image2:
-    "https://cdn-7.motorsport.com/images/amp/0ZRabeN0/s1000/carlos-sainz-ferrari-charles-l.jpg",
-  Image3:
-    "https://cdn-7.motorsport.com/images/amp/0ZRabeN0/s1000/carlos-sainz-ferrari-charles-l.jpg",
-  Image4:
-    "https://cdn-7.motorsport.com/images/amp/0ZRabeN0/s1000/carlos-sainz-ferrari-charles-l.jpg",
-  Image5:
-    "https://cdn-7.motorsport.com/images/amp/0ZRabeN0/s1000/carlos-sainz-ferrari-charles-l.jpg",
-};
+},{image:"https://cdn-7.motorsport.com/images/amp/0ZRabeN0/s1000/carlos-sainz-ferrari-charles-l.jpg"}];
 
 const test3: Card = {
   title: "Buon Prodotto",
@@ -102,9 +95,20 @@ const test3: Card = {
   img: "https://cdn-7.motorsport.com/images/amp/0ZRabeN0/s1000/carlos-sainz-ferrari-charles-l.jpg",
   price: 75.99,
 };
-
-
-
+  
+const products = {
+  title: "gino",
+  price: 300,
+  discountPrice: 400,
+  immagini: [
+    {
+      img1: "https://cdn-7.motorsport.com/images/amp/0ZRabeN0/s1000/carlos-sainz-ferrari-charles-l.jpg",
+    },
+    {
+      img1: "https://media.istockphoto.com/id/502458158/it/foto/whiskey-sulle-rocks.jpg?s=1024x1024&w=is&k=20&c=nMxRxgcXsYG3Bt51P9WSO7hIvkD1168z_sssgGXI4qM=",
+    },
+  ],
+};
 
 function App() {
   return (
@@ -114,6 +118,7 @@ function App() {
         <Routes>
           <Route path="/dashboard/*" element={<Dashboard />} />
           <Route path="/log-in" element={<Subscription />} />
+          <Route path="/product" element={<Product />} />
         </Routes>
       </BrowserRouter>
     </div>
