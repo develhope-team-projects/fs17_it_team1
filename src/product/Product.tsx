@@ -15,7 +15,7 @@ import "swiper/css/navigation";
 // import required modules
 import { Navigation } from "swiper/modules";
 import { NormalButton } from "../shared/NormalButton";
-import CartContext from "../context/Cartcontext";
+import { useParams } from "react-router-dom";
 
 interface Product {
   id: number;
@@ -25,20 +25,19 @@ interface Product {
   discountPrice?: number;
   immagini: { img: string }[];
 }
-export function Product({ match }: any) {
-  const productId = match.params.id;
+export function Product() {
+  const {id} = useParams()
   const [product, setProduct] = useState<Product | null>(null);
-  const { addToCart } = useContext(CartContext);
+ /*  const { addToCart } = useContext(CartContext); */
 
   useEffect(() => {
-    // Chiamata API per ottenere i dettagli del prodotto dal server
-    fetch(`http://localhost:3001/products/${productId}`)
+    fetch(`http://localhost:3001/products/${id}`)
       .then((response) => response.json())
       .then((data: Product) => setProduct(data))
       .catch((error) =>
         console.error("Errore nel recupero dei dettagli del prodotto:", error)
       );
-  }, [productId]);
+  }, [id]);
 
   return (
     <div>
@@ -104,12 +103,12 @@ export function Product({ match }: any) {
             <NormalButton
               content="Add to cart"
               customstyle="w-full h-11"
-              function={() => addToCart(product)}
+            /*   function={() => addToCart(product)} */
             />
           </div>
         </div>
       ) : (
-        <p>...caricamento</p>
+        <p>...DIO CANE NON VA</p>
       )}
 
       <Footer />

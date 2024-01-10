@@ -119,7 +119,7 @@ function App() {
         <SpecialButton {...prova} />
         <NormalButton {...prova2} />
         <DefaultBanner {...BannerContentTest} />
-        <Product {...products} />
+        <Product />
       </CartProvider>
     </div>
   );
