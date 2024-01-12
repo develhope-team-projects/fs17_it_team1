@@ -1,6 +1,7 @@
-
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Dashboard from "./dashboard/Dashboard";
+import Store from "./store/Store";
+
 
 import RatingReview, { Review } from "./product/RatingReview";
 
@@ -89,12 +90,7 @@ const linkForTest: CarouselContent[] = [{
     "https://cdn-7.motorsport.com/images/amp/0ZRabeN0/s1000/carlos-sainz-ferrari-charles-l.jpg",
 },{image:"https://cdn-7.motorsport.com/images/amp/0ZRabeN0/s1000/carlos-sainz-ferrari-charles-l.jpg"}];
 
-const test3: Card = {
-  title: "Buon Prodotto",
-  rating: 4,
-  img: "https://cdn-7.motorsport.com/images/amp/0ZRabeN0/s1000/carlos-sainz-ferrari-charles-l.jpg",
-  price: 75.99,
-};
+
   
 const products = {
   title: "gino",
@@ -113,12 +109,13 @@ const products = {
 function App() {
   return (
     <div className="dark">
-
       <BrowserRouter>
         <Routes>
           <Route path="/dashboard/*" element={<Dashboard />} />
+          <Route path="/store" element={<Store />} />
           <Route path="/log-in" element={<Subscription />} />
           <Route path="/product" element={<Product />} />
+          <Route path="/products/:id" element={<Product />} />
         </Routes>
       </BrowserRouter>
     </div>

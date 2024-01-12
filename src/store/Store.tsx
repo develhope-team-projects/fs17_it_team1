@@ -1,0 +1,176 @@
+import CardStd from "../product/CardStd";
+import Header from "../shared/Header";
+import FooterComponent from "../shared/Footer";
+import { useState } from "react";
+import useProductData from "../dashboard/Product/useProductData";
+
+const Store = () => {
+  const [isFilterOpen, setIsFilterOpen] = useState<boolean>(false);
+
+  const toggleFilter = () => {
+    setIsFilterOpen(!isFilterOpen);
+  };
+
+  const { productData, setProductData, loading, error, onFetchData } =
+    useProductData();
+
+  return (
+    <div>
+      <div className="header">
+        <Header />
+      </div>
+
+      <div
+        className="vuoto
+      h-40"
+      ></div>
+
+      <div className="flex flex-col w-full items-center">
+        <div
+          className="container
+       mx-4
+       max-w-7xl"
+        >
+          <button
+            onClick={toggleFilter}
+            className="
+        bg-yellow-500
+        hover:bg-orange-50
+        text-white
+        hover:text-black
+        hover:border-2
+        border-yellow-500
+        font-bold
+        py-2
+        px-4
+        rounded"
+          >
+            Filtra
+          </button>
+
+          {isFilterOpen && (
+            <div
+              className="
+      bg-white
+      shadow-md
+      mt-2
+      p-4
+      rounded-2xl
+      shadow-2xl "
+            >
+              <label
+                className="
+      block
+      text-gray-700
+      text-sm
+      font-bold
+      mb-2 "
+              >
+                Prezzo:
+                <select
+                  className="
+        form-select
+        mt-1
+        block
+        w-full
+        rounded-l-lg"
+                >
+                  <option> 14.99</option>
+                  <option>24.99</option>
+                  <option>39.99</option>
+                  <option>59.99</option>
+                </select>
+              </label>
+
+              <label
+                className="
+    block
+    text-gray-700
+    text-sm
+    font-bold
+    mb-2 "
+              >
+                Categorie:
+                <select
+                  className="
+      form-select
+      mt-1
+      block
+      w-full
+      rounded-l-lg"
+                >
+                  <option>Vini</option>
+                  <option>Liquori</option>
+                  <option>Spumanti</option>
+                  <option>Distillati</option>
+                </select>
+              </label>
+
+              <button
+                className="
+    bg-yellow-500
+    hover:bg-orange-50
+    text-white
+    hover:text-black
+    hover:border-2
+    border-yellow-500
+    text-white
+    font-bold
+    py-2
+    px-4
+    rounded
+    mt-4"
+              >
+                Applica Filtri
+              </button>
+            </div>
+          )}
+        </div>
+
+        <div
+          className="cards
+         grid grid-cols-1
+         sm:grid-cols-2
+         md:grid-cols-3
+         lg:grid-cols-4
+         gap-3
+         ml-4
+         mr-4
+         mt-11
+         max-w-screen-xl
+         mb-3
+         "
+        >
+          {loading && <h1>Loading</h1>}
+          {error && <h1>We have some problems</h1>}
+          {!loading &&
+            !error &&
+            productData.map((el: any, index: any) => <CardStd {...el} />)}
+        </div>
+      </div>
+
+      <div className="footer">
+        <FooterComponent
+          logo={""}
+          firstFooterTitle={""}
+          secondFooterTitle={""}
+          thirdFooterTitle={""}
+          firstColumnElement1={""}
+          firstColumnElement2={""}
+          firstColumnElement3={""}
+          secondColumnElement1={""}
+          secondColumnElement2={""}
+          secondColumnElement3={""}
+          secondColumnElement4={""}
+          secondColumnElement5={""}
+          thirdColumnElement1={""}
+          thirdColumnElement2={""}
+          thirdColumnElement3={""}
+          thirdColumnElement4={""}
+          thirdColumnElement5={""}
+        />
+      </div>
+    </div>
+  );
+};
+export default Store;
