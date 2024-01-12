@@ -115,7 +115,7 @@ function App() {
           <Route path="/store" element={<Store />} />
           <Route path="/log-in" element={<Subscription />} />
           <Route path="/product" element={<Product />} />
-          <Route path="/products/:id" element={<Product />} />
+          <Route path="/product/:id" element={<Product />} />
         </Routes>
       </BrowserRouter>
     </div>
