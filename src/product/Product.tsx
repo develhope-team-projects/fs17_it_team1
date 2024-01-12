@@ -36,28 +36,32 @@ export function Product() {
   console.log(productId)
 
   return (
-    <div className="w-full">
-      <Header />
-      <div className="pt-16">
-        <SitePathComponent
-          firstTitle="home"
-          secondTitle="store"
-          thirdTitle="product"
-        />
-      </div>
-      {loading && (
-        <div className="flex items-center justify-center flex-col" >
-          <img src="	https://media.tenor.com/vfSWqzGjMdcAAAAi/grants-triple-good.gif" />
-          <p className="text-4xl p-4">Loading...</p>
+    <div className="flex flex-col w-full items-center">
+      <div
+        className=" container
+       mx-4
+       max-w-7xl"
+      >
+        <div className="w-full pt-16">
+          <SitePathComponent
+            firstTitle="home"
+            secondTitle="store"
+            thirdTitle="product"
+          />
         </div>
-      )}
-      {error && <p>...Error</p>}
+        {loading && (
+          <div className="flex items-center justify-center flex-col">
+            <img src="	https://media.tenor.com/vfSWqzGjMdcAAAAi/grants-triple-good.gif" />
+            <p className="text-4xl p-4">Loading...</p>
+          </div>
+        )}
+        {error && <p>...Error</p>}
 
-      {productData[0] && (
-        <div className="flex items-center my-10">
-          <div className="w-8/12">
-            {/* Carosello vertifcali delli immagini */}
-            {/* <div>
+        {productData[0] && (
+          <div className="flex items-center my-10">
+            <div className="w-8/12">
+              {/* Carosello vertifcali delli immagini */}
+              {/* <div>
               {props.immagini.map((product, index)=> (
                 <button onClick={() => handleClick(product.img1)} >
                   <img
@@ -69,7 +73,7 @@ export function Product() {
               ))}
             </div> */}
 
-            {/*  <Swiper
+              {/*  <Swiper
               rewind={true}
               navigation={true}
               modules={[Navigation]}
@@ -86,51 +90,58 @@ export function Product() {
                 </SwiperSlide>
               ))}
             </Swiper> */}
-          </div>
-          {/* dettagli prodotto */}
-          <div className="w-full h-full mr-32">
-            <h1 className="text-5xl pb-3 font-semibold">
-              {productData[0].name}
-            </h1>
-            <Rating>
-              <Rating.Star />
-              <Rating.Star />
-              <Rating.Star />
-              <Rating.Star />
-              <Rating.Star filled={false} />
-            </Rating>
-            {productData[0].description && <p className="pt-4 text-l">{productData[0].description}</p>}
-            <div className="flex items-center pt-5 pb-8">
-              {productData[0].discount === null ? (
-                <p className="text-3xl pr-3">
-                  {(productData[0].price -
-                    productData[0].price * productData[0].discount).toFixed(2)}
-                  $
-                </p>
-              ) : (
-                <>
+            </div>
+            {/* dettagli prodotto */}
+            <div className="w-full h-full mr-32">
+              <h1 className="text-5xl pb-3 font-semibold">
+                {productData[0].name}
+              </h1>
+              <Rating>
+                <Rating.Star />
+                <Rating.Star />
+                <Rating.Star />
+                <Rating.Star />
+                <Rating.Star filled={false} />
+              </Rating>
+              {productData[0].description && (
+                <p className="pt-4 text-l">{productData[0].description}</p>
+              )}
+              <div className="flex items-center pt-5 pb-8">
+                {productData[0].discount === null ? (
                   <p className="text-3xl pr-3">
-                    {(productData[0].price -
-                      productData[0].price * productData[0].discount).toFixed(2)}
+                    {(
+                      productData[0].price -
+                      productData[0].price * productData[0].discount
+                    ).toFixed(2)}
                     $
                   </p>
-                  <p className="text-xl line-through font-thin text-gray-700">
-                    {productData[0].price}$
-                  </p>
-                </>
-              )}
+                ) : (
+                  <>
+                    <p className="text-3xl pr-3">
+                      {(
+                        productData[0].price -
+                        productData[0].price * productData[0].discount
+                      ).toFixed(2)}
+                      $
+                    </p>
+                    <p className="text-xl line-through font-thin text-gray-700">
+                      {productData[0].price}$
+                    </p>
+                  </>
+                )}
+              </div>
+
+              <NormalButton
+                content="Add to cart"
+                customstyle="w-full h-11"
+                /*   function={() => addToCart(product)} */
+              />
             </div>
-
-            <NormalButton
-              content="Add to cart"
-              customstyle="w-full h-11"
-              /*   function={() => addToCart(product)} */
-            />
           </div>
-        </div>
-      )}
+        )}
 
-      <Footer />
+        <Footer />
+      </div>
     </div>
   );
 }
