@@ -6,6 +6,7 @@ import {
   EcommerceDashboardTable,
   ProductTemplate,
 } from "./EcommerceDashboardTable";
+import { ProductForm } from "../ProductForm/ProductForm";
 
 const products: ProductTemplate = {
   name: "Pampero",
@@ -37,6 +38,8 @@ export function EcommerceDashboard({
 }: {
   pageName?: string;
 }) {
+  const [formVisibility, setFormVisibility] = useState(false);
+
   const [currentPage, setCurrentPage] = useState(1);
   const [currentTab, setCurrentTab] = useState(pageName);
 
@@ -63,7 +66,11 @@ export function EcommerceDashboard({
         return null;
     }
   };
-
+  // Function to Open the form
+  function formHandler() {
+    setFormVisibility(!formVisibility);
+    console.log(`Form visibility: ${formVisibility}`);
+  }
   return (
     <div className="w-full bg-our-black">
       <h1 className="flex items-center text-5xl font-bold dark:text-white">
@@ -73,9 +80,17 @@ export function EcommerceDashboard({
         <div>
           <div className="flex justify-between px-1 py-1">
             <NormalButton svg={<HiOutlineRefresh />} />
-            <NormalButton content="New" svg={<HiPlus />} />
+            {/* Gestione bottone new+ */}
+            {currentTab == "Products" && (
+              <NormalButton
+                content="New"
+                svg={<HiPlus />}
+                function={() => formHandler()}
+              />
+            )}
           </div>
-          {renderTableContent()}
+          {formVisibility && <ProductForm />}
+          {!formVisibility && renderTableContent()}
         </div>
         <div className="flex overflow-x-auto sm:justify-center ">
           <Pagination
