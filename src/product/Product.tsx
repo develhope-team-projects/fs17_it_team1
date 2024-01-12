@@ -1,7 +1,7 @@
 "use client";
 /* -------------------FARE LO STILE,E AL CLICK DI UNA FOTO DEL CAROSELLO VERTICALE SI VEDA L'IMMAGINE NEL CAROSELLO GRANDE--------------------------- */
 
-import { Footer } from "flowbite-react";
+import { Footer, Spinner } from "flowbite-react";
 import { SitePathComponent } from "../shared/SitePath";
 import { useEffect, useState } from "react";
 import Header from "../shared/Header";
@@ -44,7 +44,13 @@ export function Product() {
           thirdTitle="product"
         />
       </div>
-      {loading && <h1>Loading</h1>}
+      {loading && (
+        <h1 >
+          <Spinner aria-label="Default status example" />
+          <img src="	https://media.tenor.com/vfSWqzGjMdcAAAAi/grants-triple-good.gif" />
+          Loading
+        </h1>
+      )}
       {error && <p>...DIO CANE NON VA</p>}
 
       {productData[0] && (
