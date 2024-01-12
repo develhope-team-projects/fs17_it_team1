@@ -11,6 +11,7 @@
   },
   "dependencies": {
     "@react-hook/media-query": "^1.1.1",
+    "cors": "^2.8.5",
     "flowbite": "^2.2.0",
     "flowbite-react": "^0.6.4",
     "json-server": "^0.17.4",
@@ -20,7 +21,8 @@
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.20.0",
     "recharts": "^2.10.3",
-    "sort-by": "^0.0.2"
+    "sort-by": "^0.0.2",
+    "swiper": "^11.0.5"
   },
   "devDependencies": {
     "@types/react": "^18.2.37",
