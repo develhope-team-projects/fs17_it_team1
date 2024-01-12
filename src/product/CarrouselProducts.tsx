@@ -19,7 +19,7 @@ const test3: Card = {
     price: 75.99,
   };
 
-export default function App() {
+export default function CarrouselProducts() {
     const swiper = useSwiper();
   return (
     <>
