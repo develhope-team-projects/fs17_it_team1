@@ -109,14 +109,13 @@ const products = {
 function App() {
   return (
     <div className="dark">
-
       <BrowserRouter>
         <Routes>
-
           <Route path="/dashboard/*" element={<Dashboard />} />
-          <Route path="/store" element ={<Store/>} />
+          <Route path="/store" element={<Store />} />
           <Route path="/log-in" element={<Subscription />} />
           <Route path="/product" element={<Product />} />
+          <Route path="/products/:id" element={<Product />} />
         </Routes>
       </BrowserRouter>
     </div>

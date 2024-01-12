@@ -9,7 +9,7 @@ export type ProductDash = {
   discount: number;
 };
 
-export default function useProductDatabyId( id :string) {
+export default function useProductDatabyId( id :number) {
   type test = ProductDash[];
 
   const test1: test = [];
@@ -17,7 +17,7 @@ export default function useProductDatabyId( id :string) {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
 
-  function fetchData(id:string) {
+  function fetchData(id:number) {
     setLoading(true);
     setError("");
 
@@ -35,7 +35,7 @@ export default function useProductDatabyId( id :string) {
       .finally(() => setLoading(false));
   }
 
-  useEffect(() => fetchData(id), []);
+  useEffect(() => fetchData(id), [id]);
 
   return {
     productData,

@@ -13,7 +13,6 @@ import "swiper/css";
 import "swiper/css/navigation";
 
 // import required modules
-import { Navigation } from "swiper/modules";
 import { NormalButton } from "../shared/NormalButton";
 import { useParams } from "react-router-dom";
 import useProductDatabyId from "../dashboard/Product/useProductDatabyId";
@@ -27,15 +26,17 @@ interface Product {
   immagini: { img: string }[];
 }
 export function Product() {
-  const id = "99";
+  const {id} = useParams();
+  const productId : number = Number(id)
   const { productData, setProductData, loading, error, onFetchData } =
-    useProductDatabyId(id);
+    useProductDatabyId(productId);
   console.log(loading);
   console.log(error);
   console.log(productData);
+  console.log(productId)
 
   return (
-    <div>
+    <div className="w-full">
       <Header />
       <div className="pt-16">
         <SitePathComponent
@@ -45,13 +46,12 @@ export function Product() {
         />
       </div>
       {loading && (
-        <h1 >
-          <Spinner aria-label="Default status example" />
+        <div className="flex items-center justify-center flex-col" >
           <img src="	https://media.tenor.com/vfSWqzGjMdcAAAAi/grants-triple-good.gif" />
-          Loading
-        </h1>
+          <p className="text-4xl p-4">Loading...</p>
+        </div>
       )}
-      {error && <p>...DIO CANE NON VA</p>}
+      {error && <p>...Error</p>}
 
       {productData[0] && (
         <div className="flex items-center my-10">
@@ -99,18 +99,19 @@ export function Product() {
               <Rating.Star />
               <Rating.Star filled={false} />
             </Rating>
+            {productData[0].description && <p className="pt-4 text-l">{productData[0].description}</p>}
             <div className="flex items-center pt-5 pb-8">
               {productData[0].discount === null ? (
                 <p className="text-3xl pr-3">
-                  {productData[0].price -
-                    productData[0].price * productData[0].discount}
+                  {(productData[0].price -
+                    productData[0].price * productData[0].discount).toFixed(2)}
                   $
                 </p>
               ) : (
                 <>
                   <p className="text-3xl pr-3">
-                    {productData[0].price -
-                      productData[0].price * productData[0].discount}
+                    {(productData[0].price -
+                      productData[0].price * productData[0].discount).toFixed(2)}
                     $
                   </p>
                   <p className="text-xl line-through font-thin text-gray-700">
