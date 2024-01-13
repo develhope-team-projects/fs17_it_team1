@@ -13,7 +13,7 @@ export type Card = {
 export default function CardStd(props: Card) {
   return (
     <Card
-      className="max-w-sm dark:bg-our-black"
+      className="max-w-s dark:bg-our-black"
       imgAlt="Apple Watch Series 7 in colors pink, silver, and black"
       imgSrc={props.img}
     >

@@ -18,6 +18,7 @@ import { useParams } from "react-router-dom";
 import useProductDatabyId from "../dashboard/Product/useProductDatabyId";
 import CardStd from "./CardStd";
 import RatingReview from "./RatingReview";
+import CarrouselProducts from "./CarrouselProducts";
 
 interface Product {
   id: number;
@@ -141,7 +142,7 @@ export function Product() {
                 />
               </div>
             </div>
-            <div className="pt-24">
+            <div className="pt-16">
               <Accordion>
                 <Accordion.Panel>
                   <Accordion.Title>Spedizioni e resi</Accordion.Title>
@@ -155,40 +156,40 @@ export function Product() {
                 <Accordion.Panel>
                   <Accordion.Title>Recensioni</Accordion.Title>
                   <Accordion.Content>
-                      <div className="pb-10">
-                    <RatingReview img="https://cdn-7.motorsport.com/images/amp0ZRabeN0s1000carlos-sainz-ferrari-charles-l.jpg"
-                      name="Eno Mario"
-                      userCountry="Italy"
-                      rating={3}
-                      ratingTitle="buono"
-                      commentDate="01-01-2023"
-                      comment="Buon Prodotto" 
+                    <div className="pb-10">
+                      <RatingReview img="https://cdn-7.motorsport.com/images/amp0ZRabeN0s1000carlos-sainz-ferrari-charles-l.jpg"
+                        name="Eno Mario"
+                        userCountry="Italy"
+                        rating={3}
+                        ratingTitle="buono"
+                        commentDate="01-01-2023"
+                        comment="Buon Prodotto"
                       />
-                      </div>
-                      <div className="pb-10">
-                    <RatingReview img="https://cdn-7.motorsport.com/images/amp0ZRabeN0s1000carlos-sainz-ferrari-charles-l.jpg"
-                      name="Eno Mario"
-                      userCountry="Italy"
-                      rating={3}
-                      ratingTitle="buono"
-                      commentDate="01-01-2023"
-                      comment="Buon Prodotto" 
+                    </div>
+                    <div className="pb-10">
+                      <RatingReview img="https://cdn-7.motorsport.com/images/amp0ZRabeN0s1000carlos-sainz-ferrari-charles-l.jpg"
+                        name="Eno Mario"
+                        userCountry="Italy"
+                        rating={3}
+                        ratingTitle="buono"
+                        commentDate="01-01-2023"
+                        comment="Buon Prodotto"
                       />
-                      </div>
-                      <div className="pb-10">
-                    <RatingReview img="https://cdn-7.motorsport.com/images/amp0ZRabeN0s1000carlos-sainz-ferrari-charles-l.jpg"
-                      name="Eno Mario"
-                      userCountry="Italy"
-                      rating={3}
-                      ratingTitle="buono"
-                      commentDate="01-01-2023"
-                      comment="Buon Prodotto" 
+                    </div>
+                    <div className="pb-10">
+                      <RatingReview img="https://cdn-7.motorsport.com/images/amp0ZRabeN0s1000carlos-sainz-ferrari-charles-l.jpg"
+                        name="Eno Mario"
+                        userCountry="Italy"
+                        rating={3}
+                        ratingTitle="buono"
+                        commentDate="01-01-2023"
+                        comment="Buon Prodotto"
                       />
-                      </div>
+                    </div>
                   </Accordion.Content>
                 </Accordion.Panel>
               </Accordion>
-
+              <CarrouselProducts />
             </div>
           </div>
         )}
