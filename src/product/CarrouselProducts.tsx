@@ -25,7 +25,6 @@ export default function CarrouselProducts() {
       <button onClick={() => swiper.slideNext(1)} className='hover:bg-sky-700'></button>
     <button onClick={() => swiper.slidePrev(1)}></button>
 
-    {loading && <h1>Loading</h1>}
           {error && <h1>We have some problems</h1>}
           {!loading &&
             !error &&
