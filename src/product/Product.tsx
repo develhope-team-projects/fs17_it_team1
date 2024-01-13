@@ -143,7 +143,7 @@ export function Product() {
               </div>
             </div>
             <div className="pt-16">
-              <Accordion>
+              <Accordion collapseAll>
                 <Accordion.Panel>
                   <Accordion.Title>Spedizioni e resi</Accordion.Title>
                   <Accordion.Content>
