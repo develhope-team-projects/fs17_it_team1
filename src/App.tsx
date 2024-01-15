@@ -27,6 +27,7 @@ import CardStd, { Card } from "./product/CardStd";
 import InputField, { input } from "./shared/InputField";
 import Login from "./loginESubscription/Login";
 import Subscription from "./loginESubscription/Subscription";
+import { AuthProvider } from "./loginESubscription/AuthContext";
 
 const test: Review = {
   img: "https://cdn-7.motorsport.com/images/amp/0ZRabeN0/s1000/carlos-sainz-ferrari-charles-l.jpg",
@@ -103,14 +104,17 @@ const test3: Card = {
 
 function App() {
   return (
+    <AuthProvider>
     <div className="dark">
       <BrowserRouter>
         <Routes>
           <Route path="/dashboard/*" element={<Dashboard />} />
-          <Route path="/log-in" element={<Subscription />} />
+            <Route path="/log-in" element={<Login />} />
+          <Route path="/subscription" element={<Subscription />} />
         </Routes>
       </BrowserRouter>
     </div>
+    </AuthProvider>
   );
 }
 

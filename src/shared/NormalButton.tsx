@@ -13,6 +13,7 @@ export type ButtonElements = {
   content: string;
   svg?: any;
   type?: "button" | "submit" | "reset";
+  onClick?: any;
   function?: () => void; // scrivere la logica della funzione per il bottone a seconda del componente in cui viene inserito
 };
 

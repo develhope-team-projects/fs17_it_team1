@@ -5,8 +5,8 @@ import { NormalButton } from "../shared/NormalButton";
 import type { CustomFlowbiteTheme } from "flowbite-react";
 import "./Subscription.css";
 import { useState } from "react";
-import axios from "axios";
 import { UserDash } from "../dashboard/UsersDashboard/useUserData";
+import { Link } from "react-router-dom";
 
 const customTheme: CustomFlowbiteTheme["datepicker"] = {
   root: {
@@ -102,7 +102,7 @@ interface FormState {
   eta: string;
   genere: string;
   email: string;
-  password: string;
+  password: string | number;
 }
 
 function Subscription() {
@@ -116,6 +116,8 @@ function Subscription() {
       email: "",
       password: "",
     });
+
+    const [submitted, setSubmitted] = useState(false);
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
       const { name, value } = e.target;
@@ -164,6 +166,7 @@ function Subscription() {
         birth_day: birthday,
         location: event.target[3].value,
         gender: event.target[5].value,
+        password: event.target[9].value,
       };
 
       console.log(newUserData);
@@ -175,38 +178,39 @@ function Subscription() {
         },
         body: JSON.stringify(newUserData),
       });
+      setSubmitted(true);
       return response.json();
     }
 
     return (
-      <div className="h-96 flex justify-center items-center bg-our-black relative z-9 bg-opacity-50">
-        <div className="h-50p w-96 py-8 bg-our-black flex flex-col justify-center items-center gap-6 relative z-10 rounded-md">
-          <form onSubmit={handleFormSubmit}>
+      <div className=" flex justify-center items-center bg-our-black relative z-9 bg-opacity-50">
+        <div className=" py-8 bg-our-black flex  justify-center items-center gap-6 relative z-10 rounded-md">
+          <form className=" py-8 bg-our-black flex flex-col justify-center items-center gap-6 relative z-10 rounded-md" onSubmit={handleFormSubmit}>
             <p className="text-gray-400 px-5 text-center">
               Iscriviti la nostra pagina per accedere ai nostri servizi
               esclusivi.
             </p>
-
-            <InputField
-              type="text"
-              id="Nome"
-              name="Nome"
-              value={formState.nome}
-              onChange={handleChange}
-              label="Nome"
-            />
-            <InputField
-              type="text"
-              id="Cognome"
-              name="Cognome"
-              value={formState.cognome}
-              onChange={handleChange}
-              label="Cognome"
-            />
-
-            <div className="flex flex-col justify-start gap-2 items-start text-gray-400">
-              <p className="pl-6 text-gray-400">Data di nascita</p>
-              <div className="dateInput">
+            <div className="flex gap-6">
+              <InputField
+                type="text"
+                id="Nome"
+                name="Nome"
+                value={formState.nome}
+                onChange={handleChange}
+                label="Nome"
+              />
+              <InputField
+                type="text"
+                id="Cognome"
+                name="Cognome"
+                value={formState.cognome}
+                onChange={handleChange}
+                label="Cognome"
+              />
+            </div>
+            <div className="flex gap-6 justify-center items-center align-center text-gray-400">
+              <p className="pb-2 pr-14 text-gray-400 border-b-2 dark:border-gray-600">Data di nascita</p>
+              <div className="dateInput w-40">
                 <Datepicker theme={customTheme} />
               </div>
             </div>
@@ -263,6 +267,14 @@ function Subscription() {
 
             <NormalButton type="submit" content="Sign up" />
           </form>
+          {submitted && (
+            <div className="text-gray-400 mt-2">
+              Ora che sei iscritto puoi tornare al {" "}
+              <Link to="/log-in" className="text-oro-chiaro">
+                log-in
+              </Link>
+            </div>
+          )}
         </div>
       </div>
     );
