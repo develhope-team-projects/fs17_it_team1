@@ -1,7 +1,7 @@
 "use client";
 /* -------------------FARE LO STILE,E AL CLICK DI UNA FOTO DEL CAROSELLO VERTICALE SI VEDA L'IMMAGINE NEL CAROSELLO GRANDE--------------------------- */
 
-import { Footer, Spinner } from "flowbite-react";
+import { Accordion, Footer, Spinner } from "flowbite-react";
 import { SitePathComponent } from "../shared/SitePath";
 import { useEffect, useState } from "react";
 import Header from "../shared/Header";
@@ -16,6 +16,9 @@ import "swiper/css/navigation";
 import { NormalButton } from "../shared/NormalButton";
 import { useParams } from "react-router-dom";
 import useProductDatabyId from "../dashboard/Product/useProductDatabyId";
+import CardStd from "./CardStd";
+import RatingReview from "./RatingReview";
+import CarrouselProducts from "./CarrouselProducts";
 
 interface Product {
   id: number;
@@ -26,8 +29,8 @@ interface Product {
   immagini: { img: string }[];
 }
 export function Product() {
-  const {id} = useParams();
-  const productId : number = Number(id)
+  const { id } = useParams();
+  const productId: number = Number(id)
   const { productData, setProductData, loading, error, onFetchData } =
     useProductDatabyId(productId);
   console.log(loading);
@@ -58,10 +61,11 @@ export function Product() {
         {error && <p>...Error</p>}
 
         {productData[0] && (
-          <div className="flex items-center my-10">
-            <div className="w-8/12">
-              {/* Carosello vertifcali delli immagini */}
-              {/* <div>
+          <div>
+            <div className="flex items-center my-10">
+              <div className="w-8/12">
+                {/* Carosello vertifcali delli immagini */}
+                {/* <div>
               {props.immagini.map((product, index)=> (
                 <button onClick={() => handleClick(product.img1)} >
                   <img
@@ -73,7 +77,7 @@ export function Product() {
               ))}
             </div> */}
 
-              {/*  <Swiper
+                {/*  <Swiper
               rewind={true}
               navigation={true}
               modules={[Navigation]}
@@ -90,33 +94,24 @@ export function Product() {
                 </SwiperSlide>
               ))}
             </Swiper> */}
-            </div>
-            {/* dettagli prodotto */}
-            <div className="w-full h-full mr-32">
-              <h1 className="text-5xl pb-3 font-semibold">
-                {productData[0].name}
-              </h1>
-              <Rating>
-                <Rating.Star />
-                <Rating.Star />
-                <Rating.Star />
-                <Rating.Star />
-                <Rating.Star filled={false} />
-              </Rating>
-              {productData[0].description && (
-                <p className="pt-4 text-l">{productData[0].description}</p>
-              )}
-              <div className="flex items-center pt-5 pb-8">
-                {productData[0].discount === null ? (
-                  <p className="text-3xl pr-3">
-                    {(
-                      productData[0].price -
-                      productData[0].price * productData[0].discount
-                    ).toFixed(2)}
-                    $
-                  </p>
-                ) : (
-                  <>
+              </div>
+              {/* dettagli prodotto */}
+              <div className="w-full h-full mr-32">
+                <h1 className="text-5xl pb-3 font-semibold">
+                  {productData[0].name}
+                </h1>
+                <Rating>
+                  <Rating.Star />
+                  <Rating.Star />
+                  <Rating.Star />
+                  <Rating.Star />
+                  <Rating.Star filled={false} />
+                </Rating>
+                {productData[0].description && (
+                  <p className="pt-4 text-l">{productData[0].description}</p>
+                )}
+                <div className="flex items-center pt-5 pb-8">
+                  {productData[0].discount === null ? (
                     <p className="text-3xl pr-3">
                       {(
                         productData[0].price -
@@ -124,23 +119,81 @@ export function Product() {
                       ).toFixed(2)}
                       $
                     </p>
-                    <p className="text-xl line-through font-thin text-gray-700">
-                      {productData[0].price}$
-                    </p>
-                  </>
-                )}
-              </div>
+                  ) : (
+                    <>
+                      <p className="text-3xl pr-3">
+                        {(
+                          productData[0].price -
+                          productData[0].price * productData[0].discount
+                        ).toFixed(2)}
+                        $
+                      </p>
+                      <p className="text-xl line-through font-thin text-gray-700">
+                        {productData[0].price}$
+                      </p>
+                    </>
+                  )}
+                </div>
 
-              <NormalButton
-                content="Add to cart"
-                customstyle="w-full h-11"
+                <NormalButton
+                  content="Add to cart"
+                  customstyle="w-full h-11"
                 /*   function={() => addToCart(product)} */
-              />
+                />
+              </div>
+            </div>
+            <div className="pt-16">
+              <Accordion collapseAll>
+                <Accordion.Panel>
+                  <Accordion.Title>Spedizioni e resi</Accordion.Title>
+                  <Accordion.Content>
+                    <p className="mb-2 text-gray-500 dark:text-gray-400">
+                      Consegna standard gratuita con la tua Membership Nike.
+                      Puoi restituire il tuo ordine gratuitamente entro 24 ore dall'arrivo del prodotto.
+                    </p>
+                  </Accordion.Content>
+                </Accordion.Panel>
+                <Accordion.Panel>
+                  <Accordion.Title>Recensioni</Accordion.Title>
+                  <Accordion.Content>
+                    <div className="pb-10">
+                      <RatingReview img="https://cdn-7.motorsport.com/images/amp0ZRabeN0s1000carlos-sainz-ferrari-charles-l.jpg"
+                        name="Eno Mario"
+                        userCountry="Italy"
+                        rating={3}
+                        ratingTitle="buono"
+                        commentDate="01-01-2023"
+                        comment="Buon Prodotto"
+                      />
+                    </div>
+                    <div className="pb-10">
+                      <RatingReview img="https://cdn-7.motorsport.com/images/amp0ZRabeN0s1000carlos-sainz-ferrari-charles-l.jpg"
+                        name="Eno Mario"
+                        userCountry="Italy"
+                        rating={3}
+                        ratingTitle="buono"
+                        commentDate="01-01-2023"
+                        comment="Buon Prodotto"
+                      />
+                    </div>
+                    <div className="pb-10">
+                      <RatingReview img="https://cdn-7.motorsport.com/images/amp0ZRabeN0s1000carlos-sainz-ferrari-charles-l.jpg"
+                        name="Eno Mario"
+                        userCountry="Italy"
+                        rating={3}
+                        ratingTitle="buono"
+                        commentDate="01-01-2023"
+                        comment="Buon Prodotto"
+                      />
+                    </div>
+                  </Accordion.Content>
+                </Accordion.Panel>
+              </Accordion>
+              <CarrouselProducts />
             </div>
           </div>
         )}
 
-        <Footer />
       </div>
     </div>
   );

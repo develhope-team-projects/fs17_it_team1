@@ -15,7 +15,7 @@ export default function CardStd(props: Card) {
   const href = `/products/${props.id}`;
   return (
     <Card
-      className="max-w-sm dark:bg-our-black"
+      className="max-w-s dark:bg-our-black"
       imgAlt="Apple Watch Series 7 in colors pink, silver, and black"
       imgSrc={props.img}
     >

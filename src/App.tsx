@@ -58,7 +58,7 @@ function App() {
               }
             />
           <Route path="/product" element={<Product />} />
-          <Route path="/products/:id" element={<Product />} />
+          <Route path="/product/:id" element={<Product />} />
         </Routes>
       </BrowserRouter>
       </userContext.Provider>
