@@ -12,6 +12,7 @@ export default function useLogin() {
     if (loginData.length > 0) {
       setUserCredentials(loginData[0].id);
       localStorage.setItem("userID", String(loginData[0].id));
+      window.location.href = "/";
       // salva nel local storage
     } else {
       setUserCredentials(0);
