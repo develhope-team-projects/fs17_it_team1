@@ -1,4 +1,4 @@
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
 import Dashboard from "./dashboard/Dashboard";
 import FooterComponent, { FooterType } from "./shared/Footer";
 import Subscription from "./loginESubscription/Subscription";
@@ -35,9 +35,24 @@ function App() {
       <userContext.Provider value={Number(userLogged)}>
         <BrowserRouter>
           <Routes>
+            <Route path="/" element={<Navigate to="/homepage" />} />
             <Route path="/dashboard/*" element={<Dashboard />} />
-            <Route path="/log-in" element={<Login />} />
-            <Route path="/subscription" element={<Subscription />} />
+            <Route
+              path="/log-in"
+              element={
+                userLogged === "0" ? <Login /> : <Navigate to="/homepage" />
+              }
+            />
+            <Route
+              path="/subscription"
+              element={
+                userLogged === "0" ? (
+                  <Subscription />
+                ) : (
+                  <Navigate to="/homepage" />
+                )
+              }
+            />
           </Routes>
         </BrowserRouter>
       </userContext.Provider>

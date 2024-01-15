@@ -180,10 +180,8 @@ function Subscription() {
         body: JSON.stringify(newUserData),
       });
       setSubmitted(true);
-      return response.json();
+      window.location.href = "/log-in";
     }
-
-    const contesto = useContext(userContext);
 
     return (
       <div className=" flex justify-center items-center bg-our-black relative z-9 bg-opacity-50">
