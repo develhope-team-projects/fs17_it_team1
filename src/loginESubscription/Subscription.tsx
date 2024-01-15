@@ -4,9 +4,10 @@ import InputField from "../shared/InputField";
 import { NormalButton } from "../shared/NormalButton";
 import type { CustomFlowbiteTheme } from "flowbite-react";
 import "./Subscription.css";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { UserDash } from "../dashboard/UsersDashboard/useUserData";
 import { Link } from "react-router-dom";
+import { userContext } from "./AuthContext";
 
 const customTheme: CustomFlowbiteTheme["datepicker"] = {
   root: {
@@ -185,7 +186,10 @@ function Subscription() {
     return (
       <div className=" flex justify-center items-center bg-our-black relative z-9 bg-opacity-50">
         <div className=" py-8 bg-our-black flex  justify-center items-center gap-6 relative z-10 rounded-md">
-          <form className=" py-8 bg-our-black flex flex-col justify-center items-center gap-6 relative z-10 rounded-md" onSubmit={handleFormSubmit}>
+          <form
+            className=" py-8 bg-our-black flex flex-col justify-center items-center gap-6 relative z-10 rounded-md"
+            onSubmit={handleFormSubmit}
+          >
             <p className="text-gray-400 px-5 text-center">
               Iscriviti la nostra pagina per accedere ai nostri servizi
               esclusivi.
@@ -209,7 +213,9 @@ function Subscription() {
               />
             </div>
             <div className="flex gap-6 justify-center items-center align-center text-gray-400">
-              <p className="pb-2 pr-14 text-gray-400 border-b-2 dark:border-gray-600">Data di nascita</p>
+              <p className="pb-2 pr-14 text-gray-400 border-b-2 dark:border-gray-600">
+                Data di nascita
+              </p>
               <div className="dateInput w-40">
                 <Datepicker theme={customTheme} />
               </div>
@@ -269,7 +275,7 @@ function Subscription() {
           </form>
           {submitted && (
             <div className="text-gray-400 mt-2">
-              Ora che sei iscritto puoi tornare al {" "}
+              Ora che sei iscritto puoi tornare al{" "}
               <Link to="/log-in" className="text-oro-chiaro">
                 log-in
               </Link>
