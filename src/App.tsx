@@ -1,25 +1,20 @@
-import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Dashboard from "./dashboard/Dashboard";
 import Store from "./store/Store";
 
+import { Route, Routes, BrowserRouter } from "react-router-dom";
 
 import RatingReview, { Review } from "./product/RatingReview";
-
 import Header from "./shared/Header";
-
 import FooterComponent, { FooterType } from "./shared/Footer";
-
 import { Post, ProductCard } from "./shared/ProductCard";
 import { Product} from "./product/Product";
 import { ButtonElements, NormalButton } from "./shared/NormalButton";
 import { SpecialButton, SpecialButtonElements } from "./shared/SpecialButton";
 import { BannerContent, DefaultBanner } from "./product/DefaultBanner";
-
 import {
   NewsletterBanner,
   NewsletterBannerContent,
 } from "./product/NewsletterBanner";
-
 import ProductCardHome from "./shared/ProductCardHome";
 import {
   AutomaticCarousel,
@@ -88,8 +83,6 @@ const linkForTest: CarouselContent[] = [{
   image:
     "https://cdn-7.motorsport.com/images/amp/0ZRabeN0/s1000/carlos-sainz-ferrari-charles-l.jpg",
 },{image:"https://cdn-7.motorsport.com/images/amp/0ZRabeN0/s1000/carlos-sainz-ferrari-charles-l.jpg"}];
-
-
   
 const products = {
   title: "gino",
