@@ -1,6 +1,8 @@
 import Dashboard from "./dashboard/Dashboard";
 import Store from "./store/Store";
+
 import { Route, Routes, BrowserRouter } from "react-router-dom";
+
 import RatingReview, { Review } from "./product/RatingReview";
 import Header from "./shared/Header";
 import FooterComponent, { FooterType } from "./shared/Footer";
@@ -22,7 +24,6 @@ import CardStd, { Card } from "./product/CardStd";
 import InputField, { input } from "./shared/InputField";
 import Login from "./loginESubscription/Login";
 import Subscription from "./loginESubscription/Subscription";
-
 
 
 const test: Review = {
@@ -82,6 +83,20 @@ const linkForTest: CarouselContent[] = [{
   image:
     "https://cdn-7.motorsport.com/images/amp/0ZRabeN0/s1000/carlos-sainz-ferrari-charles-l.jpg",
 },{image:"https://cdn-7.motorsport.com/images/amp/0ZRabeN0/s1000/carlos-sainz-ferrari-charles-l.jpg"}];
+  
+const products = {
+  title: "gino",
+  price: 300,
+  discountPrice: 400,
+  immagini: [
+    {
+      img1: "https://cdn-7.motorsport.com/images/amp/0ZRabeN0/s1000/carlos-sainz-ferrari-charles-l.jpg",
+    },
+    {
+      img1: "https://media.istockphoto.com/id/502458158/it/foto/whiskey-sulle-rocks.jpg?s=1024x1024&w=is&k=20&c=nMxRxgcXsYG3Bt51P9WSO7hIvkD1168z_sssgGXI4qM=",
+    },
+  ],
+};
 
 function App() {
   return (
@@ -92,7 +107,7 @@ function App() {
           <Route path="/store" element={<Store />} />
           <Route path="/log-in" element={<Subscription />} />
           <Route path="/product" element={<Product />} />
-          <Route path="/product/:id" element={<Product />} />
+          <Route path="/products/:id" element={<Product />} />
         </Routes>
       </BrowserRouter>
 
