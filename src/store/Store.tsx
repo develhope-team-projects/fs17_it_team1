@@ -6,13 +6,10 @@ import useProductData from "../dashboard/Product/useProductData";
 import { Pagination } from "flowbite-react";
 
 const Store = () => {
-
-
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 12;
   const startIndex = (currentPage - 1) * itemsPerPage;
   const endIndex = startIndex + itemsPerPage;
-
 
   const onPageChange = (page: number) => setCurrentPage(page);
 
@@ -27,10 +24,6 @@ const Store = () => {
 
   return (
     <div>
-      <div className="header">
-        <Header />
-      </div>
-
       <div
         className="vuoto
       h-40"
@@ -157,40 +150,18 @@ const Store = () => {
           {!loading &&
             !error &&
             productData
-            .slice(startIndex, endIndex)
-            .map((el: any, index: any) => <CardStd key={index}{...el}/>)}
+              .slice(startIndex, endIndex)
+              .map((el: any, index: any) => <CardStd key={index} {...el} />)}
         </div>
       </div>
 
       <div className="flex flex-col w-full items-center mb-2 ">
-          <Pagination
-            layout="navigation"
-            currentPage={currentPage}
-            totalPages={Math.ceil(productData.length / itemsPerPage)}
-            onPageChange={onPageChange}
-            showIcons
-          />
-        </div>
-
-      <div className="footer">
-        <FooterComponent
-          logo={""}
-          firstFooterTitle={""}
-          secondFooterTitle={""}
-          thirdFooterTitle={""}
-          firstColumnElement1={""}
-          firstColumnElement2={""}
-          firstColumnElement3={""}
-          secondColumnElement1={""}
-          secondColumnElement2={""}
-          secondColumnElement3={""}
-          secondColumnElement4={""}
-          secondColumnElement5={""}
-          thirdColumnElement1={""}
-          thirdColumnElement2={""}
-          thirdColumnElement3={""}
-          thirdColumnElement4={""}
-          thirdColumnElement5={""}
+        <Pagination
+          layout="navigation"
+          currentPage={currentPage}
+          totalPages={Math.ceil(productData.length / itemsPerPage)}
+          onPageChange={onPageChange}
+          showIcons
         />
       </div>
     </div>

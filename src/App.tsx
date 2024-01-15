@@ -1,13 +1,12 @@
 import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
 import Dashboard from "./dashboard/Dashboard";
-import FooterComponent, { FooterType } from "./shared/Footer";
+import { FooterType } from "./shared/Footer";
 import Subscription from "./loginESubscription/Subscription";
 import { userContext } from "./loginESubscription/AuthContext";
-import { useContext, useState } from "react";
+import { useState } from "react";
 // Login.tsx
 import Login from "./loginESubscription/Login";
-import Store from "./store/Store";
-import { Product} from "./product/Product";
+import Ecommerce from "./ecommerce/Ecommerce";
 
 const footerTest: FooterType = {
   logo: "https://flowbite.com/docs/images/logo.svg",
@@ -29,22 +28,25 @@ const footerTest: FooterType = {
   thirdColumnElement5: "Informazioni personali",
 };
 
-
 function App() {
   const [userLogged, setUserLogged] = useState(localStorage.getItem("userID")); //user salvato nel local storage
 
   return (
     <div className="dark">
       <userContext.Provider value={Number(userLogged)}>
-      <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<Navigate to="/homepage" />} />
-          <Route path="/dashboard/*" element={<Dashboard />} />
-          <Route path="/store" element={<Store />} />
+        <BrowserRouter>
+          <Routes>
+            <Route path="/" element={<Navigate to="/ecommerce/homepage" />} />
+            <Route path="/dashboard/*" element={<Dashboard />} />
+            <Route path="/ecommerce/*" element={<Ecommerce />} />
             <Route
               path="/log-in"
               element={
-                userLogged === "0" ? <Login /> : <Navigate to="/homepage" />
+                userLogged === "0" ? (
+                  <Login />
+                ) : (
+                  <Navigate to="/ecommerce/homepage" />
+                )
               }
             />
             <Route
@@ -57,12 +59,9 @@ function App() {
                 )
               }
             />
-          <Route path="/product" element={<Product />} />
-          <Route path="/product/:id" element={<Product />} />
-        </Routes>
-      </BrowserRouter>
+          </Routes>
+        </BrowserRouter>
       </userContext.Provider>
-
     </div>
   );
 }
