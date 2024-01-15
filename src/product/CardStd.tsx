@@ -4,6 +4,7 @@ import { Card, Rating } from "flowbite-react";
 import { SpecialButton } from "../shared/SpecialButton";
 
 export type Card = {
+  id: number;
   name: string;
   rating: number;
   img: string;
@@ -11,13 +12,14 @@ export type Card = {
 };
 
 export default function CardStd(props: Card) {
+  const href = `/products/${props.id}`;
   return (
     <Card
       className="max-w-sm dark:bg-our-black"
       imgAlt="Apple Watch Series 7 in colors pink, silver, and black"
       imgSrc={props.img}
     >
-      <a href="#">
+      <a href={href}>
         <h5 className="text-xl font-semibold tracking-tight text-gray-900 dark:text-white">
           {props.name}
         </h5>
