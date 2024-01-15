@@ -1,58 +1,13 @@
+import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
 import Dashboard from "./dashboard/Dashboard";
-import Store from "./store/Store";
-
-import { Route, Routes, BrowserRouter } from "react-router-dom";
-
-import RatingReview, { Review } from "./product/RatingReview";
-import Header from "./shared/Header";
 import FooterComponent, { FooterType } from "./shared/Footer";
-import { Post, ProductCard } from "./shared/ProductCard";
-import { Product} from "./product/Product";
-import { ButtonElements, NormalButton } from "./shared/NormalButton";
-import { SpecialButton, SpecialButtonElements } from "./shared/SpecialButton";
-import { BannerContent, DefaultBanner } from "./product/DefaultBanner";
-import {
-  NewsletterBanner,
-  NewsletterBannerContent,
-} from "./product/NewsletterBanner";
-import ProductCardHome from "./shared/ProductCardHome";
-import {
-  AutomaticCarousel,
-  CarouselContent,
-} from "./product/AutomaticCarousel";
-import CardStd, { Card } from "./product/CardStd";
-import InputField, { input } from "./shared/InputField";
-import Login from "./loginESubscription/Login";
 import Subscription from "./loginESubscription/Subscription";
-
-
-const test: Review = {
-  img: "https://cdn-7.motorsport.com/images/amp/0ZRabeN0/s1000/carlos-sainz-ferrari-charles-l.jpg",
-  name: "Eno Mario",
-  userCountry: "Italy",
-  rating: 4,
-  ratingTitle: "buono",
-  commentDate: "01-01-2023",
-  comment: "Buon Prodotto",
-};
-const test2: Post = {
-  img: "https://media.istockphoto.com/id/502458158/it/foto/whiskey-sulle-rocks.jpg?s=1024x1024&w=is&k=20&c=nMxRxgcXsYG3Bt51P9WSO7hIvkD1168z_sssgGXI4qM=",
-  title: "E Finibus Bonorum et Malorum",
-  description:
-    "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-};
-
-const prova: SpecialButtonElements = {
-  content: "Special",
-};
-
-const prova2: ButtonElements = {
-  content: "prova",
-};
-const BannerContentTest: BannerContent = {
-  announcement: "Ciao",
-  link: "Non cliccare",
-};
+import { userContext } from "./loginESubscription/AuthContext";
+import { useContext, useState } from "react";
+// Login.tsx
+import Login from "./loginESubscription/Login";
+import Store from "./store/Store";
+import { Product} from "./product/Product";
 
 const footerTest: FooterType = {
   logo: "https://flowbite.com/docs/images/logo.svg",
@@ -74,42 +29,39 @@ const footerTest: FooterType = {
   thirdColumnElement5: "Informazioni personali",
 };
 
-const NewsBannerContent: NewsletterBannerContent = {
-  announcement: "Ciao, enter your email",
-  link: "Sium",
-};
-
-const linkForTest: CarouselContent[] = [{
-  image:
-    "https://cdn-7.motorsport.com/images/amp/0ZRabeN0/s1000/carlos-sainz-ferrari-charles-l.jpg",
-},{image:"https://cdn-7.motorsport.com/images/amp/0ZRabeN0/s1000/carlos-sainz-ferrari-charles-l.jpg"}];
-  
-const products = {
-  title: "gino",
-  price: 300,
-  discountPrice: 400,
-  immagini: [
-    {
-      img1: "https://cdn-7.motorsport.com/images/amp/0ZRabeN0/s1000/carlos-sainz-ferrari-charles-l.jpg",
-    },
-    {
-      img1: "https://media.istockphoto.com/id/502458158/it/foto/whiskey-sulle-rocks.jpg?s=1024x1024&w=is&k=20&c=nMxRxgcXsYG3Bt51P9WSO7hIvkD1168z_sssgGXI4qM=",
-    },
-  ],
-};
 
 function App() {
+  const [userLogged, setUserLogged] = useState(localStorage.getItem("userID")); //user salvato nel local storage
+
   return (
     <div className="dark">
+      <userContext.Provider value={Number(userLogged)}>
       <BrowserRouter>
         <Routes>
+          <Route path="/" element={<Navigate to="/homepage" />} />
           <Route path="/dashboard/*" element={<Dashboard />} />
           <Route path="/store" element={<Store />} />
-          <Route path="/log-in" element={<Subscription />} />
+            <Route
+              path="/log-in"
+              element={
+                userLogged === "0" ? <Login /> : <Navigate to="/homepage" />
+              }
+            />
+            <Route
+              path="/subscription"
+              element={
+                userLogged === "0" ? (
+                  <Subscription />
+                ) : (
+                  <Navigate to="/homepage" />
+                )
+              }
+            />
           <Route path="/product" element={<Product />} />
           <Route path="/products/:id" element={<Product />} />
         </Routes>
       </BrowserRouter>
+      </userContext.Provider>
 
     </div>
   );

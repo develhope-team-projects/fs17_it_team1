@@ -10,8 +10,10 @@ const customTheme: CustomFlowbiteTheme["button"] = {
 };
 
 export type ButtonElements = {
-  content?: string;
+  content: string;
   svg?: any;
+  type?: "button" | "submit" | "reset";
+  onClick?: any;
   function?: () => void; // scrivere la logica della funzione per il bottone a seconda del componente in cui viene inserito
   customstyle?: string;
 };
@@ -26,8 +28,8 @@ export function NormalButton(props: ButtonElements) {
         onClick={props.function}
         theme={customTheme}
         color="primary"
-        className={`hover:text-oro-chiaro focus:ring-oro-chiaro focus:bg-our-black focus:text-oro-chiaro ${props.customstyle}`}
-
+        className=" hover:text-oro-chiaro focus:ring-oro-chiaro focus:bg-our-black focus:text-oro-chiaro"
+        type={props.type}
       >
         <p>{props.content}</p>
         {props.svg && props.svg}
