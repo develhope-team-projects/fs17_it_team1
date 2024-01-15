@@ -3,8 +3,14 @@ import Header from "../shared/Header";
 import FooterComponent from "../shared/Footer";
 import { useState } from "react";
 import useProductData from "../dashboard/Product/useProductData";
+import { Pagination } from "flowbite-react";
 
 const Store = () => {
+
+  const [currentPage, setCurrentPage] = useState(1);
+
+  const onPageChange = (page: number) => setCurrentPage(page);
+
   const [isFilterOpen, setIsFilterOpen] = useState<boolean>(false);
 
   const toggleFilter = () => {
@@ -148,6 +154,16 @@ const Store = () => {
             productData.map((el: any, index: any) => <CardStd {...el} />)}
         </div>
       </div>
+
+      <div className="flex overflow-x-auto sm:justify-center mb-2 ">
+          <Pagination
+            layout="navigation"
+            currentPage={currentPage}
+            totalPages={100}
+            onPageChange={onPageChange}
+            showIcons
+          />
+        </div>
 
       <div className="footer">
         <FooterComponent

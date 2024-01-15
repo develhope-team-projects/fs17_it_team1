@@ -82,3 +82,22 @@ const linkForTest: CarouselContent[] = [{
   image:
     "https://cdn-7.motorsport.com/images/amp/0ZRabeN0/s1000/carlos-sainz-ferrari-charles-l.jpg",
 },{image:"https://cdn-7.motorsport.com/images/amp/0ZRabeN0/s1000/carlos-sainz-ferrari-charles-l.jpg"}];
+
+function App() {
+  return (
+    <div className="dark">
+      <BrowserRouter>
+        <Routes>
+          <Route path="/dashboard/*" element={<Dashboard />} />
+          <Route path="/store" element={<Store />} />
+          <Route path="/log-in" element={<Subscription />} />
+          <Route path="/product" element={<Product />} />
+          <Route path="/product/:id" element={<Product />} />
+        </Routes>
+      </BrowserRouter>
+
+    </div>
+  );
+}
+
+export default App;
