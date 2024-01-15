@@ -19,10 +19,6 @@ function Login() {
 
   const { userCredentials, setUserCredentials, login, logout } = useLogin();
 
-  const [context, setContext] = useContext(userContext);
-
-  console.log(context);
-
   const handleChange = (e: any) => {
     const { id, value } = e.target;
 
