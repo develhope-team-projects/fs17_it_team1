@@ -11,12 +11,12 @@ export default function useLogin() {
     const loginData = userData.filter((el) => el.email === credentials.email);
     if (loginData.length > 0) {
       setUserCredentials(loginData[0].id);
-
       localStorage.setItem("userID", String(loginData[0].id));
       // salva nel local storage
     } else {
       setUserCredentials(0);
       localStorage.setItem("userID", "0");
+      alert("User doesn't exist!");
       // salva nel local storage
     }
   };
