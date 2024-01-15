@@ -183,6 +183,8 @@ function Subscription() {
       return response.json();
     }
 
+    const contesto = useContext(userContext);
+
     return (
       <div className=" flex justify-center items-center bg-our-black relative z-9 bg-opacity-50">
         <div className=" py-8 bg-our-black flex  justify-center items-center gap-6 relative z-10 rounded-md">

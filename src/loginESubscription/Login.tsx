@@ -35,6 +35,7 @@ function Login() {
 
     // Puoi anche gestire la navigazione a una nuova pagina qui
   };
+  const contesto = useContext(userContext);
 
   return (
     <div className="h-96 flex justify-center items-center bg-our-black relative z-9 bg-opacity-50">

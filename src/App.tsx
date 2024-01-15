@@ -28,13 +28,11 @@ const footerTest: FooterType = {
 };
 
 function App() {
-  const [userLogged, setUserLogged] = useState(0); //user salvato nel local storage
+  const [userLogged, setUserLogged] = useState(localStorage.getItem("userID")); //user salvato nel local storage
 
-  const contesto = useContext(userContext);
   return (
     <div className="dark">
-      <userContext.Provider value={userLogged}>
-        <h1>{contesto}</h1>
+      <userContext.Provider value={Number(userLogged)}>
         <BrowserRouter>
           <Routes>
             <Route path="/dashboard/*" element={<Dashboard />} />
