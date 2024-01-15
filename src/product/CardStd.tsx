@@ -12,7 +12,7 @@ export type Card = {
 };
 
 export default function CardStd(props: Card) {
-  const href = `/products/${props.id}`;
+  const href = `/product/${props.id}`;
   return (
     <Card
       className="max-w-s dark:bg-our-black"
