@@ -7,7 +7,12 @@ import { Pagination } from "flowbite-react";
 
 const Store = () => {
 
+
   const [currentPage, setCurrentPage] = useState(1);
+  const itemsPerPage = 12;
+  const startIndex = (currentPage - 1) * itemsPerPage;
+  const endIndex = startIndex + itemsPerPage;
+
 
   const onPageChange = (page: number) => setCurrentPage(page);
 
@@ -151,7 +156,9 @@ const Store = () => {
           {error && <h1>We have some problems</h1>}
           {!loading &&
             !error &&
-            productData.map((el: any, index: any) => <CardStd {...el} />)}
+            productData
+            .slice(startIndex, endIndex)
+            .map((el: any, index: any) => <CardStd key={index}{...el}/>)}
         </div>
       </div>
 
@@ -159,7 +166,7 @@ const Store = () => {
           <Pagination
             layout="navigation"
             currentPage={currentPage}
-            totalPages={100}
+            totalPages={Math.ceil(productData.length / itemsPerPage)}
             onPageChange={onPageChange}
             showIcons
           />
