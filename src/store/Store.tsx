@@ -155,7 +155,7 @@ const Store = () => {
         </div>
       </div>
 
-      <div className="flex overflow-x-auto sm:justify-center mb-2 ">
+      <div className="flex flex-col w-full items-center mb-2 ">
           <Pagination
             layout="navigation"
             currentPage={currentPage}
