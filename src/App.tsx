@@ -6,6 +6,8 @@ import { userContext } from "./loginESubscription/AuthContext";
 import { useContext, useState } from "react";
 // Login.tsx
 import Login from "./loginESubscription/Login";
+import Store from "./store/Store";
+import { Product} from "./product/Product";
 
 const footerTest: FooterType = {
   logo: "https://flowbite.com/docs/images/logo.svg",
@@ -27,16 +29,18 @@ const footerTest: FooterType = {
   thirdColumnElement5: "Informazioni personali",
 };
 
+
 function App() {
   const [userLogged, setUserLogged] = useState(localStorage.getItem("userID")); //user salvato nel local storage
 
   return (
     <div className="dark">
       <userContext.Provider value={Number(userLogged)}>
-        <BrowserRouter>
-          <Routes>
-            <Route path="/" element={<Navigate to="/homepage" />} />
-            <Route path="/dashboard/*" element={<Dashboard />} />
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<Navigate to="/homepage" />} />
+          <Route path="/dashboard/*" element={<Dashboard />} />
+          <Route path="/store" element={<Store />} />
             <Route
               path="/log-in"
               element={
@@ -53,9 +57,12 @@ function App() {
                 )
               }
             />
-          </Routes>
-        </BrowserRouter>
+          <Route path="/product" element={<Product />} />
+          <Route path="/products/:id" element={<Product />} />
+        </Routes>
+      </BrowserRouter>
       </userContext.Provider>
+
     </div>
   );
 }

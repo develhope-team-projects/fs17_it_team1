@@ -15,11 +15,15 @@ export type ButtonElements = {
   type?: "button" | "submit" | "reset";
   onClick?: any;
   function?: () => void; // scrivere la logica della funzione per il bottone a seconda del componente in cui viene inserito
+  customstyle?: string;
 };
+
+
 
 export function NormalButton(props: ButtonElements) {
   return (
     <div className="flex no-wrap items-center">
+
       <Button
         onClick={props.function}
         theme={customTheme}
