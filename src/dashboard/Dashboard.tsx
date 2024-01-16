@@ -15,6 +15,7 @@ import { EcommerceDashboard } from "./EcommerceDashboards/EcommerceDashboard";
 import Overview from "./Overview/Overview";
 import { useContext } from "react";
 import { userContext } from "../loginESubscription/AuthContext";
+import ProductsDashboard from "./ProductsDashboard/ProductsDashboard";
 
 export default function Dashboard() {
   const contesto = useContext(userContext);
@@ -64,10 +65,7 @@ export default function Dashboard() {
       <Routes>
         {contesto === 18 && <Route path="/overview" element={<Overview />} />}
         {contesto === 18 && (
-          <Route
-            path="/products"
-            element={<EcommerceDashboard pageName="Products" />}
-          />
+          <Route path="/products" element={<ProductsDashboard />} />
         )}
         <Route
           path="/sales"
