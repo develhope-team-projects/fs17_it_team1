@@ -44,7 +44,7 @@ function App() {
             <Route
               path="/log-in"
               element={
-                userLogged === "0" ? (
+                userLogged === "0" || !userLogged ? (
                   <Login />
                 ) : (
                   <Navigate to="/ecommerce/homepage" />
