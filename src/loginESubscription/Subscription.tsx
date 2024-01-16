@@ -120,14 +120,6 @@ function Subscription() {
 
     const [submitted, setSubmitted] = useState(false);
 
-    const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-      const { name, value } = e.target;
-      setFormState((prevState: FormState) => ({
-        ...prevState,
-        [name]: value,
-      }));
-    };
-
     const validatePassword = () => {
       const passwordRegex =
         /^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[!@#$%^&*()-_+=]).{8,}$/;
@@ -195,20 +187,11 @@ function Subscription() {
               esclusivi.
             </p>
             <div className="flex gap-6">
-              <InputField
-                type="text"
-                id="Nome"
-                name="Nome"
-                value={formState.nome}
-                onChange={handleChange}
-                label="Nome"
-              />
+              <InputField type="text" id="Nome" name="Nome" label="Nome" />
               <InputField
                 type="text"
                 id="Cognome"
                 name="Cognome"
-                value={formState.cognome}
-                onChange={handleChange}
                 label="Cognome"
               />
             </div>
@@ -225,8 +208,6 @@ function Subscription() {
               type="text"
               id="Indirizzo"
               name="Indirizzo"
-              value={formState.indirizzo}
-              onChange={handleChange}
               label="Indirizzo"
             />
             <fieldset className="flex align-center max-w-md flex-row item-center gap-4 text-gray-400">
@@ -255,8 +236,6 @@ function Subscription() {
               type="email"
               id="Email"
               name="Email"
-              value={formState.email}
-              onChange={handleChange}
               label="Inserisci email"
             />
 
@@ -266,8 +245,6 @@ function Subscription() {
               name="Password"
               pattern="^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[!@#$%^&*()-_+=]).{8,}$"
               title="La password deve contenere almeno una lettera maiuscola, una lettera minuscola, un numero e un simbolo, e deve essere lunga almeno 8 caratteri."
-              value={formState.password}
-              onChange={handleChange}
               label="Inserisci password"
             />
 

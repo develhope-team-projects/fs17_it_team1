@@ -1,14 +1,15 @@
 import { useEffect, useState } from "react";
 
 export type UserDash = {
-  id: number;
+  id?: number;
   email: string;
   first_name: string;
   last_name: string;
   birth_day: string;
   location?: string;
   gender?: string;
-  creation_date: string;
+  creation_date?: string;
+  password?: string;
 };
 
 export default function useUserData() {
