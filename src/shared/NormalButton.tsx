@@ -10,7 +10,7 @@ const customTheme: CustomFlowbiteTheme["button"] = {
 };
 
 export type ButtonElements = {
-  content: string;
+  content?: string;
   svg?: any;
   type?: "button" | "submit" | "reset";
   onClick?: any;
@@ -18,13 +18,10 @@ export type ButtonElements = {
   customstyle?: string;
 };
 
-
-
 export function NormalButton(props: ButtonElements) {
   console.log(props.function);
   return (
     <div className="flex no-wrap items-center">
-
       <Button
         onClick={props.onClick}
         theme={customTheme}
