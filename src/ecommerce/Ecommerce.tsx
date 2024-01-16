@@ -4,12 +4,14 @@ import Store from "./store/Store";
 import { Product } from "./product/Product";
 import Header from "../shared/Header";
 import FooterComponent from "../shared/Footer";
+import Homepage from "./homepage/Homepage";
 
 export default function Ecommerce() {
   return (
-    <div>
+    <div className="max-w-screen-xl m-auto">
       <Header />
       <Routes>
+        <Route path="/homepage" element={<Homepage />} />
         <Route path="/store" element={<Store />} />
         <Route path="/product/:id" element={<Product />} />
       </Routes>
