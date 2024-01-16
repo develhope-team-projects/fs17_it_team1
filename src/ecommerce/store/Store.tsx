@@ -1,8 +1,8 @@
 import CardStd from "../product/CardStd";
-import Header from "../shared/Header";
-import FooterComponent from "../shared/Footer";
+import Header from "../../shared/Header";
+import FooterComponent from "../../shared/Footer";
 import { useState } from "react";
-import useProductData from "../dashboard/Product/useProductData";
+import useProductData from "../../dashboard/Product/useProductData";
 import { Pagination } from "flowbite-react";
 
 const Store = () => {

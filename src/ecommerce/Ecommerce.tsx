@@ -1,7 +1,7 @@
 import React from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import Store from "../store/Store";
-import { Product } from "../product/Product";
+import Store from "./store/Store";
+import { Product } from "./product/Product";
 import Header from "../shared/Header";
 import FooterComponent from "../shared/Footer";
 

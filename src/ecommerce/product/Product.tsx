@@ -2,9 +2,9 @@
 /* -------------------FARE LO STILE,E AL CLICK DI UNA FOTO DEL CAROSELLO VERTICALE SI VEDA L'IMMAGINE NEL CAROSELLO GRANDE--------------------------- */
 
 import { Accordion, Footer, Spinner } from "flowbite-react";
-import { SitePathComponent } from "../shared/SitePath";
+import { SitePathComponent } from "../../shared/SitePath";
 import { useEffect, useState } from "react";
-import Header from "../shared/Header";
+import Header from "../../shared/Header";
 import { Rating } from "flowbite-react";
 import { Swiper, SwiperSlide } from "swiper/react";
 
@@ -13,9 +13,9 @@ import "swiper/css";
 import "swiper/css/navigation";
 
 // import required modules
-import { NormalButton } from "../shared/NormalButton";
+import { NormalButton } from "../../shared/NormalButton";
 import { useParams } from "react-router-dom";
-import useProductDatabyId from "../dashboard/Product/useProductDatabyId";
+import useProductDatabyId from "../../dashboard/Product/useProductDatabyId";
 import CardStd from "./CardStd";
 import RatingReview from "./RatingReview";
 import CarrouselProducts from "./CarrouselProducts";
@@ -30,13 +30,13 @@ interface Product {
 }
 export function Product() {
   const { id } = useParams();
-  const productId: number = Number(id)
+  const productId: number = Number(id);
   const { productData, setProductData, loading, error, onFetchData } =
     useProductDatabyId(productId);
   console.log(loading);
   console.log(error);
   console.log(productData);
-  console.log(productId)
+  console.log(productId);
 
   return (
     <div className="flex flex-col w-full items-center">
@@ -138,7 +138,7 @@ export function Product() {
                 <NormalButton
                   content="Add to cart"
                   customstyle="w-full h-11"
-                /*   function={() => addToCart(product)} */
+                  /*   function={() => addToCart(product)} */
                 />
               </div>
             </div>
@@ -149,7 +149,8 @@ export function Product() {
                   <Accordion.Content>
                     <p className="mb-2 text-gray-500 dark:text-gray-400">
                       Consegna standard gratuita con la tua Membership Nike.
-                      Puoi restituire il tuo ordine gratuitamente entro 24 ore dall'arrivo del prodotto.
+                      Puoi restituire il tuo ordine gratuitamente entro 24 ore
+                      dall'arrivo del prodotto.
                     </p>
                   </Accordion.Content>
                 </Accordion.Panel>
@@ -157,7 +158,8 @@ export function Product() {
                   <Accordion.Title>Recensioni</Accordion.Title>
                   <Accordion.Content>
                     <div className="pb-10">
-                      <RatingReview img="https://cdn-7.motorsport.com/images/amp0ZRabeN0s1000carlos-sainz-ferrari-charles-l.jpg"
+                      <RatingReview
+                        img="https://cdn-7.motorsport.com/images/amp0ZRabeN0s1000carlos-sainz-ferrari-charles-l.jpg"
                         name="Eno Mario"
                         userCountry="Italy"
                         rating={3}
@@ -167,7 +169,8 @@ export function Product() {
                       />
                     </div>
                     <div className="pb-10">
-                      <RatingReview img="https://cdn-7.motorsport.com/images/amp0ZRabeN0s1000carlos-sainz-ferrari-charles-l.jpg"
+                      <RatingReview
+                        img="https://cdn-7.motorsport.com/images/amp0ZRabeN0s1000carlos-sainz-ferrari-charles-l.jpg"
                         name="Eno Mario"
                         userCountry="Italy"
                         rating={3}
@@ -177,7 +180,8 @@ export function Product() {
                       />
                     </div>
                     <div className="pb-10">
-                      <RatingReview img="https://cdn-7.motorsport.com/images/amp0ZRabeN0s1000carlos-sainz-ferrari-charles-l.jpg"
+                      <RatingReview
+                        img="https://cdn-7.motorsport.com/images/amp0ZRabeN0s1000carlos-sainz-ferrari-charles-l.jpg"
                         name="Eno Mario"
                         userCountry="Italy"
                         rating={3}
@@ -193,7 +197,6 @@ export function Product() {
             </div>
           </div>
         )}
-
       </div>
     </div>
   );

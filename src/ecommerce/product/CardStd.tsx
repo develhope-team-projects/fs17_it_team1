@@ -1,7 +1,7 @@
 "use client";
 
 import { Card, Rating } from "flowbite-react";
-import { SpecialButton } from "../shared/SpecialButton";
+import { SpecialButton } from "../../shared/SpecialButton";
 
 export type Card = {
   id: number;
