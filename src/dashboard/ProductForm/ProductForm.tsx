@@ -1,6 +1,13 @@
 "use client";
 
-import { Button, Checkbox, Datepicker, Label, TextInput } from "flowbite-react";
+import {
+  Button,
+  Checkbox,
+  Datepicker,
+  FileInput,
+  Label,
+  TextInput,
+} from "flowbite-react";
 import { useState } from "react";
 /* Interfaccia da definire */
 interface UserData {
@@ -102,7 +109,12 @@ export function ProductForm() {
           value={userData.discount}
         />
       </div>
-
+      <div>
+        <div className="mb-2 block">
+          <Label htmlFor="file-upload" value="Upload file" />
+        </div>
+        <FileInput id="file-upload" />
+      </div>
       <Button type="submit">Submit</Button>
     </form>
   );
