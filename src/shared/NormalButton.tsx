@@ -21,11 +21,12 @@ export type ButtonElements = {
 
 
 export function NormalButton(props: ButtonElements) {
+  console.log(props.function);
   return (
     <div className="flex no-wrap items-center">
 
       <Button
-        onClick={props.function}
+        onClick={props.onClick}
         theme={customTheme}
         color="primary"
         className=" hover:text-oro-chiaro focus:ring-oro-chiaro focus:bg-our-black focus:text-oro-chiaro"

@@ -55,10 +55,7 @@ function Login() {
           value={loginData.password}
           onChange={handleChange}
         />
-        <button content="Log in" onClick={handleLogin}>
-          {" "}
-          Login
-        </button>
+        <NormalButton content="Log in" onClick={handleLogin} />
         <br />
         <p className="text-gray-400">
           Se non sei ancora iscritto{" "}
