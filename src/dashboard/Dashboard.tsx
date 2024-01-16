@@ -62,11 +62,13 @@ export default function Dashboard() {
         </Sidebar.Items>
       </Sidebar>
       <Routes>
-        <Route path="/overview" element={<Overview />} />
-        <Route
-          path="/products"
-          element={<EcommerceDashboard pageName="Products" />}
-        />
+        {contesto === 18 && <Route path="/overview" element={<Overview />} />}
+        {contesto === 18 && (
+          <Route
+            path="/products"
+            element={<EcommerceDashboard pageName="Products" />}
+          />
+        )}
         <Route
           path="/sales"
           element={<EcommerceDashboard pageName="Sales" />}
@@ -75,8 +77,9 @@ export default function Dashboard() {
           path="/refunds"
           element={<EcommerceDashboard pageName="Refunds" />}
         />
-        <Route path="/inbox" element={<Inbox />} />
-        <Route path="/users" element={<UsersDashboard />} />
+        {contesto === 18 && (
+          <Route path="/users" element={<UsersDashboard />} />
+        )}
       </Routes>
     </div>
   );
