@@ -4,6 +4,7 @@ import { useContext, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { userContext } from "../loginESubscription/AuthContext";
 import useUserData from "../dashboard/UsersDashboard/useUserData";
+import useLogin from "../loginESubscription/useLogin";
 
 export default function Header() {
   const [toggle, setToggle] = useState(false);
@@ -11,6 +12,7 @@ export default function Header() {
   const { userData, setUserData, loading, error, onFetchData } = useUserData();
   const contesto = useContext(userContext);
   const loggedUser = userData.filter((el) => el.id === contesto);
+  const { logout } = useLogin();
 
   const handleToggle = () => {
     if (isMobileOrTablet) {
@@ -30,10 +32,10 @@ export default function Header() {
       {!isMobileOrTablet ? (
         <>
           <Navbar.Collapse>
-            <Navbar.Link href="#" active>
+            <Navbar.Link href="/" active>
               Home
             </Navbar.Link>
-            <Navbar.Link href="#" className="dark:text-gray-300">
+            <Navbar.Link href="/ecommerce/store" className="dark:text-gray-300">
               Shop
             </Navbar.Link>
             <Navbar.Link href="#" className="dark:text-gray-300">
@@ -88,13 +90,19 @@ export default function Header() {
                   </span>
                 </Dropdown.Header>
               )}
-              {contesto != 0 && <Dropdown.Item>Dashboard</Dropdown.Item>}
+              {contesto != 0 && (
+                <Dropdown.Item>
+                  <Link to="/dashboard">Dashboard</Link>
+                </Dropdown.Item>
+              )}
               {contesto != 0 && <Dropdown.Item>Settings</Dropdown.Item>}
               <Dropdown.Divider />
               {contesto != 0 ? (
-                <Dropdown.Item>Sign out</Dropdown.Item>
+                <Dropdown.Item onClick={logout}>Sign out</Dropdown.Item>
               ) : (
-                <Dropdown.Item>Sign in</Dropdown.Item>
+                <Dropdown.Item>
+                  <Link to="/log-in">Sign in</Link>
+                </Dropdown.Item>
               )}
             </Dropdown>
             <Navbar.Toggle />

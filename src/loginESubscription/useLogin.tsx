@@ -25,7 +25,7 @@ export default function useLogin() {
   const logout = () => {
     setUserCredentials(0);
     localStorage.setItem("userID", "0");
-
+    window.location.href = "/";
     // salva nel local storage
   };
 
