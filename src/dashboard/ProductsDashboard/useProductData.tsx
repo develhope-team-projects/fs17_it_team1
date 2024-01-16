@@ -1,11 +1,11 @@
 import { useEffect, useState } from "react";
 
-export type UserDash = {
+export type ProductDash = {
   id?: number;
-  email: string;
-  first_name: string;
-  last_name: string;
-  birth_day: string;
+  name: string;
+  description: string;
+  price: string;
+  birth_day?: string;
   location?: string;
   gender?: string;
   creation_date?: string;
@@ -13,10 +13,10 @@ export type UserDash = {
 };
 
 export default function useUserData() {
-  type test = UserDash[];
+  type test = ProductDash[];
 
   const test1: test = [];
-  const [userData, setUserData] = useState(test1);
+  const [ProductData, setProductData] = useState(test1);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
 
@@ -24,7 +24,7 @@ export default function useUserData() {
     setLoading(true);
     setError("");
 
-    fetch(`http://localhost:3001/users`)
+    fetch(`http://localhost:3001/products`)
       .then((data) => {
         if (data.status !== 200) {
           setError("Error");
@@ -33,7 +33,7 @@ export default function useUserData() {
           return data.json();
         }
       })
-      .then((data) => setUserData(data))
+      .then((data) => setProductData(data))
       .catch((err) => setError(err))
       .finally(() => setLoading(false));
   }
@@ -41,8 +41,8 @@ export default function useUserData() {
   useEffect(() => fetchData(), []);
 
   return {
-    userData,
-    setUserData,
+    ProductData,
+    setProductData,
     loading,
     error,
     onFetchData: fetchData,

@@ -1,38 +1,41 @@
 import { useMediaQuery } from "@react-hook/media-query";
 import { Avatar, Dropdown, Navbar } from "flowbite-react";
-import { useState } from "react";
+import { useContext, useEffect, useState } from "react";
+import { Link } from "react-router-dom";
+import { userContext } from "../loginESubscription/AuthContext";
+import useUserData from "../dashboard/UsersDashboard/useUserData";
+import useLogin from "../loginESubscription/useLogin";
 
 export default function Header() {
   const [toggle, setToggle] = useState(false);
   const isMobileOrTablet = useMediaQuery("(max-width: 767px)");
+  const { userData, setUserData, loading, error, onFetchData } = useUserData();
+  const contesto = useContext(userContext);
+  const loggedUser = userData.filter((el) => el.id === contesto);
+  const { logout } = useLogin();
 
   const handleToggle = () => {
     if (isMobileOrTablet) {
-      
-        setToggle((prevToggle) => !prevToggle);
-      
+      setToggle((prevToggle) => !prevToggle);
     }
-    console.log(toggle)
+    console.log(toggle);
   };
 
   const handleLinkClick = () => {
     if (isMobileOrTablet) {
-      
-        setToggle(false);
-      
+      setToggle(false);
     }
   };
 
-
   return (
-    <Navbar className=" bg-traspartent dark:bg-trasparent absolute w-full">
+    <Navbar className=" bg-traspartent dark:bg-trasparent absolute w-full max-w-screen-xl">
       {!isMobileOrTablet ? (
         <>
           <Navbar.Collapse>
-            <Navbar.Link href="#" active>
+            <Navbar.Link href="/" active>
               Home
             </Navbar.Link>
-            <Navbar.Link href="#" className="dark:text-gray-300">
+            <Navbar.Link href="/ecommerce/store" className="dark:text-gray-300">
               Shop
             </Navbar.Link>
             <Navbar.Link href="#" className="dark:text-gray-300">
@@ -50,7 +53,7 @@ export default function Header() {
                 alt="Flowbite React Logo"
               /> */}
               <span className="self-center whitespace-nowrap text-xl font-semibold dark:text-white mr-6">
-                Flowbite React
+                LOKI & Co.
               </span>
             </Navbar.Brand>
           </div>
@@ -76,16 +79,31 @@ export default function Header() {
                 />
               }
             >
-              <Dropdown.Header>
-                <span className="block text-sm">Bonnie Green</span>
-                <span className="block truncate text-sm font-medium">
-                  name@flowbite.com
-                </span>
-              </Dropdown.Header>
-              <Dropdown.Item>Dashboard</Dropdown.Item>
-              <Dropdown.Item>Settings</Dropdown.Item>
+              {contesto != 0 && (
+                <Dropdown.Header>
+                  <span className="block text-sm">
+                    {loggedUser[0] &&
+                      loggedUser[0].first_name + " " + loggedUser[0].last_name}
+                  </span>
+                  <span className="block truncate text-sm font-medium">
+                    {loggedUser[0] && loggedUser[0].email}
+                  </span>
+                </Dropdown.Header>
+              )}
+              {contesto != 0 && (
+                <Dropdown.Item>
+                  <Link to="/dashboard">Dashboard</Link>
+                </Dropdown.Item>
+              )}
+              {contesto != 0 && <Dropdown.Item>Settings</Dropdown.Item>}
               <Dropdown.Divider />
-              <Dropdown.Item>Sign out</Dropdown.Item>
+              {contesto != 0 ? (
+                <Dropdown.Item onClick={logout}>Sign out</Dropdown.Item>
+              ) : (
+                <Dropdown.Item>
+                  <Link to="/log-in">Sign in</Link>
+                </Dropdown.Item>
+              )}
             </Dropdown>
             <Navbar.Toggle />
           </div>
@@ -139,7 +157,15 @@ export default function Header() {
                       name@flowbite.com
                     </span>
                   </Dropdown.Header>
-                  <Dropdown.Item>Dashboard</Dropdown.Item>
+
+                  <Dropdown.Item
+                    onClick={() => {
+                      window.location.href = "/dashboard";
+                    }}
+                  >
+                    Dashboard
+                  </Dropdown.Item>
+
                   <Dropdown.Item>Settings</Dropdown.Item>
                   <Dropdown.Divider />
                   <Dropdown.Item>Sign out</Dropdown.Item>
