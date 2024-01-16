@@ -37,7 +37,9 @@ function App() {
         <BrowserRouter>
           <Routes>
             <Route path="/" element={<Navigate to="/ecommerce/homepage" />} />
-            <Route path="/dashboard/*" element={<Dashboard />} />
+            {userLogged != "0" && (
+              <Route path="/dashboard/*" element={<Dashboard />} />
+            )}
             <Route path="/ecommerce/*" element={<Ecommerce />} />
             <Route
               path="/log-in"
