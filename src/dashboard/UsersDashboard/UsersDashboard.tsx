@@ -56,7 +56,7 @@ export default function UsersDashboard() {
             <NormalButton
               content="New"
               svg={<HiPlus />}
-              function={() => formHandler()}
+              onClick={() => formHandler()}
             />
           </div>
           {formVisibility && <Form />}
