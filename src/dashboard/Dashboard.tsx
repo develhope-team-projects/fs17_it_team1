@@ -13,8 +13,11 @@ import Inbox from "./Inbox/Inbox";
 import UsersDashboard from "./UsersDashboard/UsersDashboard";
 import { EcommerceDashboard } from "./EcommerceDashboards/EcommerceDashboard";
 import Overview from "./Overview/Overview";
+import { useContext } from "react";
+import { userContext } from "../loginESubscription/AuthContext";
 
 export default function Dashboard() {
+  const contesto = useContext(userContext);
   return (
     <div className="flex">
       <Sidebar
@@ -30,9 +33,11 @@ export default function Dashboard() {
         </Sidebar.Logo>
         <Sidebar.Items>
           <Sidebar.ItemGroup>
-            <Sidebar.Item href="#" icon={HiChartPie}>
-              <Link to="/dashboard/overview">dashboard</Link>
-            </Sidebar.Item>
+            {contesto === 18 && (
+              <Sidebar.Item href="#" icon={HiChartPie}>
+                <Link to="/dashboard/overview">dashboard</Link>
+              </Sidebar.Item>
+            )}
 
             <Sidebar.Collapse icon={HiShoppingBag} label="E-commerce">
               <Link to={"/dashboard/sales"}>
@@ -43,16 +48,16 @@ export default function Dashboard() {
               </Link>
             </Sidebar.Collapse>
 
-            <Link to="/dashboard/inbox">
-              <Sidebar.Item icon={HiInbox}>Inbox</Sidebar.Item>
-            </Link>
-
-            <Link to="/dashboard/users">
-              <Sidebar.Item icon={HiUser}>Users</Sidebar.Item>
-            </Link>
-            <Link to={"/dashboard/products"}>
-              <Sidebar.Item icon={HiShoppingBag}>Products</Sidebar.Item>
-            </Link>
+            {contesto === 18 && (
+              <Link to="/dashboard/users">
+                <Sidebar.Item icon={HiUser}>Users</Sidebar.Item>
+              </Link>
+            )}
+            {contesto === 18 && (
+              <Link to={"/dashboard/products"}>
+                <Sidebar.Item icon={HiShoppingBag}>Products</Sidebar.Item>
+              </Link>
+            )}
           </Sidebar.ItemGroup>
         </Sidebar.Items>
       </Sidebar>

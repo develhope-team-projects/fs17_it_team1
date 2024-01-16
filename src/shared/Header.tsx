@@ -12,10 +12,6 @@ export default function Header() {
   const contesto = useContext(userContext);
   const loggedUser = userData.filter((el) => el.id === contesto);
 
-  console.log(contesto);
-  console.log(userData);
-  console.log(loggedUser);
-
   const handleToggle = () => {
     if (isMobileOrTablet) {
       setToggle((prevToggle) => !prevToggle);
