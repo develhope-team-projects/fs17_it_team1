@@ -145,7 +145,12 @@ const Store = () => {
          mb-3
          "
         >
-          {loading && <h1>Loading</h1>}
+          {loading && (
+            <div className="flex items-center justify-center flex-col w-full">
+              <img src="https://media.tenor.com/vfSWqzGjMdcAAAAi/grants-triple-good.gif" />
+              <p className="text-4xl p-4">Loading...</p>
+            </div>
+          )}
           {error && <h1>We have some problems</h1>}
           {!loading &&
             !error &&

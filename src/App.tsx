@@ -32,7 +32,7 @@ function App() {
   const [userLogged, setUserLogged] = useState(localStorage.getItem("userID")); //user salvato nel local storage
 
   return (
-    <div className="dark">
+    <div className="dark bg-light-bg">
       <userContext.Provider value={Number(userLogged)}>
         <BrowserRouter>
           <Routes>
