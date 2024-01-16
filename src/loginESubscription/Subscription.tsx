@@ -250,14 +250,6 @@ function Subscription() {
 
             <NormalButton type="submit" content="Sign up" />
           </form>
-          {submitted && (
-            <div className="text-gray-400 mt-2">
-              Ora che sei iscritto puoi tornare al{" "}
-              <Link to="/log-in" className="text-oro-chiaro">
-                log-in
-              </Link>
-            </div>
-          )}
         </div>
       </div>
     );
