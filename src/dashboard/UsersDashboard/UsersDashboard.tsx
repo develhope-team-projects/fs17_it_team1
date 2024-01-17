@@ -47,7 +47,7 @@ export default function UsersDashboard() {
   return (
     <div className="w-full bg-our-black">
       <h1 className="flex items-center text-5xl font-bold dark:text-white">
-        Inbox
+        Users
       </h1>
       <div className="flex flex-col	justify-between h-[90%] ">
         <div>

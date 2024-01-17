@@ -8,20 +8,20 @@ export default {
   theme: {
     extend: {
       screens: {
-        'iphone': '414px',
+        iphone: "414px",
         // => @media (min-width: 640px) { ... }
 
-        'tablet': '800px',
+        tablet: "800px",
         // => @media (min-width: 1024px) { ... }
 
-        'desktop': '1280px',
+        desktop: "1280px",
         // => @media (min-width: 1280px) { ... }
       },
       colors: {
         "our-black": "#212024",
         "oro-chiaro": "#e9a42e",
         "oro-scuro": "#be7f39",
-        "light-bg": "#fcf7eb",
+        "light-bg": "#e3ddcd",
         "dark-bg": "#212024",
         "dark-white": "#e4ddcd",
       },

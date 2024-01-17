@@ -47,14 +47,11 @@ export default function Header() {
           </Navbar.Collapse>
           <div className="flex items-center ">
             <Navbar.Brand>
-              {/* <img
-                src="/favicon.svg"
+              <img
+                src="/src/assets/logo_white-03.svg"
                 className="mr-3 h-6 sm:h-9"
-                alt="Flowbite React Logo"
-              /> */}
-              <span className="self-center whitespace-nowrap text-xl font-semibold dark:text-white mr-6">
-                LOKI & Co.
-              </span>
+                alt="LOKI Logo"
+              />
             </Navbar.Brand>
           </div>
 

@@ -8,7 +8,7 @@ export default function Overview() {
   const contesto = useContext(userContext);
 
   return (
-    <div className="w-screen bg-our-black">
+    <div className="w-screen bg-light-bg">
       <h2 className="flex items-center text-5xl font-bold dark:text-white">
         Overview idUtente:{contesto}
       </h2>
