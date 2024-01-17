@@ -3,10 +3,11 @@ import { NormalButton } from "../../shared/NormalButton";
 import { HiOutlineRefresh, HiPlus } from "react-icons/hi";
 import { Pagination } from "flowbite-react";
 import { useState } from "react";
-import UsersTableDash from "./UsersTableDash";
-import useUserData from "./useUserData";
+import ProductsTableDash from "./ProductsTableDash";
+import useProductData from "./useProductData";
 import { func } from "prop-types";
 import { Form } from "../Form/Form";
+import { ProductForm } from "../ProductForm/ProductForm";
 const testuData = {
   name: "Product 6",
   description: "Test Product",
@@ -14,7 +15,7 @@ const testuData = {
   discount: null,
 };
 
-//function to create User
+//function to create Product
 const fetchPost = async (uData: any) => {
   console.log(uData);
   const response = await fetch("http://localhost:3001/products", {
@@ -28,20 +29,17 @@ const fetchPost = async (uData: any) => {
   return response.json(); // parses JSON response into native JavaScript objects
 };
 
-export default function UsersDashboard() {
+export default function ProductsDashboard() {
   const [formVisibility, setFormVisibility] = useState(false);
 
-  const { userData, setUserData, loading, error, onFetchData } = useUserData();
+  const { ProductData, setProductData, loading, error, onFetchData } =
+    useProductData();
 
-  const props = { userData, setUserData, loading, error, onFetchData };
+  const props = { ProductData, setProductData, loading, error, onFetchData };
 
   const [currentPage, setCurrentPage] = useState(1);
-  const itemsPerPage = 12;
-  const startIndex = (currentPage - 1) * itemsPerPage;
-  const endIndex = startIndex + itemsPerPage;
 
   const onPageChange = (page: number) => setCurrentPage(page);
-
   // Function to Open the form
   function formHandler() {
     setFormVisibility(!formVisibility);
@@ -49,23 +47,32 @@ export default function UsersDashboard() {
   }
 
   return (
-    <div className="w-full">
+    <div className="w-full ">
       <h1 className="flex items-center text-5xl font-bold dark:text-white my-3 mx-2">
-        Users
+        Products
       </h1>
       <div className="flex flex-col	justify-between h-[90%] ">
         <div>
           <div className="flex justify-between px-1 py-1">
-            <NormalButton svg={<HiOutlineRefresh />} function={onFetchData} />
+            <NormalButton svg={<HiOutlineRefresh />} onClick={onFetchData} />
             <NormalButton
               content="New"
               svg={<HiPlus />}
               onClick={() => formHandler()}
             />
           </div>
-          {formVisibility && <Form />}
-          {!formVisibility && <UsersTableDash {...props} />}
+          {formVisibility && <ProductForm />}
+          {!formVisibility && <ProductsTableDash {...props} />}
         </div>
+        {/*         <div className="flex overflow-x-auto sm:justify-center ">
+          <Pagination
+            layout="navigation"
+            currentPage={currentPage}
+            totalPages={100}
+            onPageChange={onPageChange}
+            showIcons
+          />
+        </div> */}
       </div>
     </div>
   );

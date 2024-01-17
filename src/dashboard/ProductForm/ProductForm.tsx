@@ -1,6 +1,13 @@
 "use client";
 
-import { Button, Checkbox, Datepicker, Label, TextInput } from "flowbite-react";
+import {
+  Button,
+  Checkbox,
+  Datepicker,
+  FileInput,
+  Label,
+  TextInput,
+} from "flowbite-react";
 import { useState } from "react";
 /* Interfaccia da definire */
 interface UserData {
@@ -25,7 +32,7 @@ export function ProductForm() {
       name: event.target[0].value,
       description: event.target[1].value,
       price: event.target[2].value,
-      discount: event.target[3].value,
+      discount: event.target[3].value ? event.target[3].value : null,
     };
 
     console.log(newUserData);
@@ -95,14 +102,18 @@ export function ProductForm() {
           id="discount"
           type="number"
           placeholder=""
-          required
           onChange={(e) =>
             setUserData({ ...userData, discount: e.target.value })
           }
           value={userData.discount}
         />
       </div>
-
+      <div>
+        <div className="mb-2 block">
+          <Label htmlFor="file-upload" value="Upload file" />
+        </div>
+        <FileInput id="file-upload" />
+      </div>
       <Button type="submit">Submit</Button>
     </form>
   );

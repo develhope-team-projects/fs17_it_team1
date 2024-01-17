@@ -9,7 +9,7 @@
   background-image: url("https://web.archive.org/web/20160312084140im_/http://splatoon.nintendo.com/assets/img/nav-bg-fill-blue.png?1443460871") !important;
   background-repeat: repeat-x;
   background-position: 0 -25%;
-  filter: hue-rotate(200deg);
+  filter: hue-rotate(180deg);
   transition: 2s ease;
 }
 

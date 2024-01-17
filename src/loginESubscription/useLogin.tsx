@@ -10,7 +10,7 @@ export default function useLogin() {
   const login = (credentials: { email: string; password: string | number }) => {
     const loginData = userData.filter((el) => el.email === credentials.email);
     if (loginData.length > 0) {
-      setUserCredentials(loginData[0].id);
+      setUserCredentials(Number(loginData[0].id));
       localStorage.setItem("userID", String(loginData[0].id));
       window.location.href = "/";
       // salva nel local storage
@@ -25,7 +25,7 @@ export default function useLogin() {
   const logout = () => {
     setUserCredentials(0);
     localStorage.setItem("userID", "0");
-
+    window.location.href = "/";
     // salva nel local storage
   };
 

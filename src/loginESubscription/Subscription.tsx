@@ -120,14 +120,6 @@ function Subscription() {
 
     const [submitted, setSubmitted] = useState(false);
 
-    const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-      const { name, value } = e.target;
-      setFormState((prevState: FormState) => ({
-        ...prevState,
-        [name]: value,
-      }));
-    };
-
     const validatePassword = () => {
       const passwordRegex =
         /^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[!@#$%^&*()-_+=]).{8,}$/;
@@ -158,7 +150,7 @@ function Subscription() {
 
       const birthday = formatDateToYYYYMMDD(event.target[2].value);
 
-      console.log(event);
+      console.log(event.target[5].checked);
 
       const newUserData: UserDash = {
         email: event.target[8].value,
@@ -166,7 +158,11 @@ function Subscription() {
         last_name: event.target[1].value,
         birth_day: birthday,
         location: event.target[3].value,
-        gender: event.target[5].value,
+        gender: event.target[5].checked
+          ? event.target[5].value
+          : event.target[6].checked
+          ? event.target[6].value
+          : event.target[7].value,
         password: event.target[9].value,
       };
 
@@ -180,7 +176,7 @@ function Subscription() {
         body: JSON.stringify(newUserData),
       });
       setSubmitted(true);
-      window.location.href = "/log-in";
+      //window.location.href = "/log-in";
     }
 
     return (
@@ -195,20 +191,11 @@ function Subscription() {
               esclusivi.
             </p>
             <div className="flex gap-6">
-              <InputField
-                type="text"
-                id="Nome"
-                name="Nome"
-                value={formState.nome}
-                onChange={handleChange}
-                label="Nome"
-              />
+              <InputField type="text" id="Nome" name="Nome" label="Nome" />
               <InputField
                 type="text"
                 id="Cognome"
                 name="Cognome"
-                value={formState.cognome}
-                onChange={handleChange}
                 label="Cognome"
               />
             </div>
@@ -225,8 +212,6 @@ function Subscription() {
               type="text"
               id="Indirizzo"
               name="Indirizzo"
-              value={formState.indirizzo}
-              onChange={handleChange}
               label="Indirizzo"
             />
             <fieldset className="flex align-center max-w-md flex-row item-center gap-4 text-gray-400">
@@ -255,8 +240,6 @@ function Subscription() {
               type="email"
               id="Email"
               name="Email"
-              value={formState.email}
-              onChange={handleChange}
               label="Inserisci email"
             />
 
@@ -266,21 +249,11 @@ function Subscription() {
               name="Password"
               pattern="^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[!@#$%^&*()-_+=]).{8,}$"
               title="La password deve contenere almeno una lettera maiuscola, una lettera minuscola, un numero e un simbolo, e deve essere lunga almeno 8 caratteri."
-              value={formState.password}
-              onChange={handleChange}
               label="Inserisci password"
             />
 
             <NormalButton type="submit" content="Sign up" />
           </form>
-          {submitted && (
-            <div className="text-gray-400 mt-2">
-              Ora che sei iscritto puoi tornare al{" "}
-              <Link to="/log-in" className="text-oro-chiaro">
-                log-in
-              </Link>
-            </div>
-          )}
         </div>
       </div>
     );
