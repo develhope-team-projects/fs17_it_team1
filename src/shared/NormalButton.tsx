@@ -23,7 +23,7 @@ export function NormalButton(props: ButtonElements) {
   return (
     <div className="flex no-wrap items-center">
       <Button
-        onClick={props.onClick}
+        onClick={!props.onClick ? props.function : props.onClick}
         theme={customTheme}
         color="primary"
         className=" hover:text-oro-chiaro focus:ring-oro-chiaro focus:bg-our-black focus:text-oro-chiaro"

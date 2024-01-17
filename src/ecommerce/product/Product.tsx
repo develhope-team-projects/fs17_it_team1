@@ -40,16 +40,17 @@ export function Product() {
 
   return (
     <div className="flex flex-col w-full items-center">
+      <div className="w-full h-[3.75rem] bg-our-black/95"></div>
       <div
         className=" container
        mx-4
        max-w-7xl"
       >
-        <div className="w-full pt-16">
+        <div className="w-full py-4">
           <SitePathComponent
-            firstTitle="home"
-            secondTitle="store"
-            thirdTitle="product"
+            firstTitle="Homepage"
+            secondTitle="Store"
+            thirdTitle={productData[0] && productData[0].name}
           />
         </div>
         {loading && (
@@ -63,7 +64,7 @@ export function Product() {
         {productData[0] && (
           <div>
             <div className="flex items-center my-10">
-              <div className="w-8/12">
+              <div className="w-8/12 mx-5">
                 {/* Carosello vertifcali delli immagini */}
                 {/* <div>
               {props.immagini.map((product, index)=> (
@@ -94,6 +95,7 @@ export function Product() {
                 </SwiperSlide>
               ))}
             </Swiper> */}
+                <img src={`/src/Images/${productData[0].id}.jpg`} alt="" />
               </div>
               {/* dettagli prodotto */}
               <div className="w-full h-full mr-32">
@@ -111,7 +113,8 @@ export function Product() {
                   <p className="pt-4 text-l">{productData[0].description}</p>
                 )}
                 <div className="flex items-center pt-5 pb-8">
-                  {productData[0].discount === null ? (
+                  {productData[0].discount === null ||
+                  productData[0].discount === 0 ? (
                     <p className="text-3xl pr-3">
                       {(
                         productData[0].price -

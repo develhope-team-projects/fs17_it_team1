@@ -36,8 +36,12 @@ export default function UsersDashboard() {
   const props = { userData, setUserData, loading, error, onFetchData };
 
   const [currentPage, setCurrentPage] = useState(1);
+  const itemsPerPage = 12;
+  const startIndex = (currentPage - 1) * itemsPerPage;
+  const endIndex = startIndex + itemsPerPage;
 
   const onPageChange = (page: number) => setCurrentPage(page);
+
   // Function to Open the form
   function formHandler() {
     setFormVisibility(!formVisibility);
@@ -45,9 +49,9 @@ export default function UsersDashboard() {
   }
 
   return (
-    <div className="w-full bg-our-black">
-      <h1 className="flex items-center text-5xl font-bold dark:text-white">
-        Inbox
+    <div className="w-full">
+      <h1 className="flex items-center text-5xl font-bold dark:text-white my-3 mx-2">
+        Users
       </h1>
       <div className="flex flex-col	justify-between h-[90%] ">
         <div>
@@ -62,15 +66,6 @@ export default function UsersDashboard() {
           {formVisibility && <Form />}
           {!formVisibility && <UsersTableDash {...props} />}
         </div>
-        {/*         <div className="flex overflow-x-auto sm:justify-center ">
-          <Pagination
-            layout="navigation"
-            currentPage={currentPage}
-            totalPages={100}
-            onPageChange={onPageChange}
-            showIcons
-          />
-        </div> */}
       </div>
     </div>
   );
