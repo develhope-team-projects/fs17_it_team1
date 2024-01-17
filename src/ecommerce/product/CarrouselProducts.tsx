@@ -11,9 +11,16 @@ import { Navigation } from "swiper/modules";
 import { useSwiper } from "swiper/react";
 import CardStd, { Card } from "./CardStd";
 import useProductData from "../../dashboard/Product/useProductData";
+import { useEffect, useState } from "react";
 
 export default function CarrouselProducts() {
   const swiper = useSwiper();
+  const med = window.matchMedia("(min-width: 800px)");
+  const [media, setMedia] = useState(med.matches);
+
+  med.addEventListener("change", () => {
+    setMedia(med.matches);
+  });
 
   const { productData, setProductData, loading, error, onFetchData } =
     useProductData();
@@ -25,7 +32,7 @@ export default function CarrouselProducts() {
       <hr />
       <Swiper
         spaceBetween={20}
-        slidesPerView={3}
+        slidesPerView={media ? 3 : 1}
         navigation={true}
         modules={[Navigation]}
         className="mySwiper flex items-center"
