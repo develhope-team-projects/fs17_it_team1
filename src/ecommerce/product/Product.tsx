@@ -1,12 +1,9 @@
 "use client";
 /* -------------------FARE LO STILE,E AL CLICK DI UNA FOTO DEL CAROSELLO VERTICALE SI VEDA L'IMMAGINE NEL CAROSELLO GRANDE--------------------------- */
 
-import { Accordion, Footer, Spinner } from "flowbite-react";
+import { Accordion} from "flowbite-react";
 import { SitePathComponent } from "../../shared/SitePath";
-import { useEffect, useState } from "react";
-import Header from "../../shared/Header";
 import { Rating } from "flowbite-react";
-import { Swiper, SwiperSlide } from "swiper/react";
 
 // Import Swiper styles
 import "swiper/css";
@@ -16,10 +13,9 @@ import "swiper/css/navigation";
 import { NormalButton } from "../../shared/NormalButton";
 import { useParams } from "react-router-dom";
 import useProductDatabyId from "../../dashboard/Product/useProductDatabyId";
-import CardStd from "./CardStd";
 import RatingReview from "./RatingReview";
 import CarrouselProducts from "./CarrouselProducts";
-
+import useReviewbyId from "../../dashboard/Product/useReviewbyId";
 interface Product {
   id: number;
   title: string;
@@ -31,12 +27,29 @@ interface Product {
 export function Product() {
   const { id } = useParams();
   const productId: number = Number(id);
-  const { productData, setProductData, loading, error, onFetchData } =
+
+  const { productData, loading, error} =
     useProductDatabyId(productId);
-  console.log(loading);
+
+  const {
+    reviewData,
+    loadingReview,
+    errorReview,
+  } = useReviewbyId(productId);
+
+
+  /* console.log(loading);
   console.log(error);
   console.log(productData);
-  console.log(productId);
+  console.log(productId); */
+  
+  console.log("Review Data:", reviewData);
+  console.log("ProductData:",productData[0])
+  const filteredReviews = reviewData
+    ? reviewData.filter(review => review.product_id == productData[0].id)
+    : [];
+console.log("filtered",filteredReviews)
+
 
   return (
     <div className="flex flex-col w-full items-center">
@@ -63,7 +76,7 @@ export function Product() {
 
         {productData[0] && (
           <div>
-            <div className="flex items-center my-10">
+            <div className="flex flex-col md:flex-row w-full items-center">
               <div className="w-8/12 mx-5">
                 {/* Carosello vertifcali delli immagini */}
                 {/* <div>
@@ -95,10 +108,10 @@ export function Product() {
                 </SwiperSlide>
               ))}
             </Swiper> */}
-                <img src={`/src/Images/${productData[0].id}.jpg`} alt="" />
+                <img src={`/src/Images/${productData[0].id}.jpg`} alt="" className="w-full rounded-lg"/>
               </div>
               {/* dettagli prodotto */}
-              <div className="w-full h-full mr-32">
+              <div className="w-full h-full mt-10 md:pl-10">
                 <h1 className="text-5xl pb-3 font-semibold">
                   {productData[0].name}
                 </h1>
@@ -141,62 +154,48 @@ export function Product() {
                 <NormalButton
                   content="Add to cart"
                   customstyle="w-full h-11"
-                  /*   function={() => addToCart(product)} */
+                /*   function={() => addToCart(product)} */
                 />
               </div>
             </div>
             <div className="pt-16">
-              <Accordion collapseAll>
+              <Accordion>
                 <Accordion.Panel>
-                  <Accordion.Title>Spedizioni e resi</Accordion.Title>
-                  <Accordion.Content>
-                    <p className="mb-2 text-gray-500 dark:text-gray-400">
-                      Consegna standard gratuita con la tua Membership Nike.
+                  <Accordion.Title className="dark:hover:bg-[#c8a485]/60 dark:hover:text-our-black focus:ring-2 dark:bg-[#c8a485]/30 dark:text-our-black">Spedizioni e resi</Accordion.Title>
+                  <Accordion.Content className="dark:bg-[#e3ddcd]/40">
+                    <p className="mb-2 text-gray-500 dark:text-our-black">
                       Puoi restituire il tuo ordine gratuitamente entro 24 ore
                       dall'arrivo del prodotto.
                     </p>
                   </Accordion.Content>
                 </Accordion.Panel>
                 <Accordion.Panel>
-                  <Accordion.Title>Recensioni</Accordion.Title>
-                  <Accordion.Content>
-                    <div className="pb-10">
-                      <RatingReview
-                        img="https://cdn-7.motorsport.com/images/amp0ZRabeN0s1000carlos-sainz-ferrari-charles-l.jpg"
-                        name="Eno Mario"
-                        userCountry="Italy"
-                        rating={3}
-                        ratingTitle="buono"
-                        commentDate="01-01-2023"
-                        comment="Buon Prodotto"
-                      />
-                    </div>
-                    <div className="pb-10">
-                      <RatingReview
-                        img="https://cdn-7.motorsport.com/images/amp0ZRabeN0s1000carlos-sainz-ferrari-charles-l.jpg"
-                        name="Eno Mario"
-                        userCountry="Italy"
-                        rating={3}
-                        ratingTitle="buono"
-                        commentDate="01-01-2023"
-                        comment="Buon Prodotto"
-                      />
-                    </div>
-                    <div className="pb-10">
-                      <RatingReview
-                        img="https://cdn-7.motorsport.com/images/amp0ZRabeN0s1000carlos-sainz-ferrari-charles-l.jpg"
-                        name="Eno Mario"
-                        userCountry="Italy"
-                        rating={3}
-                        ratingTitle="buono"
-                        commentDate="01-01-2023"
-                        comment="Buon Prodotto"
-                      />
-                    </div>
+                  <Accordion.Title className="dark:hover:bg-[#c8a485]/60 dark:hover:text-our-black focus:ring-2 dark:bg-[#c8a485]/30 dark:text-our-black" >Recensioni</Accordion.Title>
+                  <Accordion.Content className="dark:bg-[#e3ddcd]/40">
+                    {loadingReview && (
+                      <div className="flex items-center justify-center flex-col">
+                        <img src="	https://media.tenor.com/vfSWqzGjMdcAAAAi/grants-triple-good.gif" />
+                        <p className="text-4xl p-4">Loading...</p>
+                      </div>
+                    )}
+                    {errorReview && <p>...Error</p>}¯
+                    {filteredReviews.map((review, index) => (
+                      <div key={index} className="pb-10">
+                        <RatingReview
+                          title={review.title}
+                          comment={review.comment}
+                          creation_date={review.creation_date}
+                          user_id={review.user_id}
+                        />
+                      </div>
+                    ))}
+
+
                   </Accordion.Content>
                 </Accordion.Panel>
               </Accordion>
-              <CarrouselProducts />
+              <div className="h-1/4"><CarrouselProducts /></div>
+              
             </div>
           </div>
         )}

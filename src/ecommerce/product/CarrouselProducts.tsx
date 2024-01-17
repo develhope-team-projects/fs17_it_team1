@@ -9,9 +9,9 @@ import "swiper/css/navigation";
 // import required modules
 import { Navigation } from "swiper/modules";
 import { useSwiper } from "swiper/react";
-import CardStd, { Card } from "./CardStd";
+import CardStd from "./CardStd";
 import useProductData from "../../dashboard/Product/useProductData";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 export default function CarrouselProducts() {
   const swiper = useSwiper();
@@ -22,12 +22,12 @@ export default function CarrouselProducts() {
     setMedia(med.matches);
   });
 
-  const { productData, setProductData, loading, error, onFetchData } =
+  const { productData, loading, error } =
     useProductData();
   return (
-    <div className="py-20">
+    <div className="py-20 h-2/6">
       <h2 className="flex items-center text-5xl font-bold dark:text-our-black my-3 mx-2 pb-5">
-        I più venduti!
+        Best sellers
       </h2>
       <hr />
       <Swiper
@@ -46,7 +46,7 @@ export default function CarrouselProducts() {
         {error && <h1>We have some problems</h1>}
         {!loading &&
           !error &&
-          productData.map((el: any, index: any) => (
+          productData.map((el: any) => (
             <SwiperSlide>
               <CardStd {...el} />
             </SwiperSlide>
