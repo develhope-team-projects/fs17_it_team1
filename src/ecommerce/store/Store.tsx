@@ -4,6 +4,7 @@ import FooterComponent from "../../shared/Footer";
 import { useState } from "react";
 import useProductData from "../../dashboard/Product/useProductData";
 import { Pagination } from "flowbite-react";
+import ProductCardHome from "../../shared/ProductCardHome";
 
 const Store = () => {
   const [currentPage, setCurrentPage] = useState(1);
@@ -26,14 +27,17 @@ const Store = () => {
     <div>
       <div
         className="vuoto
-      h-40"
-      ></div>
+      h-30">
+      <ProductCardHome/>
+      </div>
 
       <div className="flex flex-col w-full items-center">
         <div
           className="container
        mx-4
-       max-w-7xl"
+       max-w-7xl
+       mt-2
+       mb-0"
         >
           <button
             onClick={toggleFilter}
@@ -146,7 +150,7 @@ const Store = () => {
          "
         >
           {loading && (
-            <div className="flex items-center justify-center flex-col w-full">
+            <div className="flex items-center justify-center flex-col w-full mt-0">
               <img src="https://media.tenor.com/vfSWqzGjMdcAAAAi/grants-triple-good.gif" />
               <p className="text-4xl p-4">Loading...</p>
             </div>
