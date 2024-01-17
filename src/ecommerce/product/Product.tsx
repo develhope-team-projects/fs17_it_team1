@@ -19,6 +19,8 @@ import useProductDatabyId from "../../dashboard/Product/useProductDatabyId";
 import CardStd from "./CardStd";
 import RatingReview from "./RatingReview";
 import CarrouselProducts from "./CarrouselProducts";
+import useReviewbyId from "../../dashboard/Product/useReviewbyId";
+import { ReferenceLine } from "recharts";
 
 interface Product {
   id: number;
@@ -31,13 +33,28 @@ interface Product {
 export function Product() {
   const { id } = useParams();
   const productId: number = Number(id);
+
   const { productData, setProductData, loading, error, onFetchData } =
     useProductDatabyId(productId);
-  console.log(loading);
+
+  const {
+    reviewData,
+    loadingReview,
+    errorReview,
+  } = useReviewbyId(productId);
+
+
+  /* console.log(loading);
   console.log(error);
   console.log(productData);
-  console.log(productId);
-
+  console.log(productId); */
+  
+  console.log("Review Data:", reviewData);
+  console.log("ProductData:",productData[0])
+  const filteredReviews = reviewData
+    ? reviewData.filter(review => review.product_id == productData[0].id)
+    : [];
+console.log("filtered",filteredReviews)
   return (
     <div className="flex flex-col w-full items-center">
       <div
@@ -138,7 +155,7 @@ export function Product() {
                 <NormalButton
                   content="Add to cart"
                   customstyle="w-full h-11"
-                  /*   function={() => addToCart(product)} */
+                /*   function={() => addToCart(product)} */
                 />
               </div>
             </div>
@@ -157,39 +174,25 @@ export function Product() {
                 <Accordion.Panel>
                   <Accordion.Title>Recensioni</Accordion.Title>
                   <Accordion.Content>
-                    <div className="pb-10">
-                      <RatingReview
-                        img="https://cdn-7.motorsport.com/images/amp0ZRabeN0s1000carlos-sainz-ferrari-charles-l.jpg"
-                        name="Eno Mario"
-                        userCountry="Italy"
-                        rating={3}
-                        ratingTitle="buono"
-                        commentDate="01-01-2023"
-                        comment="Buon Prodotto"
-                      />
-                    </div>
-                    <div className="pb-10">
-                      <RatingReview
-                        img="https://cdn-7.motorsport.com/images/amp0ZRabeN0s1000carlos-sainz-ferrari-charles-l.jpg"
-                        name="Eno Mario"
-                        userCountry="Italy"
-                        rating={3}
-                        ratingTitle="buono"
-                        commentDate="01-01-2023"
-                        comment="Buon Prodotto"
-                      />
-                    </div>
-                    <div className="pb-10">
-                      <RatingReview
-                        img="https://cdn-7.motorsport.com/images/amp0ZRabeN0s1000carlos-sainz-ferrari-charles-l.jpg"
-                        name="Eno Mario"
-                        userCountry="Italy"
-                        rating={3}
-                        ratingTitle="buono"
-                        commentDate="01-01-2023"
-                        comment="Buon Prodotto"
-                      />
-                    </div>
+                    {loadingReview && (
+                      <div className="flex items-center justify-center flex-col">
+                        <img src="	https://media.tenor.com/vfSWqzGjMdcAAAAi/grants-triple-good.gif" />
+                        <p className="text-4xl p-4">Loading...</p>
+                      </div>
+                    )}
+                    {errorReview && <p>...Error</p>}¯
+                    {filteredReviews.map((review, index) => (
+                      <div key={index} className="pb-10">
+                        <RatingReview
+                          title={review.title}
+                          comment={review.comment}
+                          creation_date={review.creation_date}
+                          user_id={review.user_id}
+                        />
+                      </div>
+                    ))}
+
+
                   </Accordion.Content>
                 </Accordion.Panel>
               </Accordion>
