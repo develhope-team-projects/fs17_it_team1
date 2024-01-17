@@ -1,7 +1,7 @@
 "use client";
 /* -------------------FARE LO STILE,E AL CLICK DI UNA FOTO DEL CAROSELLO VERTICALE SI VEDA L'IMMAGINE NEL CAROSELLO GRANDE--------------------------- */
 
-import { Accordion} from "flowbite-react";
+import { Accordion } from "flowbite-react";
 import { SitePathComponent } from "../../shared/SitePath";
 import { Rating } from "flowbite-react";
 
@@ -28,7 +28,7 @@ export function Product() {
   const { id } = useParams();
   const productId: number = Number(id);
 
-  const { productData, loading, error} =
+  const { productData, loading, error } =
     useProductDatabyId(productId);
 
   const {
@@ -42,13 +42,13 @@ export function Product() {
   console.log(error);
   console.log(productData);
   console.log(productId); */
-  
+
   console.log("Review Data:", reviewData);
-  console.log("ProductData:",productData[0])
+  console.log("ProductData:", productData[0])
   const filteredReviews = reviewData
     ? reviewData.filter(review => review.product_id == productData[0].id)
     : [];
-console.log("filtered",filteredReviews)
+  console.log("filtered", filteredReviews)
 
 
   return (
@@ -68,7 +68,7 @@ console.log("filtered",filteredReviews)
         </div>
         {loading && (
           <div className="flex items-center justify-center flex-col">
-            <img src="	https://media.tenor.com/vfSWqzGjMdcAAAAi/grants-triple-good.gif" />
+            <img src="	https://media.tenor.com/vfSWqzGjMdcAAAAi/grants-triple-good.gif" className="h-96" />
             <p className="text-4xl p-4">Loading...</p>
           </div>
         )}
@@ -108,7 +108,7 @@ console.log("filtered",filteredReviews)
                 </SwiperSlide>
               ))}
             </Swiper> */}
-                <img src={`/src/Images/${productData[0].id}.jpg`} alt="" className="w-full rounded-lg"/>
+                <img src={`/src/Images/${productData[0].id}.jpg`} alt="" className="w-full rounded-lg" />
               </div>
               {/* dettagli prodotto */}
               <div className="w-full h-full mt-10 md:pl-10">
@@ -127,7 +127,7 @@ console.log("filtered",filteredReviews)
                 )}
                 <div className="flex items-center pt-5 pb-8">
                   {productData[0].discount === null ||
-                  productData[0].discount === 0 ? (
+                    productData[0].discount === 0 ? (
                     <p className="text-3xl pr-3">
                       {(
                         productData[0].price -
@@ -159,18 +159,31 @@ console.log("filtered",filteredReviews)
               </div>
             </div>
             <div className="pt-16">
-              <Accordion>
+              <Accordion className="dark:border-[#c8a485]/60 dark:divide-[#c8a485]/60">
                 <Accordion.Panel>
-                  <Accordion.Title className="dark:hover:bg-[#c8a485]/60 dark:hover:text-our-black focus:ring-2 dark:bg-[#c8a485]/30 dark:text-our-black">Spedizioni e resi</Accordion.Title>
+                  <Accordion.Title className="dark:hover:bg-[#c8a485]/60 dark:hover:text-our-black focus:ring-2 dark:bg-[#c8a485]/30 dark:text-our-black">
+                    <div className="flex items-center">
+                      <img src="https://cdn-icons-png.flaticon.com/512/2769/2769339.png" alt="ship" className="h-7 pr-3"/>
+                      <p>Spedizioni e resi</p>
+                    </div>
+                  </Accordion.Title>
                   <Accordion.Content className="dark:bg-[#e3ddcd]/40">
                     <p className="mb-2 text-gray-500 dark:text-our-black">
-                      Puoi restituire il tuo ordine gratuitamente entro 24 ore
+                      Puoi restituire il tuo ordine gratuitamente entro 48 ore
                       dall'arrivo del prodotto.
                     </p>
+
+
                   </Accordion.Content>
                 </Accordion.Panel>
                 <Accordion.Panel>
-                  <Accordion.Title className="dark:hover:bg-[#c8a485]/60 dark:hover:text-our-black focus:ring-2 dark:bg-[#c8a485]/30 dark:text-our-black" >Recensioni</Accordion.Title>
+                  <Accordion.Title className="dark:hover:bg-[#c8a485]/60 dark:hover:text-our-black focus:ring-2 dark:bg-[#c8a485]/30 dark:text-our-black" >
+                    <div className="flex items-center">
+                      <img src="https://cdn-icons-png.flaticon.com/128/2191/2191108.png" alt="reviews" className="h-7 pr-3"/>
+                      <p>Recensioni</p>
+                    </div>
+                    
+                    </Accordion.Title>
                   <Accordion.Content className="dark:bg-[#e3ddcd]/40">
                     {loadingReview && (
                       <div className="flex items-center justify-center flex-col">
@@ -195,7 +208,7 @@ console.log("filtered",filteredReviews)
                 </Accordion.Panel>
               </Accordion>
               <div className="h-1/4"><CarrouselProducts /></div>
-              
+
             </div>
           </div>
         )}
