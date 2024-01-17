@@ -1,4 +1,4 @@
-import { Rating } from "flowbite-react";
+
 
 export type Review = {
   title:string,
