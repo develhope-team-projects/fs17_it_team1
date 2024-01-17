@@ -150,7 +150,7 @@ function Subscription() {
 
       const birthday = formatDateToYYYYMMDD(event.target[2].value);
 
-      console.log(event);
+      console.log(event.target[5].checked);
 
       const newUserData: UserDash = {
         email: event.target[8].value,
@@ -158,7 +158,11 @@ function Subscription() {
         last_name: event.target[1].value,
         birth_day: birthday,
         location: event.target[3].value,
-        gender: event.target[5].value,
+        gender: event.target[5].checked
+          ? event.target[5].value
+          : event.target[6].checked
+          ? event.target[6].value
+          : event.target[7].value,
         password: event.target[9].value,
       };
 
@@ -172,7 +176,7 @@ function Subscription() {
         body: JSON.stringify(newUserData),
       });
       setSubmitted(true);
-      window.location.href = "/log-in";
+      //window.location.href = "/log-in";
     }
 
     return (
