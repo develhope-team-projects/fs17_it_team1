@@ -30,7 +30,7 @@ export type FooterType = {
 };
 function FooterComponent(props: FooterType) {
   return (
-    <Footer container className="rounded-none dark:bg-dark-bg">
+    <Footer container className="rounded-none dark:bg-[#c8a485]">
       <div className="w-full max-w-screen-xl m-auto">
         <div className="grid w-full justify-between sm:flex sm:justify-between md:flex md:grid-cols-1">
           <div>

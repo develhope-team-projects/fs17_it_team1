@@ -2,6 +2,7 @@ import { Checkbox, Pagination, Table } from "flowbite-react";
 import { HiOutlineTrash } from "react-icons/hi";
 import { UserDash } from "./useUserData";
 import { useState } from "react";
+import { pgTheme } from "../../ecommerce/store/Store";
 
 export default function UsersTableDash(props: any) {
   const [currentPage, setCurrentPage] = useState(1);
@@ -74,6 +75,7 @@ export default function UsersTableDash(props: any) {
       </Table>
       <div className="flex flex-col w-full items-center mb-2 ">
         <Pagination
+          theme={pgTheme}
           layout="navigation"
           currentPage={currentPage}
           totalPages={Math.ceil(props.userData.length / itemsPerPage)}

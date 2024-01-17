@@ -9,8 +9,8 @@ export default function Overview() {
 
   return (
     <div className="w-screen bg-light-bg">
-      <h2 className="flex items-center text-5xl font-bold dark:text-white">
-        Overview idUtente:{contesto}
+      <h2 className="flex items-center text-5xl font-bold dark:text-white my-3 mx-2">
+        Overview
       </h2>
       <div className="flex flex-col	justify-around w-full h-[88%]">
         <AreachartSales />

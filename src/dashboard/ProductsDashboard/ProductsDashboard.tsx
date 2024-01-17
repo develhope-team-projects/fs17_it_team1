@@ -47,9 +47,9 @@ export default function ProductsDashboard() {
   }
 
   return (
-    <div className="w-full bg-our-black">
-      <h1 className="flex items-center text-5xl font-bold dark:text-white">
-        Inbox
+    <div className="w-full ">
+      <h1 className="flex items-center text-5xl font-bold dark:text-white my-3 mx-2">
+        Products
       </h1>
       <div className="flex flex-col	justify-between h-[90%] ">
         <div>

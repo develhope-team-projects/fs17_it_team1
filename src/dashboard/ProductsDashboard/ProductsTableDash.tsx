@@ -2,6 +2,34 @@ import { Checkbox, Pagination, Table } from "flowbite-react";
 import { HiOutlineTrash } from "react-icons/hi";
 import { ProductDash } from "./useProductData";
 import { useState } from "react";
+import { pgTheme } from "../../ecommerce/store/Store";
+
+const tabTheme: any = {
+  root: {
+    base: "w-full text-left text-sm text-gray-500 dark:text-gray-400",
+    shadow:
+      "absolute bg-white dark:bg-black w-full h-full top-0 left-0 rounded-lg drop-shadow-md -z-10",
+    wrapper: "relative",
+  },
+  body: {
+    base: "group/body",
+    cell: {
+      base: "group-first/body:group-first/row:first:rounded-tl-lg group-first/body:group-first/row:last:rounded-tr-lg group-last/body:group-last/row:first:rounded-bl-lg group-last/body:group-last/row:last:rounded-br-lg px-6 py-4",
+    },
+  },
+  head: {
+    base: "group/head text-xs uppercase text-gray-700 dark:text-gray-400",
+    cell: {
+      base: "group-first/head:first:rounded-tl-lg group-first/head:last:rounded-tr-lg bg-gray-50 dark:bg-white px-6 py-3",
+    },
+  },
+  row: {
+    base: "group/row",
+    hovered: "hover:bg-gray-50 dark:hover:bg-gray-600",
+    striped:
+      "odd:bg-white even:bg-gray-50 odd:dark:bg-gray-800 even:dark:bg-white",
+  },
+};
 
 export default function ProductsTableDash(props: any) {
   const [currentPage, setCurrentPage] = useState(1);
@@ -50,7 +78,7 @@ export default function ProductsTableDash(props: any) {
 
   return (
     <div className="overflow-x-auto w-full">
-      <Table hoverable className="rounded-none">
+      <Table hoverable className="rounded-none" theme={tabTheme}>
         <Table.Head>
           <Table.HeadCell className="p-4">
             <Checkbox />
@@ -74,6 +102,7 @@ export default function ProductsTableDash(props: any) {
       </Table>
       <div className="flex flex-col w-full items-center mb-2 ">
         <Pagination
+          theme={pgTheme}
           layout="navigation"
           currentPage={currentPage}
           totalPages={Math.ceil(props.ProductData.length / itemsPerPage)}
