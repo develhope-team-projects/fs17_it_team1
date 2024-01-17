@@ -4,6 +4,7 @@ import FooterComponent from "../shared/Footer";
 import { useState } from "react";
 import useProductData from "../dashboard/Product/useProductData";
 import { Pagination } from "flowbite-react";
+import ProductCardHome from "../shared/ProductCardHome";
 
 const Store = () => {
 
@@ -31,16 +32,16 @@ const Store = () => {
         <Header />
       </div>
 
-      <div
-        className="vuoto
-      h-40"
-      ></div>
+      <div className="vuoto">
+        <ProductCardHome/>
+      </div>
 
       <div className="flex flex-col w-full items-center">
         <div
           className="container
        mx-4
-       max-w-7xl"
+       max-w-7xl
+       mt-2"
         >
           <button
             onClick={toggleFilter}

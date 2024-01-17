@@ -15,7 +15,7 @@ export default function CardStd(props: Card) {
     <Card
       className="max-w-sm dark:bg-our-black"
       imgAlt="Apple Watch Series 7 in colors pink, silver, and black"
-      imgSrc={props.img}
+      imgSrc="https://www.capijersey.com/media/catalog/product/cache/99831d77450675e6f1766168ca7c1fdb/7/-/7-74-113-05_jack_daniel_s_whisky_old_no.7_1l.png"
     >
       <a href="#">
         <h5 className="text-xl font-semibold tracking-tight text-gray-900 dark:text-white">
