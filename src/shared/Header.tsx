@@ -109,14 +109,11 @@ export default function Header() {
         /* /////MOBILE///// */
         <>
           <Navbar.Brand>
-            {/* <img
-              src="/favicon.svg"
+            <img
+              src="/src/assets/logo_white-03.svg"
               className="mr-3 h-6 sm:h-9"
-              alt="Flowbite React Logo"
-            /> */}
-            <span className="self-center whitespace-nowrap text-xl font-semibold dark:text-white">
-              Flowbite React
-            </span>
+              alt="LOKI Logo"
+            />
           </Navbar.Brand>
 
           {/* bottone toggle */}
@@ -148,37 +145,46 @@ export default function Header() {
                     />
                   }
                 >
-                  <Dropdown.Header>
-                    <span className="block text-sm">Bonnie Green</span>
-                    <span className="block truncate text-sm font-medium">
-                      name@flowbite.com
-                    </span>
-                  </Dropdown.Header>
-
-                  <Dropdown.Item
-                    onClick={() => {
-                      window.location.href = "/dashboard";
-                    }}
-                  >
-                    Dashboard
-                  </Dropdown.Item>
-
-                  <Dropdown.Item>Settings</Dropdown.Item>
+                  {contesto != 0 && (
+                    <Dropdown.Header>
+                      <span className="block text-sm">
+                        {loggedUser[0] &&
+                          loggedUser[0].first_name +
+                            " " +
+                            loggedUser[0].last_name}
+                      </span>
+                      <span className="block truncate text-sm font-medium">
+                        {loggedUser[0] && loggedUser[0].email}
+                      </span>
+                    </Dropdown.Header>
+                  )}
+                  {contesto != 0 && (
+                    <Dropdown.Item>
+                      <Link to="/dashboard">Dashboard</Link>
+                    </Dropdown.Item>
+                  )}
+                  {contesto != 0 && <Dropdown.Item>Settings</Dropdown.Item>}
                   <Dropdown.Divider />
-                  <Dropdown.Item>Sign out</Dropdown.Item>
+                  {contesto != 0 ? (
+                    <Dropdown.Item onClick={logout}>Sign out</Dropdown.Item>
+                  ) : (
+                    <Dropdown.Item>
+                      <Link to="/log-in">Sign in</Link>
+                    </Dropdown.Item>
+                  )}
                 </Dropdown>
               </div>
               <div className="bg-gray-800/[0.4] list-none w-full  mt-2 md:block md:w-auto flex flex-col text-center md:mt-0 md:flex-row md:space-x-8 md:text-sm md:font-medium">
                 <div className="flex flex-col">
                   <Navbar.Link
-                    href="#"
+                    href="/"
                     onClick={handleLinkClick}
                     className="dark:border-gray-400 dark:text-gray-200 dark:hover:bg-gray-900"
                   >
                     Home
                   </Navbar.Link>
                   <Navbar.Link
-                    href="#"
+                    href="/ecommerce/store"
                     onClick={handleLinkClick}
                     className="dark:border-gray-400 dark:text-gray-200 dark:hover:bg-gray-900"
                   >
