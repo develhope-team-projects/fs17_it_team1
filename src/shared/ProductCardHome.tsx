@@ -4,7 +4,7 @@ export default function ProductCardHome(){
   return (
     <div className="flex flex-rowmax-h-lg bg-[url('https://r4.wallpaperflare.com/wallpaper/275/469/224/germany-watzmann-sky-mountain-wallpaper-29a068dd511aad3b0677384f8041b69d.jpg')]">
       {/* da controllare il padding */}
-      <div className="w-4/4 max-h-50 pl-10 pt-16 pb-16 pr-10  tablet:w-2/4 pt-56 pb-56 ">
+      <div className="w-4/4 max-h-30 pl-10 pt-20 pb-20 pr-10  tablet:w-2/4 pt-20 pb-20 ">
         <h1 className="font-bold text-s tablet:font-bold text-3xl pb-6 text-white ">
           Neque porro quisquam est qui dolorem ipsum quia dolor sit amet,
           consectetur, adipisci velit...
