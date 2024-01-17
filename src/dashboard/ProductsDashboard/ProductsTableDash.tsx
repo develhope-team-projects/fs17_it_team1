@@ -4,7 +4,7 @@ import { ProductDash } from "./useProductData";
 import { useState } from "react";
 import { pgTheme } from "../../ecommerce/store/Store";
 
-const tabTheme: any = {
+export const tabTheme: any = {
   root: {
     base: "w-full text-left text-sm text-gray-500 dark:text-gray-400",
     shadow:
@@ -18,9 +18,9 @@ const tabTheme: any = {
     },
   },
   head: {
-    base: "group/head text-xs uppercase text-gray-700 dark:text-gray-400",
+    base: "group/head text-xs uppercase text-gray-700 dark:text-our-black",
     cell: {
-      base: "group-first/head:first:rounded-tl-lg group-first/head:last:rounded-tr-lg bg-gray-50 dark:bg-white px-6 py-3",
+      base: "bg-gray-50 dark:bg-[#c8a485]/90 px-6 py-3 dark:text-our-black",
     },
   },
   row: {
@@ -57,15 +57,19 @@ export default function ProductsTableDash(props: any) {
 
   function TableRow(props: ProductDash) {
     return (
-      <Table.Row className="bg-white dark:border-gray-700 dark:bg-gray-800">
+      <Table.Row className="bg-white dark:border-[#c8a485]/40 dark:bg-[#c8a485]/70 dark:hover:bg-[#c8a485]/90">
         <Table.Cell className="p-4">
           <Checkbox />
         </Table.Cell>
         <Table.Cell className="whitespace-nowrap font-medium text-gray-900 dark:text-white">
           {props.name}
         </Table.Cell>
-        <Table.Cell>{props.description}</Table.Cell>
-        <Table.Cell>{String(props.price)}</Table.Cell>
+        <Table.Cell className="whitespace-nowrap font-medium text-gray-900 dark:text-white">
+          {props.description}
+        </Table.Cell>
+        <Table.Cell className="whitespace-nowrap font-medium text-gray-900 dark:text-white">
+          {String(props.price)}
+        </Table.Cell>
         <Table.Cell>
           <HiOutlineTrash
             className="b-50 text-cyan-600 hover:underline dark:text-cyan-500 hover:cursor-pointer	hover:bg-white rounded"
@@ -78,15 +82,19 @@ export default function ProductsTableDash(props: any) {
 
   return (
     <div className="overflow-x-auto w-full">
-      <Table hoverable className="rounded-none" theme={tabTheme}>
-        <Table.Head>
-          <Table.HeadCell className="p-4">
+      <Table hoverable theme={tabTheme}>
+        <Table.Head theme={tabTheme.head}>
+          <Table.HeadCell className="p-4" theme={tabTheme.head.cell}>
             <Checkbox />
           </Table.HeadCell>
-          <Table.HeadCell>Product name</Table.HeadCell>
-          <Table.HeadCell>Description</Table.HeadCell>
-          <Table.HeadCell>Price</Table.HeadCell>
-          <Table.HeadCell>
+          <Table.HeadCell theme={tabTheme.head.cell}>
+            Product name
+          </Table.HeadCell>
+          <Table.HeadCell theme={tabTheme.head.cell}>
+            Description
+          </Table.HeadCell>
+          <Table.HeadCell theme={tabTheme.head.cell}>Price</Table.HeadCell>
+          <Table.HeadCell theme={tabTheme.head.cell}>
             <span className="sr-only">Delete</span>
           </Table.HeadCell>
         </Table.Head>

@@ -29,7 +29,7 @@ const themeNav: any = {
     button:
       "group flex w-full items-center rounded-lg p-2 text-base font-normal text-gray-900 transition duration-75 hover:bg-[#c8a485] dark:text-white dark:hover:bg-[#c8a485]",
     icon: {
-      base: "h-6 w-6 text-gray-500 transition duration-75 group-hover:text-gray-900 dark:text-gray-400 dark:group-hover:text-white",
+      base: "h-6 w-6 text-gray-500 transition duration-75 group-hover:text-gray-900 dark:text-our-black dark:group-hover:text-white",
       open: {
         off: "",
         on: "text-gray-900",
@@ -92,7 +92,7 @@ const themeNav: any = {
       on: "hidden",
       off: "self-center whitespace-nowrap text-xl font-semibold dark:text-white",
     },
-    img: "mr-3 h-6 sm:h-7",
+    img: "mr-3 h-6 sm:h-9",
   },
 };
 
@@ -106,35 +106,49 @@ export default function Dashboard() {
         theme={themeNav}
       >
         <Sidebar.Logo
+          theme={themeNav.logo}
           href="/"
           img="/src/assets/logo_white-03.svg"
           imgAlt="LOKI logo"
+          className="h-9 sm:h-10"
         ></Sidebar.Logo>
         <Sidebar.Items>
           <Sidebar.ItemGroup>
             {contesto === 18 && (
-              <Sidebar.Item href="#" icon={HiChartPie}>
+              <Sidebar.Item href="#" icon={HiChartPie} theme={themeNav.item}>
                 <Link to="/dashboard/overview">dashboard</Link>
               </Sidebar.Item>
             )}
 
-            <Sidebar.Collapse icon={HiShoppingBag} label="E-commerce">
+            <Sidebar.Collapse
+              icon={HiShoppingBag}
+              label="E-commerce"
+              theme={themeNav.collapse}
+            >
               <Link to={"/dashboard/sales"}>
-                <Sidebar.Item href="#">Sales</Sidebar.Item>
+                <Sidebar.Item href="#" theme={themeNav.item}>
+                  Sales
+                </Sidebar.Item>
               </Link>
               <Link to={"/dashboard/refunds"}>
-                <Sidebar.Item href="#">Refunds</Sidebar.Item>
+                <Sidebar.Item href="#" theme={themeNav.item}>
+                  Refunds
+                </Sidebar.Item>
               </Link>
             </Sidebar.Collapse>
 
             {contesto === 18 && (
               <Link to="/dashboard/users">
-                <Sidebar.Item icon={HiUser}>Users</Sidebar.Item>
+                <Sidebar.Item icon={HiUser} theme={themeNav.item}>
+                  Users
+                </Sidebar.Item>
               </Link>
             )}
             {contesto === 18 && (
               <Link to={"/dashboard/products"}>
-                <Sidebar.Item icon={HiShoppingBag}>Products</Sidebar.Item>
+                <Sidebar.Item icon={HiShoppingBag} theme={themeNav.item}>
+                  Products
+                </Sidebar.Item>
               </Link>
             )}
           </Sidebar.ItemGroup>

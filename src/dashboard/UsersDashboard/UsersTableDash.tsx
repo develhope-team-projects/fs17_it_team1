@@ -3,6 +3,7 @@ import { HiOutlineTrash } from "react-icons/hi";
 import { UserDash } from "./useUserData";
 import { useState } from "react";
 import { pgTheme } from "../../ecommerce/store/Store";
+import { tabTheme } from "../ProductsDashboard/ProductsTableDash";
 
 export default function UsersTableDash(props: any) {
   const [currentPage, setCurrentPage] = useState(1);
@@ -30,18 +31,22 @@ export default function UsersTableDash(props: any) {
 
   function TableRow(props: UserDash) {
     return (
-      <Table.Row className="bg-white dark:border-gray-700 dark:bg-gray-800">
+      <Table.Row className="bg-white dark:border-[#c8a485]/40 dark:bg-[#c8a485]/70 dark:hover:bg-[#c8a485]/90">
         <Table.Cell className="p-4">
           <Checkbox />
         </Table.Cell>
         <Table.Cell className="whitespace-nowrap font-medium text-gray-900 dark:text-white">
           {props.first_name}
         </Table.Cell>
-        <Table.Cell>{props.email}</Table.Cell>
-        <Table.Cell>{String(props.creation_date)}</Table.Cell>
+        <Table.Cell className="whitespace-nowrap font-medium text-gray-900 dark:text-white">
+          {props.email}
+        </Table.Cell>
+        <Table.Cell className="whitespace-nowrap font-medium text-gray-900 dark:text-white">
+          {String(props.creation_date)}
+        </Table.Cell>
         <Table.Cell>
           <HiOutlineTrash
-            className="b-50 text-cyan-600 hover:underline dark:text-cyan-500 hover:cursor-pointer	hover:bg-white rounded"
+            className="b-50 text-cyan-600 hover:underline dark:text-cyan-1000 hover:cursor-pointer	hover:bg-white rounded"
             onClick={() => deleteUser(Number(props.id))}
           />
         </Table.Cell>
@@ -53,13 +58,13 @@ export default function UsersTableDash(props: any) {
     <div className="overflow-x-auto w-full">
       <Table hoverable className="rounded-none">
         <Table.Head>
-          <Table.HeadCell className="p-4">
+          <Table.HeadCell className="p-4" theme={tabTheme.head.cell}>
             <Checkbox />
           </Table.HeadCell>
-          <Table.HeadCell>Username</Table.HeadCell>
-          <Table.HeadCell>Email</Table.HeadCell>
-          <Table.HeadCell>Date</Table.HeadCell>
-          <Table.HeadCell>
+          <Table.HeadCell theme={tabTheme.head.cell}>Username</Table.HeadCell>
+          <Table.HeadCell theme={tabTheme.head.cell}>Email</Table.HeadCell>
+          <Table.HeadCell theme={tabTheme.head.cell}>Date</Table.HeadCell>
+          <Table.HeadCell theme={tabTheme.head.cell}>
             <span className="sr-only">Delete</span>
           </Table.HeadCell>
         </Table.Head>
