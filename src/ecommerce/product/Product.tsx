@@ -80,7 +80,7 @@ console.log("filtered",filteredReviews)
 
         {productData[0] && (
           <div>
-            <div className="flex items-center my-10">
+            <div className="flex flex-col md:flex-row w-full items-center">
               <div className="w-8/12 mx-5">
                 {/* Carosello vertifcali delli immagini */}
                 {/* <div>
@@ -112,10 +112,10 @@ console.log("filtered",filteredReviews)
                 </SwiperSlide>
               ))}
             </Swiper> */}
-                <img src={`/src/Images/${productData[0].id}.jpg`} alt="" />
+                <img src={`/src/Images/${productData[0].id}.jpg`} alt="" className="w-full"/>
               </div>
               {/* dettagli prodotto */}
-              <div className="w-full h-full mr-32">
+              <div className="w-full h-full mt-10 md:pl-10">
                 <h1 className="text-5xl pb-3 font-semibold">
                   {productData[0].name}
                 </h1>
