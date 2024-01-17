@@ -1,7 +1,6 @@
 import React from "react";
 import ProductCardHome from "../../shared/ProductCardHome";
 import CarrouselProducts from "../product/CarrouselProducts";
-import AboutUs from "./AboutUs";
 
 export default function Homepage() {
   return (

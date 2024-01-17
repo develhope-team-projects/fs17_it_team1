@@ -64,7 +64,7 @@ export function Product() {
         {productData[0] && (
           <div>
             <div className="flex items-center my-10">
-              <div className="w-8/12">
+              <div className="w-8/12 mx-5">
                 {/* Carosello vertifcali delli immagini */}
                 {/* <div>
               {props.immagini.map((product, index)=> (
@@ -95,6 +95,7 @@ export function Product() {
                 </SwiperSlide>
               ))}
             </Swiper> */}
+                <img src={`/src/Images/${productData[0].id}.jpg`} alt="" />
               </div>
               {/* dettagli prodotto */}
               <div className="w-full h-full mr-32">
