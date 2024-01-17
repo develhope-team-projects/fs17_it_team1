@@ -57,7 +57,7 @@ const Store = () => {
         className="vuoto
       h-30"
       >
-        <ProductCardHome />
+        <ProductCardHome img={false} h={20} p={false} />
       </div>
 
       <div className="flex flex-col w-full items-center">

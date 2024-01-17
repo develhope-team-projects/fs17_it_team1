@@ -87,12 +87,12 @@ const themeNav: any = {
     base: "mt-4 space-y-2 border-t border-gray-200 pt-4 first:mt-0 first:border-t-0 first:pt-0 dark:border-[#c8a485]",
   },
   logo: {
-    base: "mb-5 flex items-center pl-2.5",
+    base: "mb-5 flex items-center",
     collapsed: {
       on: "hidden",
       off: "self-center whitespace-nowrap text-xl font-semibold dark:text-white",
     },
-    img: "mr-3 h-6 sm:h-9",
+    img: "mx-auto h-6 sm:h-9",
   },
 };
 
@@ -110,13 +110,13 @@ export default function Dashboard() {
           href="/"
           img="/src/assets/logo_white-03.svg"
           imgAlt="LOKI logo"
-          className="h-9 sm:h-10"
+          className="h-9 sm:h-10 w-full"
         ></Sidebar.Logo>
         <Sidebar.Items>
           <Sidebar.ItemGroup>
             {contesto === 18 && (
               <Sidebar.Item href="#" icon={HiChartPie} theme={themeNav.item}>
-                <Link to="/dashboard/overview">dashboard</Link>
+                <Link to="/dashboard/overview">Dashboard</Link>
               </Sidebar.Item>
             )}
 

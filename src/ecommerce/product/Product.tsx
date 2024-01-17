@@ -40,16 +40,17 @@ export function Product() {
 
   return (
     <div className="flex flex-col w-full items-center">
+      <div className="w-full h-[3.75rem] bg-our-black/95"></div>
       <div
         className=" container
        mx-4
        max-w-7xl"
       >
-        <div className="w-full pt-16">
+        <div className="w-full py-4">
           <SitePathComponent
-            firstTitle="home"
-            secondTitle="store"
-            thirdTitle="product"
+            firstTitle="Homepage"
+            secondTitle="Store"
+            thirdTitle={productData[0] && productData[0].name}
           />
         </div>
         {loading && (
