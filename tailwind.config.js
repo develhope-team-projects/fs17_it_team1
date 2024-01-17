@@ -24,6 +24,12 @@ export default {
         "light-bg": "#e3ddcd",
         "dark-bg": "#212024",
         "dark-white": "#e4ddcd",
+        //nuova palette sotto
+        "ocra": "#d1784d",
+        "beige-scuro": "#c8a485",
+        "beige-chiaro": "#e3ddcd",
+        "giallo": "#ffd565",
+        "nero": "#1e1e1e"  //non nero puro
       },
     },
   },
