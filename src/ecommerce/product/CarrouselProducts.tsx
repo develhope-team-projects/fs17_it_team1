@@ -18,13 +18,17 @@ export default function CarrouselProducts() {
   const { productData, setProductData, loading, error, onFetchData } =
     useProductData();
   return (
-    <>
+    <div className="py-20">
+      <h2 className="flex items-center text-5xl font-bold dark:text-our-black my-3 mx-2 pb-5">
+        I più venduti!
+      </h2>
+      <hr />
       <Swiper
         spaceBetween={20}
         slidesPerView={3}
         navigation={true}
         modules={[Navigation]}
-        className="py-20 mySwiper flex items-center"
+        className="mySwiper flex items-center"
       >
         <button
           onClick={() => swiper.slideNext(1)}
@@ -41,6 +45,6 @@ export default function CarrouselProducts() {
             </SwiperSlide>
           ))}
       </Swiper>
-    </>
+    </div>
   );
 }
