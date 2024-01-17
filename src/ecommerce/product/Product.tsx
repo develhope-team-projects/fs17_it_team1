@@ -111,7 +111,8 @@ export function Product() {
                   <p className="pt-4 text-l">{productData[0].description}</p>
                 )}
                 <div className="flex items-center pt-5 pb-8">
-                  {productData[0].discount === null ? (
+                  {productData[0].discount === null ||
+                  productData[0].discount === 0 ? (
                     <p className="text-3xl pr-3">
                       {(
                         productData[0].price -

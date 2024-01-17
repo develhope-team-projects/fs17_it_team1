@@ -32,7 +32,7 @@ export function ProductForm() {
       name: event.target[0].value,
       description: event.target[1].value,
       price: event.target[2].value,
-      discount: event.target[3].value,
+      discount: event.target[3].value ? event.target[3].value : null,
     };
 
     console.log(newUserData);
@@ -102,7 +102,6 @@ export function ProductForm() {
           id="discount"
           type="number"
           placeholder=""
-          required
           onChange={(e) =>
             setUserData({ ...userData, discount: e.target.value })
           }
