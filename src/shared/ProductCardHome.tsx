@@ -1,6 +1,14 @@
+import { useState } from "react";
 import { SpecialButton } from "./SpecialButton";
 
 export default function ProductCardHome({ img = true, h = 60, p = true }) {
+  const med = window.matchMedia("(min-width: 800px)");
+  const [media, setMedia] = useState(med.matches);
+
+  med.addEventListener("change", () => {
+    setMedia(med.matches);
+  });
+
   return (
     <div className="flex flex-rowmax-h-lg bg-[url('https://r4.wallpaperflare.com/wallpaper/275/469/224/germany-watzmann-sky-mountain-wallpaper-29a068dd511aad3b0677384f8041b69d.jpg')]">
       {/* da controllare il padding */}
@@ -9,7 +17,7 @@ export default function ProductCardHome({ img = true, h = 60, p = true }) {
           Neque porro quisquam est qui dolorem ipsum quia dolor sit amet,
           consectetur, adipisci velit...
         </h1>
-        {p && (
+        {media && p && (
           <p className="text-s tablet:text-l pb-6 text-white">
             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
             eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
@@ -22,7 +30,7 @@ export default function ProductCardHome({ img = true, h = 60, p = true }) {
         )}
         <SpecialButton content="Shop now" />
       </div>
-      {img && (
+      {media && img && (
         <img
           src="https://pngimg.com/d/whisky_PNG85.png"
           className="w-[40%] m-auto opacity-80 rotate"
