@@ -1,8 +1,16 @@
-import { Checkbox, Table } from "flowbite-react";
+import { Checkbox, Pagination, Table } from "flowbite-react";
 import { HiOutlineTrash } from "react-icons/hi";
 import { ProductDash } from "./useProductData";
+import { useState } from "react";
 
 export default function ProductsTableDash(props: any) {
+  const [currentPage, setCurrentPage] = useState(1);
+  const itemsPerPage = 12;
+  const startIndex = (currentPage - 1) * itemsPerPage;
+  const endIndex = startIndex + itemsPerPage;
+
+  const onPageChange = (page: number) => setCurrentPage(page);
+
   const deleteProduct = async (id: number) => {
     const ProductToDelete = { id: id };
     const response = await fetch("http://localhost:3001/products", {
@@ -33,7 +41,7 @@ export default function ProductsTableDash(props: any) {
         <Table.Cell>
           <HiOutlineTrash
             className="b-50 text-cyan-600 hover:underline dark:text-cyan-500 hover:cursor-pointer	hover:bg-white rounded"
-            onClick={() => deleteProduct(props.id)}
+            onClick={() => deleteProduct(Number(props.id))}
           />
         </Table.Cell>
       </Table.Row>
@@ -59,11 +67,20 @@ export default function ProductsTableDash(props: any) {
           {props.error && <h1>We have some problems</h1>}
           {!props.loading &&
             !props.error &&
-            props.ProductData.map((el: any, index: any) => (
-              <TableRow {...el} key={index} />
-            ))}
+            props.ProductData.slice(startIndex, endIndex).map(
+              (el: any, index: any) => <TableRow {...el} key={index} />
+            )}
         </Table.Body>
       </Table>
+      <div className="flex flex-col w-full items-center mb-2 ">
+        <Pagination
+          layout="navigation"
+          currentPage={currentPage}
+          totalPages={Math.ceil(props.ProductData.length / itemsPerPage)}
+          onPageChange={onPageChange}
+          showIcons
+        />
+      </div>
     </div>
   );
 }
