@@ -54,10 +54,7 @@ export default function ProductsDashboard() {
       <div className="flex flex-col	justify-between h-[90%] ">
         <div>
           <div className="flex justify-between px-1 py-1">
-            <NormalButton
-              svg={<HiOutlineRefresh />}
-              onClick={() => onFetchData}
-            />
+            <NormalButton svg={<HiOutlineRefresh />} onClick={onFetchData} />
             <NormalButton
               content="New"
               svg={<HiPlus />}
