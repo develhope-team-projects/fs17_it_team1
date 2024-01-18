@@ -34,7 +34,7 @@ function App() {
             <Route
               path="/subscription"
               element={
-                userLogged === "0" ? (
+                userLogged === "0" || null ? (
                   <Subscription />
                 ) : (
                   <Navigate to="/homepage" />

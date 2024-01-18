@@ -210,9 +210,11 @@ export function Product() {
                     </div>
                   </Accordion.Title>
                   <Accordion.Content className="dark:bg-[#e3ddcd]/40">
-                    <RatingForm
-                      {...{ productId: productId, userId: contesto }}
-                    />
+                    {contesto != 0 && (
+                      <RatingForm
+                        {...{ productId: productId, userId: contesto }}
+                      />
+                    )}
                     {loadingRev && (
                       <div className="flex items-center justify-center flex-col">
                         <img src="	https://media.tenor.com/vfSWqzGjMdcAAAAi/grants-triple-good.gif" />
