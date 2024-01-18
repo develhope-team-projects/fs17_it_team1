@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import { NormalButton } from "../../shared/NormalButton";
 import InputField from "../../shared/InputField";
 import { customTheme2 } from "../../loginESubscription/Subscription";
+import { redirect } from "react-router";
 
 export default function RatingForm(props: any) {
   async function handleFormSubmit(event: React.FormEvent<HTMLFormElement>) {
@@ -25,6 +26,8 @@ export default function RatingForm(props: any) {
     });
 
     alert("Rating added Succefully");
+
+    window.location.href = "/ecommerce/product/" + props.productId;
     return response.json();
   }
   return (
