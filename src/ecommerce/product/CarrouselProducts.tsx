@@ -52,7 +52,10 @@ export default function CarrouselProducts() {
         {!loading &&
           !error &&
           productData.map((el: any, index) => (
-            <SwiperSlide key={index}>
+            <SwiperSlide
+              key={index}
+              className={`${!mediaMob ? "px-16" : !mediaTab ? "px-10" : ""}`}
+            >
               <CardStd {...el} />
             </SwiperSlide>
           ))}
