@@ -118,31 +118,22 @@ export function Product() {
               {/* dettagli prodotto */}
               <div className="flex items-center flex-col w-full h-full mt-10 md:pl-10 md:items-start">
                 <div>
-                <h1 className="text-5xl pb-3 font-semibold">
-                  {productData[0].name}
-                </h1>
-                <Rating>
-                  <Rating.Star />
-                  <Rating.Star />
-                  <Rating.Star />
-                  <Rating.Star />
-                  <Rating.Star filled={false} />
-                </Rating>
-                {productData[0].description && (
-                  <p className="pt-4 text-l">{productData[0].description}</p>
-                )}
-                <div className="flex items-center pt-5 pb-8">
-                  {productData[0].discount === null ||
-                    productData[0].discount === 0 ? (
-                    <p className="text-3xl pr-3">
-                      {(
-                        productData[0].price -
-                        productData[0].price * productData[0].discount
-                      ).toFixed(2)}
-                      $
-                    </p>
-                  ) : (
-                    <>
+                  <h1 className="text-5xl pb-3 font-semibold">
+                    {productData[0].name}
+                  </h1>
+                  <Rating>
+                    <Rating.Star />
+                    <Rating.Star />
+                    <Rating.Star />
+                    <Rating.Star />
+                    <Rating.Star filled={false} />
+                  </Rating>
+                  {productData[0].description && (
+                    <p className="pt-4 text-l">{productData[0].description}</p>
+                  )}
+                  <div className="flex items-center pt-5 pb-8">
+                    {productData[0].discount === null ||
+                      productData[0].discount === 0 ? (
                       <p className="text-3xl pr-3">
                         {(
                           productData[0].price -
@@ -150,22 +141,31 @@ export function Product() {
                         ).toFixed(2)}
                         $
                       </p>
-                      <p className="text-xl line-through font-thin text-gray-700">
-                        {productData[0].price}$
-                      </p>
-                    </>
-                  )}
+                    ) : (
+                      <>
+                        <p className="text-3xl pr-3">
+                          {(
+                            productData[0].price -
+                            productData[0].price * productData[0].discount
+                          ).toFixed(2)}
+                          $
+                        </p>
+                        <p className="text-xl line-through font-thin text-gray-700">
+                          {productData[0].price}$
+                        </p>
+                      </>
+                    )}
+                  </div>
                 </div>
-
-                <div className="flex no-wrap items-center">
-      <Button
-      theme={customTheme}
-        color="primary"
-        className="hover:text-ocra focus:ring-giallo focus:bg-nero focus:text-giallo w-full h-13"
-      >
-        <p>Add to cart</p>
-      </Button>
-    </div>
+                <div className="flex no-wrap items-center w-10/12">
+                  <Button
+                    theme={customTheme}
+                    color="primary"
+                    className="hover:text-ocra focus:ring-giallo focus:bg-nero focus:text-giallo w-full h-13"
+                  >
+                    <p>Add to cart</p>
+                  </Button>
+                </div>
                 {/* <NormalButton
                   content="Add to cart"
                   customstyle="w-screen h-13"
@@ -180,7 +180,7 @@ export function Product() {
                 <Accordion.Panel>
                   <Accordion.Title className="dark:hover:bg-[#c8a485]/60 dark:hover:text-our-black focus:ring-2 dark:bg-[#c8a485]/30 dark:text-our-black">
                     <div className="flex items-center">
-                      <img src="https://cdn-icons-png.flaticon.com/512/2769/2769339.png" alt="ship" className="h-7 pr-3"/>
+                      <img src="https://cdn-icons-png.flaticon.com/512/2769/2769339.png" alt="ship" className="h-7 pr-3" />
                       <p>Spedizioni e resi</p>
                     </div>
                   </Accordion.Title>
@@ -196,11 +196,11 @@ export function Product() {
                 <Accordion.Panel>
                   <Accordion.Title className="dark:hover:bg-[#c8a485]/60 dark:hover:text-our-black focus:ring-2 dark:bg-[#c8a485]/30 dark:text-our-black" >
                     <div className="flex items-center">
-                      <img src="https://cdn-icons-png.flaticon.com/128/2191/2191108.png" alt="reviews" className="h-7 pr-3"/>
+                      <img src="https://cdn-icons-png.flaticon.com/128/2191/2191108.png" alt="reviews" className="h-7 pr-3" />
                       <p>Recensioni</p>
                     </div>
-                    
-                    </Accordion.Title>
+
+                  </Accordion.Title>
                   <Accordion.Content className="dark:bg-[#e3ddcd]/40">
                     {loadingReview && (
                       <div className="flex items-center justify-center flex-col">
