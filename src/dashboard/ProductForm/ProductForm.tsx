@@ -9,6 +9,8 @@ import {
   TextInput,
 } from "flowbite-react";
 import { useState } from "react";
+import InputField from "../../shared/InputField";
+import { NormalButton } from "../../shared/NormalButton";
 /* Interfaccia da definire */
 interface UserData {
   name: string;
@@ -50,66 +52,35 @@ export function ProductForm() {
   return (
     <form
       onSubmit={handleFormSubmit}
-      className="flex max-w-md flex-col gap-4 mx-auto"
+      className="flex max-w-md flex-col gap-4 mx-auto bg-beige-scuro gap-6 relative z-10 rounded-md p-8"
     >
       {/* Name */}
       <div>
         <div className="mb-2 block">
           <Label htmlFor="name" value="name" />
         </div>
-        <TextInput
-          id="name"
-          type="text"
-          placeholder="product name"
-          required
-          onChange={(e) => setUserData({ ...userData, name: e.target.value })}
-          value={userData.name}
-        />
+        <InputField id="name" type="text" label="product name" />
       </div>
       {/* Description */}
       <div>
         <div className="mb-2 block">
           <Label htmlFor="description" value="description" />
         </div>
-        <TextInput
-          id="description"
-          type="text"
-          placeholder="product description"
-          required
-          onChange={(e) =>
-            setUserData({ ...userData, description: e.target.value })
-          }
-          value={userData.description}
-        />
+        <InputField id="description" type="text" label="product description" />
       </div>
       {/* Price */}
       <div>
         <div className="mb-2 block">
           <Label htmlFor="price" value="price" />
         </div>
-        <TextInput
-          id="price"
-          type="text"
-          placeholder=""
-          required
-          onChange={(e) => setUserData({ ...userData, price: e.target.value })}
-          value={userData.price}
-        />
+        <InputField id="price" type="text" label="" />
       </div>
       {/* Discount */}
       <div>
         <div className="mb-2 block">
           <Label htmlFor="discount" value="discount" />
         </div>
-        <TextInput
-          id="discount"
-          type="number"
-          placeholder=""
-          onChange={(e) =>
-            setUserData({ ...userData, discount: e.target.value })
-          }
-          value={userData.discount}
-        />
+        <InputField id="discount" type="text" label="" />
       </div>
       <div>
         <div className="mb-2 block">
@@ -117,7 +88,9 @@ export function ProductForm() {
         </div>
         <FileInput id="file-upload" />
       </div>
-      <Button type="submit">Submit</Button>
+      <div className="mx-auto">
+        <NormalButton type="submit" content="Sign up" />
+      </div>
     </form>
   );
 }

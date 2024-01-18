@@ -15,6 +15,11 @@ import useProductDatabyId from "../../dashboard/Product/useProductDatabyId";
 import RatingReview from "./RatingReview";
 import CarrouselProducts from "./CarrouselProducts";
 import useReviewbyId from "../../dashboard/Product/useReviewbyId";
+import RatingForm from "./RatingForm";
+import { useContext } from "react";
+import { userContext } from "../../loginESubscription/AuthContext";
+import useUserData from "../../dashboard/UsersDashboard/useUserData";
+
 interface Product {
   id: number;
   title: string;
@@ -31,23 +36,24 @@ const customTheme: CustomFlowbiteTheme["button"] = {
 export function Product() {
   const { id } = useParams();
   const productId: number = Number(id);
+  const { userData } = useUserData();
+  const contesto = useContext(userContext);
+  const loggedUser = userData.filter((el) => el.id === contesto);
 
   const { productData, loading, error } = useProductDatabyId(productId);
 
-  const { reviewData, loadingReview, errorReview } = useReviewbyId(productId);
+  const { reviewData, setReviewData, loadingRev, errorRev, onFetchData } =
+    useReviewbyId(productId);
 
-  /* console.log(loading);
-  console.log(error);
-  console.log(productData);
-  console.log(productId); */
+  const calcReview = () => {
+    let tot = 0;
+    reviewData.forEach((el) => {
+      tot += el.rating;
+    });
 
-  console.log("Review Data:", reviewData);
-  console.log("ProductData:", productData[0]);
-  const filteredReviews = reviewData
-    ? reviewData.filter((review) => review.product_id == productData[0].id)
-    : [];
-  console.log("filtered", filteredReviews);
-
+    return tot / reviewData.length;
+  };
+  const review = calcReview();
   return (
     <div className="flex flex-col w-full items-center">
       <div className="w-full h-[3.75rem] bg-our-black/95"></div>
@@ -121,11 +127,11 @@ export function Product() {
                     {productData[0].name}
                   </h1>
                   <Rating>
-                    <Rating.Star />
-                    <Rating.Star />
-                    <Rating.Star />
-                    <Rating.Star />
-                    <Rating.Star filled={false} />
+                    <Rating.Star filled={review >= 1 ? true : false} />
+                    <Rating.Star filled={review >= 2 ? true : false} />
+                    <Rating.Star filled={review >= 3 ? true : false} />
+                    <Rating.Star filled={review >= 4 ? true : false} />
+                    <Rating.Star filled={review >= 5 ? true : false} />
                   </Rating>
                   {productData[0].description && (
                     <p className="pt-4 text-l">{productData[0].description}</p>
@@ -204,20 +210,32 @@ export function Product() {
                     </div>
                   </Accordion.Title>
                   <Accordion.Content className="dark:bg-[#e3ddcd]/40">
-                    {loadingReview && (
+                    <RatingForm
+                      {...{ productId: productId, userId: contesto }}
+                    />
+                    {loadingRev && (
                       <div className="flex items-center justify-center flex-col">
                         <img src="	https://media.tenor.com/vfSWqzGjMdcAAAAi/grants-triple-good.gif" />
                         <p className="text-4xl p-4">Loading...</p>
                       </div>
                     )}
-                    {errorReview && <p>...Error</p>}¯
-                    {filteredReviews.map((review, index) => (
+                    {errorRev && <p>...Error</p>}¯
+                    {reviewData.map((review, index) => (
                       <div key={index} className="pb-10">
                         <RatingReview
                           title={review.title}
                           comment={review.comment}
                           creation_date={review.creation_date}
-                          user_id={review.user_id}
+                          user_id={
+                            userData[0] &&
+                            userData.filter((el) => el.id === review.user_id)[0]
+                              .first_name +
+                              " " +
+                              userData.filter(
+                                (el) => el.id === review.user_id
+                              )[0].last_name
+                          }
+                          rating={review.rating}
                         />
                       </div>
                     ))}

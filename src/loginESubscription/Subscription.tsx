@@ -7,7 +7,7 @@ import "./Subscription.css";
 import { useState } from "react";
 import useUserData, { UserDash } from "../dashboard/UsersDashboard/useUserData";
 
-const customTheme: CustomFlowbiteTheme["datepicker"] = {
+export const customTheme: CustomFlowbiteTheme["datepicker"] = {
   root: {
     base: "relative",
   },
@@ -90,13 +90,13 @@ const customTheme: CustomFlowbiteTheme["datepicker"] = {
   },
 };
 
-const customTheme2: CustomFlowbiteTheme["radio"] = {
+export const customTheme2: CustomFlowbiteTheme["radio"] = {
   root: {
     base: "h-4 w-4 border border-ocra focus:ring-2 focus:ring-giallo focus:bg-giallo active:bg-giallo",
   },
 };
 
-const customTheme3: CustomFlowbiteTheme["button"] = {
+export const customTheme3: CustomFlowbiteTheme["button"] = {
   base: "group flex items-stretch items-center justify-center p-0.5 text-center font-medium relative focus:z-10 focus:outline-none bg-orange-800",
   fullSized: "w-full",
   color: {},

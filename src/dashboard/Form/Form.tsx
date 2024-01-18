@@ -2,6 +2,12 @@
 
 import { Button, Checkbox, Datepicker, Label, TextInput } from "flowbite-react";
 import { useState } from "react";
+import InputField from "../../shared/InputField";
+import {
+  customTheme,
+  customTheme3,
+} from "../../loginESubscription/Subscription";
+import { NormalButton } from "../../shared/NormalButton";
 /* Interfaccia da definire */
 interface UserData {
   email: string;
@@ -63,103 +69,62 @@ export function Form() {
     return response.json();
   }
   return (
-    <form
-      onSubmit={handleFormSubmit}
-      className="flex max-w-md flex-col gap-4 mx-auto"
-    >
-      {/* EMAIL */}
-      <div>
-        <div className="mb-2 block">
-          <Label htmlFor="email1" value="Account email" />
+    <div>
+      {" "}
+      <form
+        onSubmit={handleFormSubmit}
+        className="flex max-w-md flex-col gap-4 mx-auto bg-beige-scuro gap-6 relative z-10 rounded-md p-8"
+      >
+        {/* EMAIL */}
+        <div>
+          <div className="mb-2 block">
+            <Label htmlFor="email1" value="Account email" />
+          </div>
+          <InputField id="email" type="email" label="email@email.com" />
         </div>
-        <TextInput
-          id="email"
-          type="email"
-          placeholder="email@email.com"
-          required
-          onChange={(e) => setUserData({ ...userData, email: e.target.value })}
-          value={userData.email}
-        />
-      </div>
-      {/* First name */}
-      <div>
-        <div className="mb-2 block">
-          <Label htmlFor="email1" value="Account first name" />
+        {/* First name */}
+        <div>
+          <div className="mb-2 block">
+            <Label htmlFor="email1" value="Account first name" />
+          </div>
+          <InputField id="first_name" type="text" label="first name" />
         </div>
-        <TextInput
-          id="first_name"
-          type="text"
-          placeholder="first name"
-          required
-          onChange={(e) =>
-            setUserData({ ...userData, first_name: e.target.value })
-          }
-          value={userData.first_name}
-        />
-      </div>
-      {/* Last name */}
-      <div>
-        <div className="mb-2 block">
-          <Label htmlFor="email1" value="Account last name" />
+        {/* Last name */}
+        <div>
+          <div className="mb-2 block">
+            <Label htmlFor="email1" value="Account last name" />
+          </div>
+          <InputField id="last_name" type="text" label="last name" />
         </div>
-        <TextInput
-          id="last_name"
-          type="text"
-          placeholder="last name"
-          required
-          onChange={(e) =>
-            setUserData({ ...userData, last_name: e.target.value })
-          }
-          value={userData.last_name}
-        />
-      </div>
-      {/* Birth day */}
-      <div>
-        <div className="mb-2 block">
-          <Label htmlFor="email1" value="Account birth day" />
+        {/* Birth day */}
+        <div>
+          <div className="mb-2 block">
+            <Label htmlFor="email1" value="Account birth day" />
+          </div>
+          <Datepicker
+            title="Birthday"
+            required
+            theme={{ ...customTheme, ...customTheme3 }}
+          />
         </div>
-        <Datepicker
-          title="Birthday"
-          required
-          onChange={(e) =>
-            /* setUserData({ ...userData, birth_day: e.target.value }) */
-            console.log(e)
-          }
-          /* value={userData.birth_day} */
-        />
-      </div>
-      {/* Location */}
-      <div>
-        <div className="mb-2 block">
-          <Label htmlFor="email1" value="Account location" />
+        {/* Location */}
+        <div>
+          <div className="mb-2 block">
+            <Label htmlFor="email1" value="Account location" />
+          </div>
+          <InputField id="location" type="text" label="city" />
         </div>
-        <TextInput
-          id="location"
-          type="text"
-          placeholder="city"
-          required
-          onChange={(e) =>
-            setUserData({ ...userData, location: e.target.value })
-          }
-          value={userData.location}
-        />
-      </div>
-      {/* Gender */}
-      <div>
-        <div className="mb-2 block">
-          <Label htmlFor="email1" value="Account gender" />
+        {/* Gender */}
+        <div>
+          <div className="mb-2 block">
+            <Label htmlFor="email1" value="Account gender" />
+          </div>
+          <InputField id="gender" type="text" label="male or female" />
         </div>
-        <TextInput
-          id="gender"
-          type="text"
-          placeholder="male or female"
-          required
-          onChange={(e) => setUserData({ ...userData, gender: e.target.value })}
-          value={userData.gender}
-        />
-      </div>
-
-      <Button type="submit">Submit</Button>
-    </form>
+        <div className="mx-auto">
+          <NormalButton type="submit" content="Create" />
+        </div>
+      </form>
+    </div>
   );
 }

@@ -29,6 +29,7 @@ export default function CarrouselProducts() {
   });
 
   const { productData, loading, error } = useProductData();
+
   return (
     <div className="py-20 h-2/6">
       <h2 className="flex items-center text-5xl font-bold dark:text-our-black my-1 mx-2 pb-5">

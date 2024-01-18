@@ -1,40 +1,43 @@
-
+import { Rating } from "flowbite-react";
+import { number } from "prop-types";
 
 export type Review = {
-  title:string,
-  comment:string,
-  creation_date:string,
-  user_id:number,
+  title: string;
+  comment: string;
+  creation_date: string;
+  user_id: string;
+  rating: number;
 };
 
 export default function RatingReview(props: Review) {
   return (
-    <article className="bg-our-black border-2 border-white p-2">
+    <article className="bg-beige-scuro/50 p-2">
       <div className="flex items-center mb-4">
-       {/*  <img
+        {/*  <img
           className="w-10 h-10 me-4 rounded-full"
           src={props.img}
           alt=""
         ></img> */}
-        {/* <div className="font-medium dark:text-white">
-          <p>{props.name}</p>
-      </div> */}
-      </div> 
-      {/* <Rating>
+        <div className="font-medium dark:text-white">
+          <p>{props.user_id}</p>
+        </div>
+      </div>
+      <Rating>
         <Rating.Star filled={props.rating >= 1 ? true : false} />
         <Rating.Star filled={props.rating >= 2 ? true : false} />
         <Rating.Star filled={props.rating >= 3 ? true : false} />
         <Rating.Star filled={props.rating >= 4 ? true : false} />
         <Rating.Star filled={props.rating >= 5 ? true : false} />
-      </Rating> */}
+      </Rating>
       <h3 className="text-sm font-semibold text-gray-900 dark:text-white">
         {props.title}
       </h3>
 
       <footer className="mb-5 text-sm text-gray-500 dark:text-gray-400">
         <p>
-{/*           Reviewed in {props.userCountry} on{" "}
- */}          <time dateTime={props.creation_date}>{props.creation_date}</time>
+          {/*           Reviewed in {props.userCountry} on{" "}
+           */}{" "}
+          <time dateTime={props.creation_date}>{props.creation_date}</time>
         </p>
       </footer>
       <p className="mb-2 text-gray-500 dark:text-gray-400">{props.comment}</p>

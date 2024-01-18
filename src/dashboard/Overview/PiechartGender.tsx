@@ -53,13 +53,23 @@ export default function PiechartGender() {
 
   const male =
     !loading && !error
-      ? userData.filter((el) => el.gender === "male" || el.gender === "Male")
+      ? userData.filter(
+          (el) =>
+            el.gender === "male" ||
+            el.gender === "Male" ||
+            el.gender === "maschio" ||
+            el.gender === "Maschio"
+        )
       : [];
 
   const female =
     !loading && !error
       ? userData.filter(
-          (el) => el.gender === "female" || el.gender === "Female"
+          (el) =>
+            el.gender === "female" ||
+            el.gender === "Female" ||
+            el.gender === "femmina" ||
+            el.gender === "Femmina"
         )
       : [];
 
