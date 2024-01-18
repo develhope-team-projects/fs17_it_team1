@@ -17,16 +17,16 @@ const customTheme: CustomFlowbiteTheme["datepicker"] = {
     root: {
       base: "absolute top-10 z-50 block pt-2",
       inline: "relative top-0 z-auto",
-      inner: "inline-block rounded-lg bg-white p-4 shadow-lg dark:bg-gray-700",
+      inner: "bg-orange-300 rounded-lg border-2 border-beige-scuro",
     },
     header: {
       base: "",
       title:
-        "px-2 py-3 text-center font-semibold text-gray-900 dark:text-white",
+        "",
       selectors: {
         base: "flex justify-between mb-2",
         button: {
-          base: "text-sm rounded-lg text-gray-900 dark:text-white bg-white dark:bg-gray-700 font-semibold py-2.5 px-5 hover:bg-gray-100 dark:hover:bg-gray-600 focus:outline-none focus:ring-2 focus:ring-gray-200 view-switch",
+          base: "text-sm rounded-lg font-semibold py-2.5 px-5 bg-giallo text-nero",
           prev: "",
           next: "",
           view: "",
@@ -39,11 +39,11 @@ const customTheme: CustomFlowbiteTheme["datepicker"] = {
     footer: {
       base: "flex mt-2 space-x-2",
       button: {
-        base: "w-full rounded-lg px-5 py-2 text-center text-sm font-medium focus:ring-4 focus:ring-cyan-300",
+        base: "w-full rounded-lg px-5 py-2 text-center text-sm font-medium ",
         today:
-          "bg-cyan-700 text-white hover:bg-cyan-800 dark:bg-our-black dark:hover:bg-oro-chiaro",
+          "bg-giallo text-nero",
         clear:
-          "bg-cyan-700 text-white hover:bg-cyan-800 dark:bg-our-black dark:hover:bg-oro-chiaro",
+          "bg-giallo text-nero",
       },
     },
   },
@@ -52,14 +52,14 @@ const customTheme: CustomFlowbiteTheme["datepicker"] = {
       header: {
         base: "grid grid-cols-7 mb-1",
         title:
-          "dow h-6 text-center text-sm font-medium leading-6 text-gray-500 dark:text-gray-400",
+          "dow h-6 text-center text-sm font-medium leading-6 text-nero",
       },
       items: {
         base: "grid w-64 grid-cols-7",
         item: {
-          base: "block flex-1 cursor-pointer rounded-lg border-0 text-center text-sm font-semibold leading-9 hover:bg-gray-100 dark:text-white dark:hover:bg-our-black text-gray-900",
-          selected: "bg-our-black text-oro-chiaro hover:bg-cyan-600",
-          disabled: "text-gray-500",
+          base: "block flex-1 cursor-pointer rounded-lg border-0 text-center text-sm font-semibold leading-9 text-white hover:text-nero hover:bg-giallo",
+          selected: "bg-nero text-giallo hover:bg-giallo",
+          disabled: "",
         },
       },
     },
@@ -67,9 +67,9 @@ const customTheme: CustomFlowbiteTheme["datepicker"] = {
       items: {
         base: "grid w-64 grid-cols-4",
         item: {
-          base: "block flex-1 cursor-pointer rounded-lg border-0 text-center text-sm font-semibold leading-9 hover:bg-gray-100 dark:text-white dark:hover:bg-our-black text-gray-900",
-          selected: "bg-our-black text-oro-chiaro hover:bg-cyan-600",
-          disabled: "text-gray-500",
+          base: "block flex-1 cursor-pointer rounded-lg border-0 text-center text-sm font-semibold leading-9 hover:bg-gray-100 dark:text-white dark:hover:bg-nero text-gray-900",
+          selected: "bg-nero text-giallo hover:bg-giallo",
+          disabled: "",
         },
       },
     },
@@ -77,9 +77,9 @@ const customTheme: CustomFlowbiteTheme["datepicker"] = {
       items: {
         base: "grid w-64 grid-cols-4",
         item: {
-          base: "block flex-1 cursor-pointer rounded-lg border-0 text-center text-sm font-semibold leading-9 hover:bg-gray-100 dark:text-white dark:hover:bg-our-black text-gray-900",
-          selected: "bg-our-black text-oro-chiaro hover:bg-cyan-600",
-          disabled: "text-gray-500",
+          base: "block flex-1 cursor-pointer rounded-lg border-0 text-center text-sm font-semibold leading-9 hover:bg-gray-100 dark:text-white dark:hover:bg-nero text-gray-900",
+          selected: "bg-nero text-giallo hover:bg-giallo",
+          disabled: "",
         },
       },
     },
@@ -87,14 +87,99 @@ const customTheme: CustomFlowbiteTheme["datepicker"] = {
       items: {
         base: "grid w-64 grid-cols-4",
         item: {
-          base: "block flex-1 cursor-pointer rounded-lg border-0 text-center text-sm font-semibold leading-9 hover:bg-gray-100 dark:text-white dark:hover:bg-our-black text-gray-900",
-          selected: "bg-our-black text-oro-chiaro hover:bg-cyan-600",
-          disabled: "text-gray-500",
+          base: "block flex-1 cursor-pointer rounded-lg border-0 text-center text-sm font-semibold leading-9 hover:bg-gray-100 dark:text-white dark:hover:bg-nero text-gray-900",
+          selected: "bg-nero text-giallo hover:bg-giallo",
+          disabled: "",
         },
       },
     },
   },
 };
+
+const customTheme2: CustomFlowbiteTheme["radio"] = {
+  root: {
+    base: "h-4 w-4 border border-ocra focus:ring-2 focus:ring-giallo focus:bg-giallo active:bg-giallo",
+  }
+}
+
+const customTheme3: CustomFlowbiteTheme["button"] = {
+  "base": "group flex items-stretch items-center justify-center p-0.5 text-center font-medium relative focus:z-10 focus:outline-none bg-orange-800",
+  "fullSized": "w-full",
+  "color": {
+    
+  },
+  "disabled": "cursor-not-allowed opacity-50",
+  "isProcessing": "cursor-wait",
+  "spinnerSlot": "absolute h-full top-0 flex items-center animate-fade-in",
+  "spinnerLeftPosition": {
+    "xs": "left-2",
+    "sm": "left-3",
+    "md": "left-4",
+    "lg": "left-5",
+    "xl": "left-6"
+  },
+  "gradient": {
+    "cyan": "text-white bg-gradient-to-r from-cyan-400 via-cyan-500 to-cyan-600 enabled:hover:bg-gradient-to-br focus:ring-4 focus:ring-cyan-300 dark:focus:ring-cyan-800",
+    "failure": "text-white bg-gradient-to-r from-red-400 via-red-500 to-red-600 enabled:hover:bg-gradient-to-br focus:ring-4 focus:ring-red-300 dark:focus:ring-red-800",
+    "info": "text-white bg-gradient-to-r from-cyan-500 via-cyan-600 to-cyan-700 enabled:hover:bg-gradient-to-br focus:ring-4 focus:ring-cyan-300 dark:focus:ring-cyan-800 ",
+    "lime": "text-gray-900 bg-gradient-to-r from-lime-200 via-lime-400 to-lime-500 enabled:hover:bg-gradient-to-br focus:ring-4 focus:ring-lime-300 dark:focus:ring-lime-800",
+    "pink": "text-white bg-gradient-to-r from-pink-400 via-pink-500 to-pink-600 enabled:hover:bg-gradient-to-br focus:ring-4 focus:ring-pink-300 dark:focus:ring-pink-800",
+    "purple": "text-white bg-gradient-to-r from-purple-500 via-purple-600 to-purple-700 enabled:hover:bg-gradient-to-br focus:ring-4 focus:ring-purple-300 dark:focus:ring-purple-800",
+    "success": "text-white bg-gradient-to-r from-green-400 via-green-500 to-green-600 enabled:hover:bg-gradient-to-br focus:ring-4 focus:ring-green-300 dark:focus:ring-green-800",
+    "teal": "text-white bg-gradient-to-r from-teal-400 via-teal-500 to-teal-600 enabled:hover:bg-gradient-to-br focus:ring-4 focus:ring-teal-300 dark:focus:ring-teal-800"
+  },
+  "gradientDuoTone": {
+    "cyanToBlue": "text-white bg-gradient-to-r from-cyan-500 to-cyan-500 enabled:hover:bg-gradient-to-bl focus:ring-4 focus:ring-cyan-300 dark:focus:ring-cyan-800",
+    "greenToBlue": "text-white bg-gradient-to-br from-green-400 to-cyan-600 enabled:hover:bg-gradient-to-bl focus:ring-4 focus:ring-green-200 dark:focus:ring-green-800",
+    "pinkToOrange": "text-white bg-gradient-to-br from-pink-500 to-orange-400 enabled:hover:bg-gradient-to-bl focus:ring-4 focus:ring-pink-200 dark:focus:ring-pink-800",
+    "purpleToBlue": "text-white bg-gradient-to-br from-purple-600 to-cyan-500 enabled:hover:bg-gradient-to-bl focus:ring-4 focus:ring-cyan-300 dark:focus:ring-cyan-800",
+    "purpleToPink": "text-white bg-gradient-to-r from-purple-500 to-pink-500 enabled:hover:bg-gradient-to-l focus:ring-4 focus:ring-purple-200 dark:focus:ring-purple-800",
+    "redToYellow": "text-gray-900 bg-gradient-to-r from-red-200 via-red-300 to-yellow-200 enabled:hover:bg-gradient-to-bl focus:ring-4 focus:ring-red-100 dark:focus:ring-red-400",
+    "tealToLime": "text-gray-900 bg-gradient-to-r from-teal-200 to-lime-200 enabled:hover:bg-gradient-to-l enabled:hover:from-teal-200 enabled:hover:to-lime-200 enabled:hover:text-gray-900 focus:ring-4 focus:ring-lime-200 dark:focus:ring-teal-700"
+  },
+  "inner": {
+    "base": "flex items-stretch items-center transition-all duration-200",
+    "position": {
+      "none": "",
+      "start": "rounded-r-none",
+      "middle": "rounded-none",
+      "end": "rounded-l-none"
+    },
+    "outline": "border border-transparent",
+    "isProcessingPadding": {
+      "xs": "pl-8",
+      "sm": "pl-10",
+      "md": "pl-12",
+      "lg": "pl-16",
+      "xl": "pl-20"
+    }
+  },
+  "label": "ml-2 inline-flex h-4 w-4 items-center justify-center rounded-full bg-cyan-200 text-xs font-semibold text-cyan-800",
+  "outline": {
+    "color": {
+      "gray": "border border-gray-900 dark:border-white",
+      "default": "border-0",
+      "light": ""
+    },
+    "off": "",
+    "on": "flex justify-center bg-white text-gray-900 transition-all duration-75 ease-in group-enabled:group-hover:bg-opacity-0 group-enabled:group-hover:text-inherit dark:bg-gray-900 dark:text-white w-full",
+    "pill": {
+      "off": "rounded-md",
+      "on": "rounded-full"
+    }
+  },
+  "pill": {
+    "off": "rounded-lg",
+    "on": "rounded-full"
+  },
+  "size": {
+    "xs": "text-xs px-2 py-1",
+    "sm": "text-sm px-3 py-1.5",
+    "md": "text-sm px-4 py-2",
+    "lg": "text-base px-5 py-2.5",
+   
+  }
+}
 
 interface FormState {
   nome: string;
@@ -180,13 +265,13 @@ function Subscription() {
     }
 
     return (
-      <div className=" flex justify-center items-center bg-our-black relative z-9 bg-opacity-50">
-        <div className=" py-8 bg-our-black flex  justify-center items-center gap-6 relative z-10 rounded-md">
+      <div className="h-screen flex justify-center items-center bg-beige-chiaro relative z-9 bg-opacity-50">
+        <div className="h-50p py-8 bg-beige-scuro flex  justify-center items-center gap-6 relative z-10 rounded-md">
           <form
-            className=" py-8 bg-our-black flex flex-col justify-center items-center gap-6 relative z-10 rounded-md"
+            className=" py-8 bg-beige-scuro flex flex-col justify-center items-center gap-6 relative z-10 rounded-md"
             onSubmit={handleFormSubmit}
           >
-            <p className="text-gray-400 px-5 text-center">
+            <p className="text-white px-5 text-center">
               Iscriviti la nostra pagina per accedere ai nostri servizi
               esclusivi.
             </p>
@@ -200,11 +285,11 @@ function Subscription() {
               />
             </div>
             <div className="flex gap-6 justify-center items-center align-center text-gray-400">
-              <p className="pb-2 pr-14 text-gray-400 border-b-2 dark:border-gray-600">
+              <p className="pb-2 pr-14 text-white border-b-2 dark:border-white">
                 Data di nascita
               </p>
-              <div className="dateInput w-40">
-                <Datepicker theme={customTheme} />
+              <div className="w-40">
+                <Datepicker theme={{...customTheme, ...customTheme3}} />
               </div>
             </div>
 
@@ -214,23 +299,23 @@ function Subscription() {
               name="Indirizzo"
               label="Indirizzo"
             />
-            <fieldset className="flex align-center max-w-md flex-row item-center gap-4 text-gray-400">
+            <fieldset className="flex align-center max-w-md flex-row item-center gap-4 text-white">
               <legend className="mb-4 text-center">Sesso</legend>
               <div className="gap-2">
-                <Radio id="Maschio" name="Gender" value="Maschio" />
-                <Label className="text-gray-400" htmlFor="Maschio">
+                <Radio theme={customTheme2} id="Maschio" name="Gender" value="Maschio" />
+                <Label  htmlFor="Maschio">
                   Maschio
                 </Label>
               </div>
               <div className="gap-2">
-                <Radio id="Femmina" name="Gender" value="Femmina" />
-                <Label className="text-gray-400" htmlFor="Femmina">
+                <Radio theme={customTheme2} id="Femmina" name="Gender" value="Femmina" />
+                <Label htmlFor="Femmina">
                   Femmina
                 </Label>
               </div>
               <div className="gap-2">
-                <Radio id="Altro" name="Gender" value="Altro" />
-                <Label className="text-gray-400" htmlFor="Altro">
+                <Radio theme={customTheme2} id="Altro" name="Gender" value="Altro" />
+                <Label  htmlFor="Altro">
                   Altro
                 </Label>
               </div>

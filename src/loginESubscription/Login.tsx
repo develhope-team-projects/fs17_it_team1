@@ -37,8 +37,8 @@ function Login() {
   };
 
   return (
-    <div className="h-96 flex justify-center items-center bg-our-black relative z-9 bg-opacity-50">
-      <div className="h-50p w-96 py-8 bg-our-black flex flex-col justify-center items-center gap-6 relative z-10 rounded-md">
+    <div className="h-screen flex justify-center items-center bg-beige-chiaro relative z-9 bg-opacity-50">
+      <div className="h-50p w-96 py-8 bg-beige-scuro flex flex-col justify-center items-center gap-6 relative z-10 rounded-md">
         <InputField
           type="email"
           id="email"
@@ -57,9 +57,9 @@ function Login() {
         />
         <NormalButton content="Log in" onClick={handleLogin} />
         <br />
-        <p className="text-gray-400">
+        <p className="text-white">
           Se non sei ancora iscritto{" "}
-          <Link to="/subscription" className="text-oro-chiaro cursor-pointer">
+          <Link to="/subscription" className="text-giallo cursor-pointer">
             clicca qui
           </Link>
         </p>

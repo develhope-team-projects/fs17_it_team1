@@ -71,7 +71,7 @@ export default function Header() {
               label={
                 <Avatar
                   alt="User settings"
-                  img="https://flowbite.com/docs/images/people/profile-picture-5.jpg"
+                  img="https://cdn-icons-png.flaticon.com/512/847/847969.png"
                   rounded
                 />
               }
@@ -140,7 +140,7 @@ export default function Header() {
                   label={
                     <Avatar
                       alt="User settings"
-                      img="https://flowbite.com/docs/images/people/profile-picture-5.jpg"
+                      img="https://cdn-icons-png.flaticon.com/512/847/847969.png"
                       rounded
                     />
                   }
