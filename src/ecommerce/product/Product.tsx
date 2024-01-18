@@ -111,7 +111,8 @@ export function Product() {
                 <img src={`/src/Images/${productData[0].id}.jpg`} alt="" className="w-full rounded-lg" />
               </div>
               {/* dettagli prodotto */}
-              <div className="w-full h-full mt-10 md:pl-10">
+              <div className="flex items-center flex-col w-full h-full mt-10 md:pl-10 md:items-start">
+                <div>
                 <h1 className="text-5xl pb-3 font-semibold">
                   {productData[0].name}
                 </h1>
@@ -150,13 +151,16 @@ export function Product() {
                     </>
                   )}
                 </div>
-
+                </div>
+                <div>
                 <NormalButton
                   content="Add to cart"
                   customstyle="w-full h-11"
                 /*   function={() => addToCart(product)} */
                 />
+                </div>
               </div>
+
             </div>
             <div className="pt-16">
               <Accordion className="dark:border-[#c8a485]/60 dark:divide-[#c8a485]/60">
