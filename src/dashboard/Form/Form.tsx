@@ -63,7 +63,10 @@ export function Form() {
     return response.json();
   }
   return (
-    <form onSubmit={handleFormSubmit} className="flex max-w-md flex-col gap-4">
+    <form
+      onSubmit={handleFormSubmit}
+      className="flex max-w-md flex-col gap-4 mx-auto"
+    >
       {/* EMAIL */}
       <div>
         <div className="mb-2 block">
