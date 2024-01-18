@@ -226,7 +226,7 @@ function Subscription() {
       );
 
       if (checkEmail.length != 0) {
-        alert("User doesn't exist!");
+        alert("Email linked to an existing user!");
       } else {
         function formatDateToYYYYMMDD(dateString: any) {
           // Create a new Date object using the input date string
