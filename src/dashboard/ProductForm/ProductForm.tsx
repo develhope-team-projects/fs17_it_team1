@@ -89,7 +89,7 @@ export function ProductForm() {
         <FileInput id="file-upload" />
       </div>
       <div className="mx-auto">
-        <NormalButton type="submit" content="Sign up" />
+        <NormalButton type="submit" content="Create" />
       </div>
     </form>
   );
