@@ -26,7 +26,7 @@ export default function CarrouselProducts() {
     useProductData();
   return (
     <div className="py-20 h-2/6">
-      <h2 className="flex items-center text-5xl font-bold dark:text-our-black my-3 mx-2 pb-5">
+      <h2 className="flex items-center text-5xl font-bold dark:text-our-black my-1 mx-2 pb-5">
         Best sellers
       </h2>
       <hr />

@@ -57,7 +57,7 @@ const Store = () => {
         className="vuoto
       h-30"
       >
-        <ProductCardHome img={false} h={20} p={false} />
+        <ProductCardHome img={false} h={20} p={false} showButton={false} applyPadding={false}/>
       </div>
 
       <div className="flex flex-col w-full items-center">
@@ -170,7 +170,7 @@ const Store = () => {
          sm:grid-cols-2
          md:grid-cols-3
          lg:grid-cols-4
-         gap-3
+         gap-10
          ml-4
          mr-4
          mt-11
