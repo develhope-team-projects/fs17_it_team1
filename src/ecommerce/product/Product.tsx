@@ -10,7 +10,6 @@ import "swiper/css";
 import "swiper/css/navigation";
 
 // import required modules
-import { NormalButton } from "../../shared/NormalButton";
 import { useParams } from "react-router-dom";
 import useProductDatabyId from "../../dashboard/Product/useProductDatabyId";
 import RatingReview from "./RatingReview";
@@ -33,15 +32,9 @@ export function Product() {
   const { id } = useParams();
   const productId: number = Number(id);
 
-  const { productData, loading, error } =
-    useProductDatabyId(productId);
+  const { productData, loading, error } = useProductDatabyId(productId);
 
-  const {
-    reviewData,
-    loadingReview,
-    errorReview,
-  } = useReviewbyId(productId);
-
+  const { reviewData, loadingReview, errorReview } = useReviewbyId(productId);
 
   /* console.log(loading);
   console.log(error);
@@ -49,12 +42,11 @@ export function Product() {
   console.log(productId); */
 
   console.log("Review Data:", reviewData);
-  console.log("ProductData:", productData[0])
+  console.log("ProductData:", productData[0]);
   const filteredReviews = reviewData
-    ? reviewData.filter(review => review.product_id == productData[0].id)
+    ? reviewData.filter((review) => review.product_id == productData[0].id)
     : [];
-  console.log("filtered", filteredReviews)
-
+  console.log("filtered", filteredReviews);
 
   return (
     <div className="flex flex-col w-full items-center">
@@ -73,7 +65,10 @@ export function Product() {
         </div>
         {loading && (
           <div className="flex items-center justify-center flex-col">
-            <img src="	https://media.tenor.com/vfSWqzGjMdcAAAAi/grants-triple-good.gif" className="h-96" />
+            <img
+              src="	https://media.tenor.com/vfSWqzGjMdcAAAAi/grants-triple-good.gif"
+              className="h-96"
+            />
             <p className="text-4xl p-4">Loading...</p>
           </div>
         )}
@@ -113,7 +108,11 @@ export function Product() {
                 </SwiperSlide>
               ))}
             </Swiper> */}
-                <img src={`/src/Images/${productData[0].id}.jpg`} alt="" className="w-full rounded-lg" />
+                <img
+                  src={`/src/Images/${productData[0].id}.jpg`}
+                  alt=""
+                  className="w-full rounded-lg"
+                />
               </div>
               {/* dettagli prodotto */}
               <div className="flex items-center flex-col w-full h-full mt-10 md:pl-10 md:items-start">
@@ -133,7 +132,7 @@ export function Product() {
                   )}
                   <div className="flex items-center pt-5 pb-8">
                     {productData[0].discount === null ||
-                      productData[0].discount === 0 ? (
+                    productData[0].discount === 0 ? (
                       <p className="text-3xl pr-3">
                         {(
                           productData[0].price -
@@ -171,16 +170,18 @@ export function Product() {
                   customstyle="w-screen h-13"
                   function={() => addToCart(product)}
                 /> */}
-
               </div>
-
             </div>
             <div className="pt-16">
               <Accordion className="dark:border-[#c8a485]/60 dark:divide-[#c8a485]/60">
                 <Accordion.Panel>
                   <Accordion.Title className="dark:hover:bg-[#c8a485]/60 dark:hover:text-our-black focus:ring-2 dark:bg-[#c8a485]/30 dark:text-our-black">
                     <div className="flex items-center">
-                      <img src="https://cdn-icons-png.flaticon.com/512/2769/2769339.png" alt="ship" className="h-7 pr-3" />
+                      <img
+                        src="https://cdn-icons-png.flaticon.com/512/2769/2769339.png"
+                        alt="ship"
+                        className="h-7 pr-3"
+                      />
                       <p>Spedizioni e resi</p>
                     </div>
                   </Accordion.Title>
@@ -189,17 +190,18 @@ export function Product() {
                       Puoi restituire il tuo ordine gratuitamente entro 48 ore
                       dall'arrivo del prodotto.
                     </p>
-
-
                   </Accordion.Content>
                 </Accordion.Panel>
                 <Accordion.Panel>
-                  <Accordion.Title className="dark:hover:bg-[#c8a485]/60 dark:hover:text-our-black focus:ring-2 dark:bg-[#c8a485]/30 dark:text-our-black" >
+                  <Accordion.Title className="dark:hover:bg-[#c8a485]/60 dark:hover:text-our-black focus:ring-2 dark:bg-[#c8a485]/30 dark:text-our-black">
                     <div className="flex items-center">
-                      <img src="https://cdn-icons-png.flaticon.com/128/2191/2191108.png" alt="reviews" className="h-7 pr-3" />
+                      <img
+                        src="https://cdn-icons-png.flaticon.com/128/2191/2191108.png"
+                        alt="reviews"
+                        className="h-7 pr-3"
+                      />
                       <p>Recensioni</p>
                     </div>
-
                   </Accordion.Title>
                   <Accordion.Content className="dark:bg-[#e3ddcd]/40">
                     {loadingReview && (
@@ -219,13 +221,12 @@ export function Product() {
                         />
                       </div>
                     ))}
-
-
                   </Accordion.Content>
                 </Accordion.Panel>
               </Accordion>
-              <div className="h-1/4"><CarrouselProducts /></div>
-
+              <div className="h-1/4">
+                <CarrouselProducts />
+              </div>
             </div>
           </div>
         )}

@@ -1,4 +1,3 @@
-import React from "react";
 import ProductCardHome from "../../shared/ProductCardHome";
 import CarrouselProducts from "../product/CarrouselProducts";
 import { ProductCard } from "../../shared/ProductCard";
