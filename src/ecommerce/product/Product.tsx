@@ -1,10 +1,10 @@
 "use client";
 /* -------------------FARE LO STILE,E AL CLICK DI UNA FOTO DEL CAROSELLO VERTICALE SI VEDA L'IMMAGINE NEL CAROSELLO GRANDE--------------------------- */
 
-import { Accordion } from "flowbite-react";
+import { Accordion, CustomFlowbiteTheme } from "flowbite-react";
 import { SitePathComponent } from "../../shared/SitePath";
 import { Rating } from "flowbite-react";
-
+import { Button } from "flowbite-react";
 // Import Swiper styles
 import "swiper/css";
 import "swiper/css/navigation";
@@ -24,6 +24,11 @@ interface Product {
   discountPrice?: number;
   immagini: { img: string }[];
 }
+const customTheme: CustomFlowbiteTheme["button"] = {
+  color: {
+    primary: "bg-giallo hover:bg-beige-chiaro",
+  },
+};
 export function Product() {
   const { id } = useParams();
   const productId: number = Number(id);
@@ -76,7 +81,7 @@ export function Product() {
 
         {productData[0] && (
           <div>
-            <div className="flex flex-col md:flex-row w-full items-center">
+            <div className="flex flex-col md:flex-row w-full items-center my-16">
               <div className="w-8/12 mx-5">
                 {/* Carosello vertifcali delli immagini */}
                 {/* <div>
@@ -150,12 +155,20 @@ export function Product() {
                     </>
                   )}
                 </div>
-
-                <NormalButton
+                <div className="flex no-wrap items-center">
+      <Button
+      theme={customTheme}
+        color="primary"
+        className="hover:text-ocra focus:ring-giallo focus:bg-nero focus:text-giallo w-full h-13"
+      >
+        <p>Add to cart</p>
+      </Button>
+    </div>
+                {/* <NormalButton
                   content="Add to cart"
-                  customstyle="w-full h-11"
-                /*   function={() => addToCart(product)} */
-                />
+                  customstyle="w-screen h-13"
+                  function={() => addToCart(product)}
+                /> */}
               </div>
             </div>
             <div className="pt-16">
