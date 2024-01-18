@@ -14,7 +14,7 @@ export type Card = {
 const cardTheme: any = {
   root: {
     base: "flex rounded-lg  bg-white shadow-md dark:border-gray-700 dark:bg-gray-800",
-    children: "flex h-full flex-col justify-center gap-4 p-6",
+    children: "flex h-full max-h-60 flex-col justify-center gap-4 p-6",
     horizontal: {
       off: "flex-col",
       on: "flex-col md:max-w-xl md:flex-row",
@@ -24,8 +24,8 @@ const cardTheme: any = {
   img: {
     base: "",
     horizontal: {
-      off: "rounded-t-lg",
-      on: "h-96 w-full rounded-t-lg object-cover md:h-auto md:w-48 md:rounded-none md:rounded-l-lg",
+      off: "rounded-t-lg max-h-64 object-fill",
+      on: "w-full  rounded-t-lg object-cover md:h-auto md:w-48 md:rounded-none md:rounded-l-lg",
     },
   },
 };

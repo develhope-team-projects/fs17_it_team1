@@ -31,8 +31,8 @@ export default function CarrouselProducts() {
       </h2>
       <hr />
       <Swiper
-        spaceBetween={20}
-        slidesPerView={media ? 3 : 1}
+        spaceBetween={30}
+        slidesPerView={media ? 4 : 1}
         navigation={true}
         modules={[Navigation]}
         className="mySwiper flex items-center"
