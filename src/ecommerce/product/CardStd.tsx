@@ -14,7 +14,7 @@ export type Card = {
 const cardTheme: any = {
   root: {
     base: "flex rounded-lg  bg-white shadow-md dark:border-gray-700 dark:bg-gray-800",
-    children: "flex h-full max-h-60 flex-col justify-center gap-4 p-6",
+    children: "flex h-full max-h-64 flex-col justify-center gap-9 p-6",
     horizontal: {
       off: "flex-col",
       on: "flex-col md:max-w-xl md:flex-row",
@@ -39,12 +39,13 @@ export default function CardStd(props: Card) {
       imgSrc={`/src/Images/${props.id}.jpg`}
       theme={cardTheme}
     >
+      <div>
       <a href={href}>
         <h5 className="text-xl font-semibold tracking-tight text-gray-900 dark:text-white">
           {props.name}
         </h5>
       </a>
-      <div className="mb-5 mt-2.5 flex items-center">
+      <div className=" mt-1.5 flex items-center">
         <Rating>
           <Rating.Star filled={props.rating >= 1 ? true : false} />
           <Rating.Star filled={props.rating >= 2 ? true : false} />
@@ -55,6 +56,7 @@ export default function CardStd(props: Card) {
         <span className="ml-3 mr-2 rounded bg-cyan-100 px-2.5 py-0.5 text-xs font-semibold text-cyan-800 dark:bg-oro-chiaro dark:text-our-black">
           {props.rating}
         </span>
+      </div>
       </div>
       <div className="flex items-center justify-between">
         <span className="text-3xl font-bold text-gray-900 dark:text-white">

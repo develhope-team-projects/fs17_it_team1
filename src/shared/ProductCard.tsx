@@ -29,8 +29,7 @@ export function ProductCard() {
           Exceptional Taste, Pure Style
         </h5>
         <p className="font-normal text-gray-700 dark:text-gray-400">
-          Discover excellence with Loki. Whiskies and distinctive spirits embodying the essence of refined taste. Let yourself be guided by the exceptional.
-        </p>
+        Explore excellence with Loki. Our whiskies and distinctive spirits embody refined taste, guiding you through an exceptional experience. Let each sip be an invitation to discover the art of indulging in life's pleasures with style and distinction.         </p>
       </div>
     </div>
   );
