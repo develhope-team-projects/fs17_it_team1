@@ -15,7 +15,7 @@ export default function ProductCardHome({ img = true, h = 60, p = true }) {
       {/* da controllare il padding */}
       <div className={`w-4/4 max-h-30 pl-10 py-${h} pr-10  tablet:w-2/4`}>
         <h1 className="font-bold text-s tablet:font-bold text-3xl pb-6 text-white ">
-          Elevate Your Spirits on a Distilled Well-being Odyssey
+          Elevate Your Spirits on a Distilled<br/> Well-being Odyssey
         </h1>
         {media && p && (
           <p className="text-s tablet:text-l pb-6 text-white">
