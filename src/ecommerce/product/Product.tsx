@@ -157,7 +157,7 @@ export function Product() {
                     )}
                   </div>
                 </div>
-                <div className="flex no-wrap items-center">
+                <div className="flex no-wrap items-center w-10/12">
                   <Button
                     theme={customTheme}
                     color="primary"
