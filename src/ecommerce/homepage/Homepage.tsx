@@ -1,6 +1,7 @@
 import React from "react";
 import ProductCardHome from "../../shared/ProductCardHome";
 import CarrouselProducts from "../product/CarrouselProducts";
+import { ProductCard } from "../../shared/ProductCard";
 
 export default function Homepage() {
   return (
@@ -8,6 +9,7 @@ export default function Homepage() {
       <ProductCardHome />
 
       <CarrouselProducts />
+      <ProductCard />
     </div>
   );
 }
