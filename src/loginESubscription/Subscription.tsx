@@ -5,7 +5,7 @@ import { NormalButton } from "../shared/NormalButton";
 import type { CustomFlowbiteTheme } from "flowbite-react";
 import "./Subscription.css";
 import { useState } from "react";
-import { UserDash } from "../dashboard/UsersDashboard/useUserData";
+import useUserData, { UserDash } from "../dashboard/UsersDashboard/useUserData";
 
 const customTheme: CustomFlowbiteTheme["datepicker"] = {
   root: {
@@ -205,6 +205,8 @@ function Subscription() {
       password: "",
     });
 
+    const { userData } = useUserData();
+
     const [submitted, setSubmitted] = useState(false);
 
     const validatePassword = () => {
@@ -219,51 +221,58 @@ function Subscription() {
 
     async function handleFormSubmit(event: React.FormEvent<HTMLFormElement>) {
       event.preventDefault();
+      const checkEmail = userData.filter(
+        (el) => el.email === event.target[8].value
+      );
 
-      function formatDateToYYYYMMDD(dateString: any) {
-        // Create a new Date object using the input date string
-        const date = new Date(dateString);
+      if (checkEmail.length != 0) {
+        alert("User doesn't exist!");
+      } else {
+        function formatDateToYYYYMMDD(dateString: any) {
+          // Create a new Date object using the input date string
+          const date = new Date(dateString);
 
-        // Extract year, month, and day components from the Date object
-        const year = date.getFullYear();
-        const month = String(date.getMonth() + 1).padStart(2, "0"); // Adding 1 to month since it's zero-based
-        const day = String(date.getDate()).padStart(2, "0");
+          // Extract year, month, and day components from the Date object
+          const year = date.getFullYear();
+          const month = String(date.getMonth() + 1).padStart(2, "0"); // Adding 1 to month since it's zero-based
+          const day = String(date.getDate()).padStart(2, "0");
 
-        // Construct the date in 'YYYY-MM-DD' format
-        const formattedDate = `${year}-${month}-${day}`;
+          // Construct the date in 'YYYY-MM-DD' format
+          const formattedDate = `${year}-${month}-${day}`;
 
-        return formattedDate;
+          return formattedDate;
+        }
+
+        const birthday = formatDateToYYYYMMDD(event.target[2].value);
+
+        console.log(event.target[5].checked);
+
+        const newUserData: UserDash = {
+          email: event.target[8].value,
+          first_name: event.target[0].value,
+          last_name: event.target[1].value,
+          birth_day: birthday,
+          location: event.target[3].value,
+          gender: event.target[5].checked
+            ? event.target[5].value
+            : event.target[6].checked
+            ? event.target[6].value
+            : event.target[7].value,
+          password: event.target[9].value,
+        };
+
+        console.log(newUserData);
+
+        const response = await fetch("http://localhost:3001/users", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(newUserData),
+        });
+        setSubmitted(true);
+        window.location.href = "/log-in";
       }
-
-      const birthday = formatDateToYYYYMMDD(event.target[2].value);
-
-      console.log(event.target[5].checked);
-
-      const newUserData: UserDash = {
-        email: event.target[8].value,
-        first_name: event.target[0].value,
-        last_name: event.target[1].value,
-        birth_day: birthday,
-        location: event.target[3].value,
-        gender: event.target[5].checked
-          ? event.target[5].value
-          : event.target[6].checked
-          ? event.target[6].value
-          : event.target[7].value,
-        password: event.target[9].value,
-      };
-
-      console.log(newUserData);
-
-      const response = await fetch("http://localhost:3001/users", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(newUserData),
-      });
-      setSubmitted(true);
-      //window.location.href = "/log-in";
     }
 
     return (

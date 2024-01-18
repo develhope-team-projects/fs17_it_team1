@@ -21,8 +21,6 @@ function Login() {
 
   const handleChange = (e: any) => {
     const { id, value } = e.target;
-
-    console.log(loginData);
     setLoginData((prevData) => ({
       ...prevData,
       [id]: value,
@@ -31,8 +29,6 @@ function Login() {
 
   const handleLogin = async () => {
     login(loginData);
-    console.log(userCredentials);
-
     // Puoi anche gestire la navigazione a una nuova pagina qui
   };
 
