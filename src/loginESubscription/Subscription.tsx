@@ -300,7 +300,7 @@ function Subscription() {
                 Data di nascita
               </p>
               <div className="w-40">
-                <Datepicker theme={{ ...customTheme, ...customTheme3 }} />
+                <Datepicker style={{ color: "black", background: "#ffd565", border: "#d1784d", fontSize: "14px", fontWeight: "600" }} theme={{ ...customTheme, ...customTheme3 }} />
               </div>
             </div>
 
