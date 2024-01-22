@@ -49,7 +49,7 @@ export default function Header() {
             <Navbar.Brand>
               <img
                 src="/src/assets/logo_white-03.svg"
-                className="mr-3 h-6 sm:h-9"
+                className="mr-44 h-6 sm:h-9"
                 alt="LOKI Logo"
               />
             </Navbar.Brand>
@@ -71,7 +71,7 @@ export default function Header() {
               label={
                 <Avatar
                   alt="User settings"
-                  img="https://flowbite.com/docs/images/people/profile-picture-5.jpg"
+                  img="https://cdn-icons-png.flaticon.com/512/847/847969.png"
                   rounded
                 />
               }
@@ -140,7 +140,7 @@ export default function Header() {
                   label={
                     <Avatar
                       alt="User settings"
-                      img="https://flowbite.com/docs/images/people/profile-picture-5.jpg"
+                      img="https://cdn-icons-png.flaticon.com/512/847/847969.png"
                       rounded
                     />
                   }

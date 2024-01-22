@@ -1,26 +1,25 @@
 import { Rating } from "flowbite-react";
+import { number } from "prop-types";
 
 export type Review = {
-  img: string;
-  name: string;
-  userCountry: string;
-  rating: number;
-  ratingTitle: string;
-  commentDate: string;
+  title: string;
   comment: string;
+  creation_date: string;
+  user_id: string;
+  rating: number;
 };
 
 export default function RatingReview(props: Review) {
   return (
-    <article className="bg-our-black border-2 border-white p-2">
+    <article className="bg-beige-scuro/50 p-2">
       <div className="flex items-center mb-4">
-        <img
+        {/*  <img
           className="w-10 h-10 me-4 rounded-full"
           src={props.img}
           alt=""
-        ></img>
+        ></img> */}
         <div className="font-medium dark:text-white">
-          <p>{props.name}</p>
+          <p>{props.user_id}</p>
         </div>
       </div>
       <Rating>
@@ -31,13 +30,14 @@ export default function RatingReview(props: Review) {
         <Rating.Star filled={props.rating >= 5 ? true : false} />
       </Rating>
       <h3 className="text-sm font-semibold text-gray-900 dark:text-white">
-        {props.ratingTitle}
+        {props.title}
       </h3>
 
       <footer className="mb-5 text-sm text-gray-500 dark:text-gray-400">
         <p>
-          Reviewed in {props.userCountry} on{" "}
-          <time dateTime={props.commentDate}>{props.commentDate}</time>
+          {/*           Reviewed in {props.userCountry} on{" "}
+           */}{" "}
+          <time dateTime={props.creation_date}>{props.creation_date}</time>
         </p>
       </footer>
       <p className="mb-2 text-gray-500 dark:text-gray-400">{props.comment}</p>

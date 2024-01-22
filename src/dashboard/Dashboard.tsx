@@ -1,13 +1,6 @@
 import { Link, Route, Routes } from "react-router-dom";
 import { Sidebar } from "flowbite-react";
-import {
-  HiArrowSmRight,
-  HiChartPie,
-  HiInbox,
-  HiShoppingBag,
-  HiTable,
-  HiUser,
-} from "react-icons/hi";
+import { HiChartPie, HiShoppingBag, HiUser } from "react-icons/hi";
 import UsersDashboard from "./UsersDashboard/UsersDashboard";
 import { EcommerceDashboard } from "./EcommerceDashboards/EcommerceDashboard";
 import Overview from "./Overview/Overview";

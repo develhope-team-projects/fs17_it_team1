@@ -1,24 +1,24 @@
 "use client";
 /* -------------------FARE LO STILE,E AL CLICK DI UNA FOTO DEL CAROSELLO VERTICALE SI VEDA L'IMMAGINE NEL CAROSELLO GRANDE--------------------------- */
 
-import { Accordion, Footer, Spinner } from "flowbite-react";
+import { Accordion, CustomFlowbiteTheme } from "flowbite-react";
 import { SitePathComponent } from "../../shared/SitePath";
-import { useEffect, useState } from "react";
-import Header from "../../shared/Header";
 import { Rating } from "flowbite-react";
-import { Swiper, SwiperSlide } from "swiper/react";
-
+import { Button } from "flowbite-react";
 // Import Swiper styles
 import "swiper/css";
 import "swiper/css/navigation";
 
 // import required modules
-import { NormalButton } from "../../shared/NormalButton";
 import { useParams } from "react-router-dom";
 import useProductDatabyId from "../../dashboard/Product/useProductDatabyId";
-import CardStd from "./CardStd";
 import RatingReview from "./RatingReview";
 import CarrouselProducts from "./CarrouselProducts";
+import useReviewbyId from "../../dashboard/Product/useReviewbyId";
+import RatingForm from "./RatingForm";
+import { useContext } from "react";
+import { userContext } from "../../loginESubscription/AuthContext";
+import useUserData from "../../dashboard/UsersDashboard/useUserData";
 
 interface Product {
   id: number;
@@ -28,16 +28,32 @@ interface Product {
   discountPrice?: number;
   immagini: { img: string }[];
 }
+const customTheme: CustomFlowbiteTheme["button"] = {
+  color: {
+    primary: "bg-giallo hover:bg-beige-chiaro",
+  },
+};
 export function Product() {
   const { id } = useParams();
   const productId: number = Number(id);
-  const { productData, setProductData, loading, error, onFetchData } =
-    useProductDatabyId(productId);
-  console.log(loading);
-  console.log(error);
-  console.log(productData);
-  console.log(productId);
+  const { userData } = useUserData();
+  const contesto = useContext(userContext);
+  const loggedUser = userData.filter((el) => el.id === contesto);
 
+  const { productData, loading, error } = useProductDatabyId(productId);
+
+  const { reviewData, setReviewData, loadingRev, errorRev, onFetchData } =
+    useReviewbyId(productId);
+
+  const calcReview = () => {
+    let tot = 0;
+    reviewData.forEach((el) => {
+      tot += el.rating;
+    });
+
+    return tot / reviewData.length;
+  };
+  const review = calcReview();
   return (
     <div className="flex flex-col w-full items-center">
       <div className="w-full h-[3.75rem] bg-our-black/95"></div>
@@ -55,7 +71,10 @@ export function Product() {
         </div>
         {loading && (
           <div className="flex items-center justify-center flex-col">
-            <img src="	https://media.tenor.com/vfSWqzGjMdcAAAAi/grants-triple-good.gif" />
+            <img
+              src="	https://media.tenor.com/vfSWqzGjMdcAAAAi/grants-triple-good.gif"
+              className="h-96"
+            />
             <p className="text-4xl p-4">Loading...</p>
           </div>
         )}
@@ -63,8 +82,8 @@ export function Product() {
 
         {productData[0] && (
           <div>
-            <div className="flex items-center my-10">
-              <div className="w-8/12">
+            <div className="flex flex-col md:flex-row w-full items-center my-16">
+              <div className="w-8/12 mx-5">
                 {/* Carosello vertifcali delli immagini */}
                 {/* <div>
               {props.immagini.map((product, index)=> (
@@ -95,34 +114,31 @@ export function Product() {
                 </SwiperSlide>
               ))}
             </Swiper> */}
+                <img
+                  src={`/src/Images/${productData[0].id}.jpg`}
+                  alt=""
+                  className="w-full rounded-lg"
+                />
               </div>
               {/* dettagli prodotto */}
-              <div className="w-full h-full mr-32">
-                <h1 className="text-5xl pb-3 font-semibold">
-                  {productData[0].name}
-                </h1>
-                <Rating>
-                  <Rating.Star />
-                  <Rating.Star />
-                  <Rating.Star />
-                  <Rating.Star />
-                  <Rating.Star filled={false} />
-                </Rating>
-                {productData[0].description && (
-                  <p className="pt-4 text-l">{productData[0].description}</p>
-                )}
-                <div className="flex items-center pt-5 pb-8">
-                  {productData[0].discount === null ||
-                  productData[0].discount === 0 ? (
-                    <p className="text-3xl pr-3">
-                      {(
-                        productData[0].price -
-                        productData[0].price * productData[0].discount
-                      ).toFixed(2)}
-                      $
-                    </p>
-                  ) : (
-                    <>
+              <div className="flex items-center flex-col w-full h-full mt-10 md:pl-10 md:items-start">
+                <div>
+                  <h1 className="text-5xl pb-3 font-semibold">
+                    {productData[0].name}
+                  </h1>
+                  <Rating>
+                    <Rating.Star filled={review >= 1 ? true : false} />
+                    <Rating.Star filled={review >= 2 ? true : false} />
+                    <Rating.Star filled={review >= 3 ? true : false} />
+                    <Rating.Star filled={review >= 4 ? true : false} />
+                    <Rating.Star filled={review >= 5 ? true : false} />
+                  </Rating>
+                  {productData[0].description && (
+                    <p className="pt-4 text-l">{productData[0].description}</p>
+                  )}
+                  <div className="flex items-center pt-5 pb-8">
+                    {productData[0].discount === null ||
+                    productData[0].discount === 0 ? (
                       <p className="text-3xl pr-3">
                         {(
                           productData[0].price -
@@ -130,72 +146,107 @@ export function Product() {
                         ).toFixed(2)}
                         $
                       </p>
-                      <p className="text-xl line-through font-thin text-gray-700">
-                        {productData[0].price}$
-                      </p>
-                    </>
-                  )}
+                    ) : (
+                      <>
+                        <p className="text-3xl pr-3">
+                          {(
+                            productData[0].price -
+                            productData[0].price * productData[0].discount
+                          ).toFixed(2)}
+                          $
+                        </p>
+                        <p className="text-xl line-through font-thin text-gray-700">
+                          {productData[0].price}$
+                        </p>
+                      </>
+                    )}
+                  </div>
                 </div>
-
-                <NormalButton
+                <div className="flex no-wrap items-center w-10/12">
+                  <Button
+                    theme={customTheme}
+                    color="primary"
+                    className="hover:text-ocra focus:ring-giallo focus:bg-nero focus:text-giallo w-full h-13"
+                  >
+                    <p>Add to cart</p>
+                  </Button>
+                </div>
+                {/* <NormalButton
                   content="Add to cart"
-                  customstyle="w-full h-11"
-                  /*   function={() => addToCart(product)} */
-                />
+                  customstyle="w-screen h-13"
+                  function={() => addToCart(product)}
+                /> */}
               </div>
             </div>
             <div className="pt-16">
-              <Accordion collapseAll>
+              <Accordion className="dark:border-[#c8a485]/60 dark:divide-[#c8a485]/60">
                 <Accordion.Panel>
-                  <Accordion.Title>Spedizioni e resi</Accordion.Title>
-                  <Accordion.Content>
-                    <p className="mb-2 text-gray-500 dark:text-gray-400">
-                      Consegna standard gratuita con la tua Membership Nike.
-                      Puoi restituire il tuo ordine gratuitamente entro 24 ore
+                  <Accordion.Title className="dark:hover:bg-[#c8a485]/60 dark:hover:text-our-black focus:ring-2 dark:bg-[#c8a485]/30 dark:text-our-black">
+                    <div className="flex items-center">
+                      <img
+                        src="https://cdn-icons-png.flaticon.com/512/2769/2769339.png"
+                        alt="ship"
+                        className="h-7 pr-3"
+                      />
+                      <p>Spedizioni e resi</p>
+                    </div>
+                  </Accordion.Title>
+                  <Accordion.Content className="dark:bg-[#e3ddcd]/40">
+                    <p className="mb-2 text-gray-500 dark:text-our-black">
+                      Puoi restituire il tuo ordine gratuitamente entro 48 ore
                       dall'arrivo del prodotto.
                     </p>
                   </Accordion.Content>
                 </Accordion.Panel>
                 <Accordion.Panel>
-                  <Accordion.Title>Recensioni</Accordion.Title>
-                  <Accordion.Content>
-                    <div className="pb-10">
-                      <RatingReview
-                        img="https://cdn-7.motorsport.com/images/amp0ZRabeN0s1000carlos-sainz-ferrari-charles-l.jpg"
-                        name="Eno Mario"
-                        userCountry="Italy"
-                        rating={3}
-                        ratingTitle="buono"
-                        commentDate="01-01-2023"
-                        comment="Buon Prodotto"
+                  <Accordion.Title className="dark:hover:bg-[#c8a485]/60 dark:hover:text-our-black focus:ring-2 dark:bg-[#c8a485]/30 dark:text-our-black">
+                    <div className="flex items-center">
+                      <img
+                        src="https://cdn-icons-png.flaticon.com/128/2191/2191108.png"
+                        alt="reviews"
+                        className="h-7 pr-3"
                       />
+                      <p>Recensioni</p>
                     </div>
-                    <div className="pb-10">
-                      <RatingReview
-                        img="https://cdn-7.motorsport.com/images/amp0ZRabeN0s1000carlos-sainz-ferrari-charles-l.jpg"
-                        name="Eno Mario"
-                        userCountry="Italy"
-                        rating={3}
-                        ratingTitle="buono"
-                        commentDate="01-01-2023"
-                        comment="Buon Prodotto"
+                  </Accordion.Title>
+                  <Accordion.Content className="dark:bg-[#e3ddcd]/40">
+                    {contesto != 0 && (
+                      <RatingForm
+                        {...{ productId: productId, userId: contesto }}
                       />
-                    </div>
-                    <div className="pb-10">
-                      <RatingReview
-                        img="https://cdn-7.motorsport.com/images/amp0ZRabeN0s1000carlos-sainz-ferrari-charles-l.jpg"
-                        name="Eno Mario"
-                        userCountry="Italy"
-                        rating={3}
-                        ratingTitle="buono"
-                        commentDate="01-01-2023"
-                        comment="Buon Prodotto"
-                      />
-                    </div>
+                    )}
+                    {loadingRev && (
+                      <div className="flex items-center justify-center flex-col">
+                        <img src="	https://media.tenor.com/vfSWqzGjMdcAAAAi/grants-triple-good.gif" />
+                        <p className="text-4xl p-4">Loading...</p>
+                      </div>
+                    )}
+                    {errorRev && <p>...Error</p>}¯
+                    {reviewData.map((review, index) => (
+                      <div key={index} className="pb-10">
+                        <RatingReview
+                          title={review.title}
+                          comment={review.comment}
+                          creation_date={review.creation_date}
+                          user_id={
+                            userData[0] &&
+                            userData.filter((el) => el.id === review.user_id)[0]
+                              .first_name +
+                              " " +
+                              userData.filter(
+                                (el) => el.id === review.user_id
+                              )[0].last_name
+                          }
+                          rating={review.rating}
+                        />
+                      </div>
+                    ))}
                   </Accordion.Content>
                 </Accordion.Panel>
               </Accordion>
-              <CarrouselProducts />
+              <div className="h-1/4">
+                <CarrouselProducts />
+              </div>
             </div>
           </div>
         )}

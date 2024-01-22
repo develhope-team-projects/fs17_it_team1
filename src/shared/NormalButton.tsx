@@ -5,7 +5,7 @@ import { Button } from "flowbite-react";
 
 const customTheme: CustomFlowbiteTheme["button"] = {
   color: {
-    primary: "bg-oro-chiaro hover:bg-light-bg",
+    primary: "bg-giallo hover:bg-beige-chiaro",
   },
 };
 
@@ -26,7 +26,7 @@ export function NormalButton(props: ButtonElements) {
         onClick={!props.onClick ? props.function : props.onClick}
         theme={customTheme}
         color="primary"
-        className=" hover:text-oro-chiaro focus:ring-oro-chiaro focus:bg-our-black focus:text-oro-chiaro"
+        className=" hover:text-ocra focus:ring-giallo focus:bg-nero focus:text-giallo"
         type={props.type}
       >
         <p>{props.content}</p>
