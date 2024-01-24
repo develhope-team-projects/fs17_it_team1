@@ -59,44 +59,47 @@ export default function Header() {
           <div className="flex md:order-2">
             {/* bottone cart */}
             <Cart />
-
-            <Dropdown
-              arrowIcon={false}
-              inline
-              label={
-                <Avatar
-                  alt="User settings"
-                  img="https://cdn-icons-png.flaticon.com/512/847/847969.png"
-                  rounded
-                />
-              }
-            >
-              {contesto != 0 && (
-                <Dropdown.Header>
-                  <span className="block text-sm">
-                    {loggedUser[0] &&
-                      loggedUser[0].first_name + " " + loggedUser[0].last_name}
-                  </span>
-                  <span className="block truncate text-sm font-medium">
-                    {loggedUser[0] && loggedUser[0].email}
-                  </span>
-                </Dropdown.Header>
-              )}
-              {contesto != 0 && (
-                <Dropdown.Item>
-                  <Link to="/dashboard">Dashboard</Link>
-                </Dropdown.Item>
-              )}
-              {contesto != 0 && <Dropdown.Item>Settings</Dropdown.Item>}
-              <Dropdown.Divider />
-              {contesto != 0 ? (
-                <Dropdown.Item onClick={logout}>Sign out</Dropdown.Item>
-              ) : (
-                <Dropdown.Item>
-                  <Link to="/log-in">Sign in</Link>
-                </Dropdown.Item>
-              )}
-            </Dropdown>
+            <div className="flex items-center z-50">
+              <Dropdown
+                arrowIcon={false}
+                inline
+                label={
+                  <Avatar
+                    alt="User settings"
+                    img="https://cdn-icons-png.flaticon.com/512/847/847969.png"
+                    rounded
+                  />
+                }
+              >
+                {contesto != 0 && (
+                  <Dropdown.Header>
+                    <span className="block text-sm">
+                      {loggedUser[0] &&
+                        loggedUser[0].first_name +
+                          " " +
+                          loggedUser[0].last_name}
+                    </span>
+                    <span className="block truncate text-sm font-medium">
+                      {loggedUser[0] && loggedUser[0].email}
+                    </span>
+                  </Dropdown.Header>
+                )}
+                {contesto != 0 && (
+                  <Dropdown.Item>
+                    <Link to="/dashboard">Dashboard</Link>
+                  </Dropdown.Item>
+                )}
+                {contesto != 0 && <Dropdown.Item>Settings</Dropdown.Item>}
+                <Dropdown.Divider />
+                {contesto != 0 ? (
+                  <Dropdown.Item onClick={logout}>Sign out</Dropdown.Item>
+                ) : (
+                  <Dropdown.Item>
+                    <Link to="/log-in">Sign in</Link>
+                  </Dropdown.Item>
+                )}
+              </Dropdown>
+            </div>
             <Navbar.Toggle />
           </div>
         </>

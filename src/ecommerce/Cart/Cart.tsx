@@ -75,6 +75,19 @@ function Cart() {
     );
   }
 
+  let totalAm = 0;
+
+  if (CartData) {
+    CartData.forEach(
+      (el) =>
+        (totalAm += Number(
+          productData.filter((e) => e.id === el.product_id)[0].price *
+            el.quantity
+        ))
+    );
+  }
+
+  console.log(totalAm);
   return (
     <>
       <div>
@@ -148,7 +161,7 @@ function Cart() {
                           Subtotal
                         </p>
                         <p className="text-base leading-none text-gray-800">
-                          $9,000
+                          {totalAm}€
                         </p>
                       </div>
                       <div className="flex items-center justify-between pt-5">
@@ -156,15 +169,7 @@ function Cart() {
                           Shipping
                         </p>
                         <p className="text-base leading-none text-gray-800">
-                          $30
-                        </p>
-                      </div>
-                      <div className="flex items-center justify-between pt-5">
-                        <p className="text-base leading-none text-gray-800">
-                          Tax
-                        </p>
-                        <p className="text-base leading-none text-gray-800">
-                          $35
+                          0€
                         </p>
                       </div>
                     </div>
@@ -174,7 +179,7 @@ function Cart() {
                           Total
                         </p>
                         <p className="text-2xl font-bold leading-normal text-right text-gray-800">
-                          $10,240
+                          {totalAm}€
                         </p>
                       </div>
                       <button
