@@ -112,15 +112,17 @@ function Cart() {
 
   let totalAm = 0;
 
-  if (CartData) {
-    CartData.forEach(
-      (el) =>
-        (totalAm += Number(
-          productData.filter((e) => e.id === el.product_id)[0].price *
-            el.quantity
-        ))
-    );
-  }
+
+//-----------------------------------------------------------------------
+if (CartData) {
+  CartData.forEach((el) => {
+    const product = productData.find((e) => e.id === el.product_id);
+
+    if (product) {
+      totalAm += Number(product.price * el.quantity);
+    }
+  });
+}
 
   totalAm = Number(totalAm.toFixed(2));
 
