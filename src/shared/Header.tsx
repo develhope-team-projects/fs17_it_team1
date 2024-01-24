@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 import { userContext } from "../loginESubscription/AuthContext";
 import useUserData from "../dashboard/UsersDashboard/useUserData";
 import useLogin from "../loginESubscription/useLogin";
+import Cart from "../ecommerce/Cart/Cart";
 
 export default function Header() {
   const [toggle, setToggle] = useState(false);
@@ -56,52 +57,49 @@ export default function Header() {
           </div>
 
           <div className="flex md:order-2">
-            {/* bottone card */}
-            <button>
-              <img
-                src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAAACXBIWXMAAAsTAAALEwEAmpwYAAACrUlEQVR4nO2ZO4xMURjHf1YyjalorAqVkXg0VuFViA2xGla2oGIlXhGroluFR8Go6GzhHatCRWM7q/Co2MSuhFgVjV2yEhn55H/lkp2559wZe7+IX3KSyZzv/93/yb333O+cA/+pSwnoAW4Cr4AJNft9Q30W45qdwBhQy2ijwA4cMhuopow+BQ4DFWCOWkX/PUvFnZPWDVUZ+wrsAWY1iG0DehWbDMbN41QDvgBrInRrU4PZTsGUUu+E3YlY9kn7uugJoCf1TtgjE4tpniuH3dnCuCUTh5rIcUQ5rlMgIzKxpIkcS5XDvjOF8Vkmyk3kKCuH5SqM5HvgJc+/P5DJgHJjptpk3kHMc2C+9kebm2cgKwNmk5l6tEbUvyJP8m0SP2jCQChZeR6qvytP8oMSD9Tp35gyYL/zEpJnQP3mKZqzEvfX6R9NGbBaKS8heU6q/0yeC1yT2Eru6XiXMvA2zwUi8vSq3zxFMyRxZ53+LTJhF9+c5wIReTrlxTxF86YFdVSrqMiLLRmiy+upFtRRraIsL99ilwsLJPyIHz7JU3uMaLVEtujxwgt56sizDr+LH+7JU3eM6JhEF/HDJXnqixFdkOg4fjghT7b1FMwdiXbhh93yNBgjeiLROvywXp6GY0QfJFqIHxbJ03iowDbKvqt52jUvxfparJG/xx/j8mZ3J5MNCn6MP4blzd6X4NnhNv4YjJlNk/n6PP6oxnzfki/oUfzRF1Nx3Fewx6Oxbnmzuiu4ylyFPzpiqvKk7p+PP9pD10nJSmwq58HN36YtdOWarI1ti8YrYyF7CcluxSP8MiSPmxoF7VXQFfxyNeTwtV9Bp/DL6Ywd0N/2WPfjlwPyeJmAXe+t+KUr4JTg51mIBS3DL8vl8WWjoAkHp1K1wGZep8XjUVtW+3UU9wNY5IVjWCP9OAAAAABJRU5ErkJggg=="
-                alt="cart"
-                className="text-white w-7 h-7 mr-3"
-                style={{ filter: "invert(100%)" }}
-              />
-            </button>
-            <Dropdown
-              arrowIcon={false}
-              inline
-              label={
-                <Avatar
-                  alt="User settings"
-                  img="https://cdn-icons-png.flaticon.com/512/847/847969.png"
-                  rounded
-                />
-              }
-            >
-              {contesto != 0 && (
-                <Dropdown.Header>
-                  <span className="block text-sm">
-                    {loggedUser[0] &&
-                      loggedUser[0].first_name + " " + loggedUser[0].last_name}
-                  </span>
-                  <span className="block truncate text-sm font-medium">
-                    {loggedUser[0] && loggedUser[0].email}
-                  </span>
-                </Dropdown.Header>
-              )}
-              {contesto != 0 && (
-                <Dropdown.Item>
-                  <Link to="/dashboard">Dashboard</Link>
-                </Dropdown.Item>
-              )}
-              {contesto != 0 && <Dropdown.Item>Settings</Dropdown.Item>}
-              <Dropdown.Divider />
-              {contesto != 0 ? (
-                <Dropdown.Item onClick={logout}>Sign out</Dropdown.Item>
-              ) : (
-                <Dropdown.Item>
-                  <Link to="/log-in">Sign in</Link>
-                </Dropdown.Item>
-              )}
-            </Dropdown>
+            {/* bottone cart */}
+            <Cart />
+            <div className="flex items-center z-50">
+              <Dropdown
+                arrowIcon={false}
+                inline
+                label={
+                  <Avatar
+                    alt="User settings"
+                    img="https://cdn-icons-png.flaticon.com/512/847/847969.png"
+                    rounded
+                  />
+                }
+              >
+                {contesto != 0 && (
+                  <Dropdown.Header>
+                    <span className="block text-sm">
+                      {loggedUser[0] &&
+                        loggedUser[0].first_name +
+                          " " +
+                          loggedUser[0].last_name}
+                    </span>
+                    <span className="block truncate text-sm font-medium">
+                      {loggedUser[0] && loggedUser[0].email}
+                    </span>
+                  </Dropdown.Header>
+                )}
+                {contesto != 0 && (
+                  <Dropdown.Item>
+                    <Link to="/dashboard">Dashboard</Link>
+                  </Dropdown.Item>
+                )}
+                {contesto != 0 && <Dropdown.Item>Settings</Dropdown.Item>}
+                <Dropdown.Divider />
+                {contesto != 0 ? (
+                  <Dropdown.Item onClick={logout}>Sign out</Dropdown.Item>
+                ) : (
+                  <Dropdown.Item>
+                    <Link to="/log-in">Sign in</Link>
+                  </Dropdown.Item>
+                )}
+              </Dropdown>
+            </div>
             <Navbar.Toggle />
           </div>
         </>

@@ -5,6 +5,7 @@ import { Product } from "./product/Product";
 import Header from "../shared/Header";
 import FooterComponent, { FooterType } from "../shared/Footer";
 import Homepage from "./homepage/Homepage";
+import Cart from "./Cart/Cart";
 
 const footerTest: FooterType = {
   logo: "/src/assets/logo_white-03.svg",
