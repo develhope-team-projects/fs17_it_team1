@@ -3,6 +3,8 @@
 import { Card, Rating } from "flowbite-react";
 import { SpecialButton } from "../../shared/SpecialButton";
 import useReviewbyId from "../../dashboard/Product/useReviewbyId";
+import { useContext } from "react";
+import { userContext } from "../../loginESubscription/AuthContext";
 
 export type Card = {
   id: number;
@@ -36,6 +38,25 @@ export default function CardStd(props: Card) {
 
   const { reviewData, setReviewData, loadingRev, errorRev, onFetchData } =
     useReviewbyId(props.id);
+
+  const contesto = useContext(userContext);
+
+  async function addToCart() {
+    const product = {
+      productId: props.id,
+      userId: contesto,
+      quantity: 1,
+    };
+
+    const response = await fetch("http://localhost:3001/cart", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(product),
+    });
+    return response.json();
+  }
 
   const calcReview = () => {
     let tot = 0;
@@ -78,7 +99,7 @@ export default function CardStd(props: Card) {
           ${props.price}
         </span>
       </div>
-      <SpecialButton content="Add to cart" />
+      <SpecialButton content="Add to cart" function={addToCart} />
     </Card>
   );
 }

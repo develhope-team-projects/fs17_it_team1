@@ -37,8 +37,6 @@ export function ProductForm() {
       discount: event.target[3].value ? event.target[3].value : null,
     };
 
-    console.log(newUserData);
-
     const response = await fetch("http://localhost:3001/products", {
       method: "POST",
       headers: {
