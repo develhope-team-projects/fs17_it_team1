@@ -1,4 +1,9 @@
-import React, { useContext, useState } from "react";
+import React, {
+  ChangeEvent,
+  ChangeEventHandler,
+  useContext,
+  useState,
+} from "react";
 import useCart, { CartDash } from "./useCart";
 import { userContext } from "../../loginESubscription/AuthContext";
 import useProductDatabyId from "../../dashboard/Product/useProductDatabyId";
@@ -28,6 +33,33 @@ function Cart() {
     return response.json(); // parses JSON response into native JavaScript objects
   };
 
+  async function changeQuantity(
+    event: ChangeEvent<HTMLSelectElement>,
+    id: number
+  ) {
+    console.log(event.target.value);
+
+    const quantity = { quantity: event.target.value };
+    if (Number(event.target.value) > 0) {
+      const response = await fetch(`http://localhost:3001/cart/${id}`, {
+        method: "PATCH", // *GET, POST, PUT, DELETE, etc.
+        headers: {
+          "Content-Type": "application/json",
+          // 'Content-Type': 'application/x-www-form-urlencoded',
+        },
+        body: JSON.stringify(quantity), // body data type must match "Content-Type" header
+      });
+
+      onFetchData();
+
+      return response.json();
+    } else {
+      deleteCartRow(id);
+      setCartData((d: any) => d.filter((del: any) => del.id !== id));
+      return;
+    }
+  }
+
   function cartProduct(props: CartDash) {
     const product = productData.filter((el) => el.id === props.product_id);
 
@@ -47,7 +79,10 @@ function Cart() {
             <p className="text-base font-black leading-none text-gray-800">
               {product && product[0].name}
             </p>
-            <select className="py-2 px-1 border border-gray-200 mr-6 focus:outline-none">
+            <select
+              className="py-2 px-1 border border-gray-200 mr-6 focus:outline-none"
+              onChange={(event) => changeQuantity(event, Number(props.id))}
+            >
               <option>{props.quantity - 1}</option>
               <option selected>{props.quantity}</option>
               <option>{props.quantity + 1}</option>
@@ -87,7 +122,8 @@ function Cart() {
     );
   }
 
-  console.log(totalAm);
+  totalAm = Number(totalAm.toFixed(2));
+
   return (
     <>
       <div>
@@ -161,7 +197,7 @@ function Cart() {
                           Subtotal
                         </p>
                         <p className="text-base leading-none text-gray-800">
-                          {totalAm}€
+                          {totalAm ? totalAm + "€" : "N/A"}
                         </p>
                       </div>
                       <div className="flex items-center justify-between pt-5">
