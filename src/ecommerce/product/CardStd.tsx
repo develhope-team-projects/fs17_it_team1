@@ -116,7 +116,6 @@ export default function CardStd(props: Card) {
           }
         />
       </Card>
-      <ToastContainer />
     </div>
   );
 }

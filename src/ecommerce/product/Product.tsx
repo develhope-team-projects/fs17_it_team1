@@ -80,7 +80,7 @@ export function Product() {
     return response.json();
   }
 
-  const notify = () => toast("Prodotto aggiunto al Cart!");
+  const notify = () => toast("Prodotto aggiunto al Carrello!");
 
   return (
     <div className="flex flex-col w-full items-center">
@@ -284,7 +284,6 @@ export function Product() {
           </div>
         )}
       </div>
-      <ToastContainer />
     </div>
   );
 }

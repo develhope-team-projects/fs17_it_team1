@@ -6,6 +6,7 @@ import Header from "../shared/Header";
 import FooterComponent, { FooterType } from "../shared/Footer";
 import Homepage from "./homepage/Homepage";
 import Cart from "./Cart/Cart";
+import { ToastContainer } from "react-toastify";
 
 const footerTest: FooterType = {
   logo: "/src/assets/logo_white-03.svg",
@@ -36,6 +37,7 @@ export default function Ecommerce() {
           <Route path="/store" element={<Store />} />
           <Route path="/product/:id" element={<Product />} />
         </Routes>
+        <ToastContainer />
       </div>
       <FooterComponent {...footerTest} />
     </div>

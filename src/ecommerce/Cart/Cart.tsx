@@ -336,7 +336,6 @@ function Cart() {
             </div>
           </div>
         )}
-        <ToastContainer />
       </div>
 
       <style>
