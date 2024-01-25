@@ -1,7 +1,7 @@
 import ProductCardHome from "../../shared/ProductCardHome";
 import CarrouselProducts from "../product/CarrouselProducts";
 import { ProductCard } from "../../shared/ProductCard";
-
+import  Contact  from "../Contact/Contact";
 export default function Homepage() {
   return (
     <div>
@@ -9,6 +9,7 @@ export default function Homepage() {
 
       <CarrouselProducts />
       <ProductCard />
+      <Contact/>
     </div>
   );
 }
