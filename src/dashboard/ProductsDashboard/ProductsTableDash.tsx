@@ -33,7 +33,7 @@ export const tabTheme: any = {
 
 export default function ProductsTableDash(props: any) {
   const [currentPage, setCurrentPage] = useState(1);
-  const itemsPerPage = 12;
+  const itemsPerPage = 10;
   const startIndex = (currentPage - 1) * itemsPerPage;
   const endIndex = startIndex + itemsPerPage;
 

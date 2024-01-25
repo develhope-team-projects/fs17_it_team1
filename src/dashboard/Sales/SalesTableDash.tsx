@@ -9,7 +9,7 @@ import { userContext } from "../../loginESubscription/AuthContext";
 
 export default function SalesTableDash(props: any) {
   const [currentPage, setCurrentPage] = useState(1);
-  const itemsPerPage = 12;
+  const itemsPerPage = 10;
   const startIndex = (currentPage - 1) * itemsPerPage;
   const endIndex = startIndex + itemsPerPage;
 
