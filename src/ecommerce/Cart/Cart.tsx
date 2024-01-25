@@ -82,7 +82,7 @@ function Cart() {
     const product = productData.filter((el) => el.id === props.product_id);
 
     return (
-      <div className="md:flex items-center mt-14 py-8 border-t border-gray-200">
+      <div className="md:flex items-center mt-14 py-8 border-t border-gray-200 ">
         <div className="w-1/4">
           <img
             src={`/src/Images/${props.product_id}.jpg`}
@@ -212,8 +212,8 @@ function Cart() {
 
   return (
     <>
-      <div>
-        <div className="flex items-center justify-center py-8">
+      <div className="flex items-center justify-center ">
+        <div className="flex items-center justify-center ">
           <button
             onClick={
               contesto === 0
