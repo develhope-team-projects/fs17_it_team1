@@ -2,6 +2,7 @@ import { Toast } from "flowbite-react";
 import { HiCheck } from "react-icons/hi";
 import React from "react";
 
+
 export default function (props: { show: boolean }) {
   return (
     <div className={props.show ? `sticky bottom-5 right-3/4` : "none"}>
