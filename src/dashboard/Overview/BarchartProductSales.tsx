@@ -33,7 +33,12 @@ export default function BarchartProva() {
   }
 
   const data = lunghezza.map((el) => {
-    const product = productData.filter((ele) => ele.id === el[0].product_id);
+    const product = productData[0]
+      ? productData.filter((ele) => ele.id === el[0].product_id)
+      : [{ name: "Loading" }];
+    console.log(productData);
+
+    console.log(product);
     if (el.length === 1) {
       return {
         id: el[0].product_id,

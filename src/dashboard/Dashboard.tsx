@@ -7,6 +7,7 @@ import Overview from "./Overview/Overview";
 import { useContext } from "react";
 import { userContext } from "../loginESubscription/AuthContext";
 import ProductsDashboard from "./ProductsDashboard/ProductsDashboard";
+import SalesDashboard from "./Sales/SalesDashboard";
 
 const themeNav: any = {
   root: {
@@ -152,10 +153,7 @@ export default function Dashboard() {
         {contesto === 18 && (
           <Route path="/products" element={<ProductsDashboard />} />
         )}
-        <Route
-          path="/sales"
-          element={<EcommerceDashboard pageName="Sales" />}
-        />
+        <Route path="/sales" element={<SalesDashboard />} />
         <Route
           path="/refunds"
           element={<EcommerceDashboard pageName="Refunds" />}

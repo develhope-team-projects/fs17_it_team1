@@ -7,6 +7,7 @@ export type salesDash = {
   quantity: number;
   address: string;
   creation_date: string;
+  total_am: number;
 };
 
 export default function useSalesData() {
@@ -36,6 +37,8 @@ export default function useSalesData() {
   }
 
   useEffect(() => fetchData(), []);
+
+  console.log(salesData);
 
   return {
     salesData,
