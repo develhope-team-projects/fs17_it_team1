@@ -52,6 +52,8 @@ function Cart() {
 
       onFetchData();
 
+      event.target.options[1].selected = true;
+
       return response.json();
     } else {
       deleteCartRow(id);
@@ -84,7 +86,9 @@ function Cart() {
               onChange={(event) => changeQuantity(event, Number(props.id))}
             >
               <option>{props.quantity - 1}</option>
-              <option selected>{props.quantity}</option>
+              <option id="selected" selected>
+                {props.quantity}
+              </option>
               <option>{props.quantity + 1}</option>
             </select>
           </div>
@@ -112,17 +116,16 @@ function Cart() {
 
   let totalAm = 0;
 
+  //-----------------------------------------------------------------------
+  if (CartData) {
+    CartData.forEach((el) => {
+      const product = productData.find((e) => e.id === el.product_id);
 
-//-----------------------------------------------------------------------
-if (CartData) {
-  CartData.forEach((el) => {
-    const product = productData.find((e) => e.id === el.product_id);
-
-    if (product) {
-      totalAm += Number(product.price * el.quantity);
-    }
-  });
-}
+      if (product) {
+        totalAm += Number(product.price * el.quantity);
+      }
+    });
+  }
 
   totalAm = Number(totalAm.toFixed(2));
 
