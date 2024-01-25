@@ -134,10 +134,14 @@ function Cart() {
       <div>
         <div className="flex items-center justify-center py-8">
           <button
-            onClick={() => {
-              setShow(!show);
-              onFetchData();
-            }}
+            onClick={
+              contesto === 0
+                ? () => (window.location.href = "/log-in")
+                : () => {
+                    setShow(!show);
+                    onFetchData();
+                  }
+            }
             style={{ zIndex: 1000 }}
           >
             <img
@@ -188,7 +192,7 @@ function Cart() {
                     Cart
                   </p>
 
-                  {CartData && CartData.map((el) => cartProduct(el))}
+                  {CartData[0] && CartData.map((el) => cartProduct(el))}
                   {/* FINE PRODOTTI */}
                 </div>
                 <div className="xl:w-1/2 md:w-1/3 xl:w-1/4 w-full bg-gray-100 h-full">

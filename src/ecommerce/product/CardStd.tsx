@@ -5,6 +5,7 @@ import { SpecialButton } from "../../shared/SpecialButton";
 import useReviewbyId from "../../dashboard/Product/useReviewbyId";
 import { useContext } from "react";
 import { userContext } from "../../loginESubscription/AuthContext";
+import { redirect } from "react-router-dom";
 
 export type Card = {
   id: number;
@@ -99,7 +100,12 @@ export default function CardStd(props: Card) {
           ${props.price}
         </span>
       </div>
-      <SpecialButton content="Add to cart" function={addToCart} />
+      <SpecialButton
+        content="Add to cart"
+        function={
+          contesto === 0 ? () => (window.location.href = "/log-in") : addToCart
+        }
+      />
     </Card>
   );
 }
