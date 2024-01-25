@@ -20,8 +20,8 @@ import { useContext, useState } from "react";
 import { userContext } from "../../loginESubscription/AuthContext";
 import useUserData from "../../dashboard/UsersDashboard/useUserData";
 import ToastCart from "../../shared/ToastCart";
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 interface Product {
   id: number;
@@ -74,13 +74,13 @@ export function Product() {
       body: JSON.stringify(product),
     });
 
-   notify();
+    notify();
 
     setShowToast(true);
     return response.json();
   }
 
-  const notify = () => toast("Wow so easy!");
+  const notify = () => toast("Prodotto aggiunto al Cart!");
 
   return (
     <div className="flex flex-col w-full items-center">

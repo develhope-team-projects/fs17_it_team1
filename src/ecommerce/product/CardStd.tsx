@@ -7,6 +7,8 @@ import { useContext } from "react";
 import { userContext } from "../../loginESubscription/AuthContext";
 import { Link, redirect } from "react-router-dom";
 import ToastCart from "../../shared/ToastCart";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 export type Card = {
   id: number;
@@ -57,8 +59,10 @@ export default function CardStd(props: Card) {
       },
       body: JSON.stringify(product),
     });
+    notify();
     return response.json();
   }
+  const notify = () => toast("Wow so easy!");
 
   const calcReview = () => {
     let tot = 0;
@@ -112,6 +116,7 @@ export default function CardStd(props: Card) {
           }
         />
       </Card>
+      <ToastContainer />
     </div>
   );
 }
