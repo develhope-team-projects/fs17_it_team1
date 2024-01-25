@@ -16,9 +16,10 @@ import RatingReview from "./RatingReview";
 import CarrouselProducts from "./CarrouselProducts";
 import useReviewbyId from "../../dashboard/Product/useReviewbyId";
 import RatingForm from "./RatingForm";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { userContext } from "../../loginESubscription/AuthContext";
 import useUserData from "../../dashboard/UsersDashboard/useUserData";
+import ToastCart from "../../shared/ToastCart";
 
 interface Product {
   id: number;
@@ -39,6 +40,7 @@ export function Product() {
   const { userData } = useUserData();
   const contesto = useContext(userContext);
   const loggedUser = userData.filter((el) => el.id === contesto);
+  const [showToast, setShowToast] = useState(false);
 
   const { productData, loading, error } = useProductDatabyId(productId);
 
@@ -69,6 +71,7 @@ export function Product() {
       },
       body: JSON.stringify(product),
     });
+    setShowToast(true);
     return response.json();
   }
   return (
@@ -273,6 +276,7 @@ export function Product() {
           </div>
         )}
       </div>
+      <ToastCart show={showToast} />
     </div>
   );
 }
