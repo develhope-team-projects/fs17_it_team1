@@ -62,7 +62,7 @@ export default function CardStd(props: Card) {
     notify();
     return response.json();
   }
-  const notify = () => toast("Wow so easy!");
+  const notify = () => toast("Prodotto aggiunto al Cart!");
 
   const calcReview = () => {
     let tot = 0;

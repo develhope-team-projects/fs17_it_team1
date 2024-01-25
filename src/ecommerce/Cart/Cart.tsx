@@ -8,6 +8,8 @@ import useCart, { CartDash } from "./useCart";
 import { userContext } from "../../loginESubscription/AuthContext";
 import useProductDatabyId from "../../dashboard/Product/useProductDatabyId";
 import useProductData from "../../dashboard/Product/useProductData";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 function Cart() {
   const [show, setShow] = useState(false);
@@ -38,11 +40,6 @@ function Cart() {
     id: number,
     quantity: number
   ) {
-    console.log(event.currentTarget.id);
-    console.log(`increment-button`);
-
-    console.log(event.currentTarget.id == `increment-button`);
-
     if (event.currentTarget.id == `increment-button`) {
       const response = await fetch(`http://localhost:3001/cart/${id}`, {
         method: "PATCH", // *GET, POST, PUT, DELETE, etc.
@@ -77,6 +74,8 @@ function Cart() {
       }
     }
   }
+
+  const notify = () => toast("Ordine Creato!");
 
   function cartProduct(props: CartDash) {
     const product = productData.filter((el) => el.id === props.product_id);
@@ -210,6 +209,23 @@ function Cart() {
 
   totalAm = Number(totalAm.toFixed(2));
 
+  async function createOrder() {
+    const product = {
+      userId: contesto,
+      totalAmm: totalAm,
+    };
+
+    const response = await fetch("http://localhost:3001/orders", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(product),
+    });
+    setShow(!show);
+    notify();
+    return response.json();
+  }
   return (
     <>
       <div className="flex items-center justify-center ">
@@ -233,7 +249,6 @@ function Cart() {
             />
           </button>
         </div>
-
         {show && (
           <div
             className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-90"
@@ -309,7 +324,7 @@ function Cart() {
                         </p>
                       </div>
                       <button
-                        onClick={() => setShow(!show)}
+                        onClick={createOrder}
                         className="text-base leading-none w-full py-5 bg-gray-800 border-gray-800 border focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-800 text-white"
                       >
                         Checkout
@@ -321,6 +336,7 @@ function Cart() {
             </div>
           </div>
         )}
+        <ToastContainer />
       </div>
 
       <style>
