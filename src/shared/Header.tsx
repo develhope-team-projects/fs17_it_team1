@@ -33,11 +33,11 @@ export default function Header() {
       {!isMobileOrTablet ? (
         <>
           <Navbar.Collapse>
-            <Navbar.Link href="/" active>
-              Home
+            <Navbar.Link active>
+              <Link to={"/"}>Home</Link>
             </Navbar.Link>
-            <Navbar.Link href="/ecommerce/store" className="dark:text-gray-300">
-              Shop
+            <Navbar.Link className="dark:text-gray-300">
+              <Link to={"/ecommerce/store"}>Shop</Link>
             </Navbar.Link>
             <Navbar.Link href="#" className="dark:text-gray-300">
               About{" "}
