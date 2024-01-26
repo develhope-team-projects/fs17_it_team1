@@ -10,9 +10,13 @@ import {
   ResponsiveContainer,
 } from "recharts";
 import useSalesData from "../Sales/useSalesData";
+import useSalesLinesData from "../Sales/useSalesLinesData";
+import useProductDatabyId from "../Product/useProductDatabyId";
+import useProductData from "../Product/useProductData";
 
 export default function BarchartProva() {
-  const { salesData, setSalesData, loading, error } = useSalesData();
+  const { salesData, setSalesData, loading, error } = useSalesLinesData();
+  const { productData } = useProductData();
 
   const products = removeDuplicates(
     salesData ? salesData.map((el) => el.product_id) : []
@@ -29,7 +33,30 @@ export default function BarchartProva() {
   }
 
   const data = lunghezza.map((el) => {
-    return { name: el[0].product_id, sales: el.length };
+    const product = productData[0]
+      ? productData.filter((ele) => ele.id === el[0].product_id)
+      : [{ name: "Loading" }];
+    console.log(productData);
+
+    console.log(product);
+    if (el.length === 1) {
+      return {
+        id: el[0].product_id,
+        name: product[0].name,
+        sales: el[0].quantity,
+      };
+    } else {
+      let totQuantity = 0;
+
+      el.forEach((element) => {
+        totQuantity += Number(element.quantity);
+      });
+      return {
+        id: el[0].product_id,
+        name: product[0].name,
+        sales: totQuantity,
+      };
+    }
   });
 
   return (
@@ -57,7 +84,7 @@ export default function BarchartProva() {
           />
           <YAxis />
           <Tooltip />
-          <Legend />
+
           <CartesianGrid strokeDasharray="3 3" />
           <Bar dataKey="sales" fill="#8884d8" background={{ fill: "#eee" }} />
         </BarChart>

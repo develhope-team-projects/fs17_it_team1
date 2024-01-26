@@ -1,20 +1,18 @@
 import { useEffect, useState } from "react";
 
-export type salesDash = {
-  id: number;
-  user_id: number;
+export type CartDash = {
   product_id: number;
   quantity: number;
-  address: string;
-  creation_date: string;
-  total_am: number;
+  creation_date?: string;
+  id?: number;
+  user_id: number;
 };
 
-export default function useSalesData() {
-  type test = salesDash[];
+export default function useCart(userId: number) {
+  type test = CartDash[];
 
   const test1: test = [];
-  const [salesData, setSalesData] = useState(test1);
+  const [CartData, setCartData] = useState(test1);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
 
@@ -22,7 +20,7 @@ export default function useSalesData() {
     setLoading(true);
     setError("");
 
-    fetch(`http://localhost:3001/orders`)
+    fetch(`http://localhost:3001/cart/${userId}`)
       .then((data) => {
         if (data.status !== 200) {
           setError("Error");
@@ -31,18 +29,16 @@ export default function useSalesData() {
           return data.json();
         }
       })
-      .then((data) => setSalesData(data))
+      .then((data) => setCartData(data))
       .catch((err) => setError(err))
       .finally(() => setLoading(false));
   }
 
   useEffect(() => fetchData(), []);
 
-  console.log(salesData);
-
   return {
-    salesData,
-    setSalesData,
+    CartData,
+    setCartData,
     loading,
     error,
     onFetchData: fetchData,

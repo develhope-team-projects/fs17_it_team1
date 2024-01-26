@@ -7,10 +7,9 @@ export type salesDash = {
   quantity: number;
   address: string;
   creation_date: string;
-  total_am: number;
 };
 
-export default function useSalesData() {
+export default function useSalesLinesData() {
   type test = salesDash[];
 
   const test1: test = [];
@@ -22,7 +21,7 @@ export default function useSalesData() {
     setLoading(true);
     setError("");
 
-    fetch(`http://localhost:3001/orders`)
+    fetch(`http://localhost:3001/order_lines`)
       .then((data) => {
         if (data.status !== 200) {
           setError("Error");
@@ -37,8 +36,6 @@ export default function useSalesData() {
   }
 
   useEffect(() => fetchData(), []);
-
-  console.log(salesData);
 
   return {
     salesData,

@@ -16,9 +16,12 @@ import RatingReview from "./RatingReview";
 import CarrouselProducts from "./CarrouselProducts";
 import useReviewbyId from "../../dashboard/Product/useReviewbyId";
 import RatingForm from "./RatingForm";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { userContext } from "../../loginESubscription/AuthContext";
 import useUserData from "../../dashboard/UsersDashboard/useUserData";
+import ToastCart from "../../shared/ToastCart";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 interface Product {
   id: number;
@@ -39,6 +42,7 @@ export function Product() {
   const { userData } = useUserData();
   const contesto = useContext(userContext);
   const loggedUser = userData.filter((el) => el.id === contesto);
+  const [showToast, setShowToast] = useState(false);
 
   const { productData, loading, error } = useProductDatabyId(productId);
 
@@ -54,6 +58,30 @@ export function Product() {
     return tot / reviewData.length;
   };
   const review = calcReview();
+
+  async function addToCart() {
+    const product = {
+      productId: productData[0].id,
+      userId: contesto,
+      quantity: 1,
+    };
+
+    const response = await fetch("http://localhost:3001/cart", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(product),
+    });
+
+    notify();
+
+    setShowToast(true);
+    return response.json();
+  }
+
+  const notify = () => toast("Prodotto aggiunto al Carrello!");
+
   return (
     <div className="flex flex-col w-full items-center">
       <div className="w-full h-[3.75rem] bg-our-black/95"></div>
@@ -167,6 +195,11 @@ export function Product() {
                     theme={customTheme}
                     color="primary"
                     className="hover:text-ocra focus:ring-giallo focus:bg-nero focus:text-giallo w-full h-13"
+                    onClick={
+                      contesto === 0
+                        ? () => (window.location.href = "/log-in")
+                        : addToCart
+                    }
                   >
                     <p>Add to cart</p>
                   </Button>

@@ -43,7 +43,7 @@ export default function ProductCardHome({
       {media && img && (
         <img
           src="https://pngimg.com/d/whisky_PNG85.png"
-          className="w-[30%] m-auto opacity-80 rotate"
+          className="w-[30%] m-auto opacity-80 rotate z-999"
         />
       )}
     </div>
