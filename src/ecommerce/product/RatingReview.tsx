@@ -33,16 +33,16 @@ export default function RatingReview(props: Review) {
         {props.title}
       </h3>
 
-      <footer className="mb-5 text-sm text-gray-500 dark:text-gray-400">
+      <footer className="mb-5 text-sm text-gray-500 dark:text-white">
         <p>
           {/*           Reviewed in {props.userCountry} on{" "}
            */}{" "}
           <time dateTime={props.creation_date}>{props.creation_date}</time>
         </p>
       </footer>
-      <p className="mb-2 text-gray-500 dark:text-gray-400">{props.comment}</p>
+      <p className="mb-2 text-gray-500 dark:text-white">{props.comment}</p>
       <aside>
-        <p className="mt-1 text-xs text-gray-500 dark:text-gray-400">
+        <p className="mt-1 text-xs text-gray-500 dark:text-white">
           19 people found this helpful
         </p>
         <div className="flex items-center mt-3">

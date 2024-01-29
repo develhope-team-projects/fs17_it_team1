@@ -53,7 +53,7 @@ export default function SalesDashboard() {
   return (
     <div className="w-full">
       <h1 className="flex items-center text-5xl font-bold dark:text-white my-3 mx-2">
-        Users
+        Sales
       </h1>
       <div className="flex flex-col	justify-between h-[90%] ">
         <div>

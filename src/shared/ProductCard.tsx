@@ -28,7 +28,7 @@ export function ProductCard() {
         <h5 className="text-2xl font-bold text-gray-900 dark:text-white pb-5">
           Exceptional Taste, Pure Style
         </h5>
-        <p className="font-normal text-gray-700 dark:text-gray-400">
+        <p className="font-normal text-gray-700 dark:text-white">
         Explore excellence with Loki. Our whiskies and distinctive spirits embody refined taste, guiding you through an exceptional experience. Let each sip be an invitation to discover the art of indulging in life's pleasures with style and distinction.         </p>
       </div>
     </div>

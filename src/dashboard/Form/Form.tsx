@@ -104,6 +104,7 @@ export function Form() {
           <Datepicker
             title="Birthday"
             required
+            style={{ color: "black", background: "#ffd565", border: "#d1784d", fontSize: "14px", fontWeight: "600" }}
             theme={{ ...customTheme, ...customTheme3 }}
           />
         </div>
