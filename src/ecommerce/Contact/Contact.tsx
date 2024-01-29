@@ -58,7 +58,7 @@ function Contact() {
         <h5 className="text-4xl font-bold text-gray-900 dark:text-white pb-5">
           Contact US
         </h5>
-        <p className="font-normal text-gray-700 dark:text-gray-400">
+        <p className="font-normal text-white dark:text-gray-400">
           Send a message to our liquor store for inquiries, product requests, or information on promotions. We're here to assist you and make your alcoholic beverage shopping experience unique and memorable. Fill out the form below, and you'll soon be in touch with our knowledgeable team.
         </p>
       </div>
