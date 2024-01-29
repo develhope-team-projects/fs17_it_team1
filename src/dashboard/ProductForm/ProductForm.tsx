@@ -82,9 +82,9 @@ export function ProductForm() {
       </div>
       <div>
         <div className="mb-2 block">
-          <Label htmlFor="file-upload" value="Upload file" />
+          <Label htmlFor="file-upload" value="Upload file"  />
         </div>
-        <FileInput id="file-upload" />
+        <FileInput id="file-upload" style={{ color: "black", background: "#ffd565", border: "#d1784d", fontSize: "14px", fontWeight: "600" }} />
       </div>
       <div className="mx-auto">
         <NormalButton type="submit" content="Create" />
