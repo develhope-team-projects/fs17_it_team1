@@ -283,21 +283,21 @@ function Subscription() {
             onSubmit={handleFormSubmit}
           >
             <p className="text-white px-5 text-center">
-              Iscriviti la nostra pagina per accedere ai nostri servizi
-              esclusivi.
+
+              Sign up on our page to access our exclusive services.
             </p>
             <div className="flex gap-6">
-              <InputField type="text" id="Nome" name="Nome" label="Nome" />
+              <InputField type="text" id="Nome" name="Nome" label="Name" />
               <InputField
                 type="text"
                 id="Cognome"
                 name="Cognome"
-                label="Cognome"
+                label="Surname"
               />
             </div>
             <div className="flex gap-6 justify-center items-center align-center text-gray-400">
               <p className="pb-2 pr-14 text-white border-b-2 dark:border-white">
-                Data di nascita
+                Date of birth
               </p>
               <div className="w-40">
                 <Datepicker style={{ color: "black", background: "#ffd565", border: "#d1784d", fontSize: "14px", fontWeight: "600" }} theme={{ ...customTheme, ...customTheme3 }} />
@@ -308,10 +308,10 @@ function Subscription() {
               type="text"
               id="Indirizzo"
               name="Indirizzo"
-              label="Indirizzo"
+              label="Address"
             />
             <fieldset className="flex align-center max-w-md flex-row item-center gap-4 text-white">
-              <legend className="mb-4 text-center">Sesso</legend>
+              <legend className="mb-4 text-center">Gender</legend>
               <div className="gap-2">
                 <Radio
                   theme={customTheme2}
@@ -319,7 +319,7 @@ function Subscription() {
                   name="Gender"
                   value="Maschio"
                 />
-                <Label htmlFor="Maschio">Maschio</Label>
+                <Label htmlFor="Maschio">Male</Label>
               </div>
               <div className="gap-2">
                 <Radio
@@ -328,7 +328,7 @@ function Subscription() {
                   name="Gender"
                   value="Femmina"
                 />
-                <Label htmlFor="Femmina">Femmina</Label>
+                <Label htmlFor="Femmina">Female</Label>
               </div>
               <div className="gap-2">
                 <Radio
@@ -337,7 +337,7 @@ function Subscription() {
                   name="Gender"
                   value="Altro"
                 />
-                <Label htmlFor="Altro">Altro</Label>
+                <Label htmlFor="Altro">Other</Label>
               </div>
             </fieldset>
 
@@ -345,7 +345,7 @@ function Subscription() {
               type="email"
               id="Email"
               name="Email"
-              label="Inserisci email"
+              label="Insert email"
             />
 
             <InputField
@@ -354,7 +354,7 @@ function Subscription() {
               name="Password"
               pattern="^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[!@#$%^&*()-_+=]).{8,}$"
               title="La password deve contenere almeno una lettera maiuscola, una lettera minuscola, un numero e un simbolo, e deve essere lunga almeno 8 caratteri."
-              label="Inserisci password"
+              label="Insert password"
             />
 
             <NormalButton type="submit" content="Sign up" />

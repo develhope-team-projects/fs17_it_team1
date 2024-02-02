@@ -39,7 +39,7 @@ function Login() {
           type="email"
           id="email"
           name="email"
-          label="Inserisci email"
+          label="Insert email"
           value={loginData.email}
           onChange={handleChange}
         />
@@ -47,16 +47,16 @@ function Login() {
           type="password"
           id="password"
           name="password"
-          label="Inserisci password"
+          label="Insert password"
           value={loginData.password}
           onChange={handleChange}
         />
         <NormalButton content="Log in" onClick={handleLogin} />
         <br />
         <p className="text-white">
-          Se non sei ancora iscritto{" "}
+          If you are not yet registered{" "}
           <Link to="/subscription" className="text-giallo cursor-pointer">
-            clicca qui
+            click here
           </Link>
         </p>
       </div>
